@@ -51,6 +51,9 @@ class Agent:
         self.deceptive = False
         self.listening = True
         self.shyness = 1
+        self.shameless = 1
+        self.disturbing = False
+        self.flattering = False
 
         DeafMind, NaiveMind, UncriticalMind, OrdinaryMind = None, None, None, None
         character_setup_dict = {
@@ -122,16 +125,15 @@ class Agent:
         elif not self.deceptive:
             message = Message(self.id, topic.id, listeners, Info(0, 0), False, False)
         else:
-            blush = self.conf("ffl") > self.random_dict["blush"].uniform() * (1 - self.shameless)
+            blush = self.conf("BLUSH_FREQ_LIE") > self.random_dict["blush"].uniform() * (1 - self.shameless)
             KL_target = self.random_dict["lies"].exponential(self.kappa) * (2 * self.conf("F_CAUTION") if self.disturbing else self.conf("F_CAUTION"))
 
             def lie_size(x, is_positive):
                 info = assumed_opinion + Info(x ** 2, 0) if is_positive else assumed_opinion + Info(0, x ** 2)
                 return Ift.KL(info, assumed_opinion) - KL_target
 
-            opt_lie_size = root(lie_size, True).x[0] ** 2
+            opt_lie_size = root(lie_size, [1.0], args=(self.friendships[topic.id].mean >= 0.5,)).x[0] ** 2
             aggressive = self.aggressive > self.random_dict["aggressive"].uniform()
-            
             if self.id == topic.id:
                 lie = Info(opt_lie_size, 0) if aggressive else Info(0, 0) 
             elif self.flattering and topic in listeners:
@@ -143,7 +145,7 @@ class Agent:
                     - (friendship < 0.5) * 2 * (friendship - 0.5) * opt_lie_size
                 ) if aggressive else Info(0, 0)
 
-            message = Message(self.id, topic, listeners, assumed_opinion + lie, False, blush)
+            message = Message(self.id, topic.id, listeners, assumed_opinion + lie, False, blush)
         
         self.awareness(message)
 
@@ -190,7 +192,7 @@ class Agent:
             return
 
         surprise = Ift.KL(statement, topic_rep)
-        trust = speaker_rep.mean / (speaker_rep.mean + (surprise / self.kappa ** 2 * 0.5) * (1 - speaker_rep.mean) * (np.inf if blush else (1 - self.conf("BLUSH_FREQ_LIE"))))
+        trust = speaker_rep.mean / (speaker_rep.mean + (surprise / (self.kappa + self.conf("TINY")) ** 2 * 0.5) * (1 - speaker_rep.mean) * (np.inf if blush else (1 - self.conf("BLUSH_FREQ_LIE"))))
 
         if speaker == topic:  # Confession
             if statement.mean < speaker_rep.mean and not blush:

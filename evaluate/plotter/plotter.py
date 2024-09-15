@@ -162,8 +162,8 @@ class Plotter(QWidget):
     def preconfigure_plots(self):
         return {
             "Select plot": "",
-            "All on All": self.plot_conf("time", ["Honesty A0", "A0 on A0", "A0 on A1", "A0 on A2", "Honesty A1", "A1 on A0", "A1 on A1", "A1 on A2", "Honesty A2", "A2 on A0", "A2 on A1", "A2 on A2"], 
-                                         ["-."] * 4 + [":"] * 4 + ["--"] * 4, ["gray", "red", "blue", "black"] * 3),
+            "All on All": self.plot_conf("time", ["A0 on A0", "A0 on A1", "A0 on A2","A1 on A0", "A1 on A1", "A1 on A2", "A2 on A0", "A2 on A1", "A2 on A2", "Honesty A0", "Honesty A1", "Honesty A2"], 
+                                         ["-."] * 3 + [":"] * 3 + ["--"] * 3 + ["-"] * 3, ["red", "blue", "black"] * 4),
             "A0 on All": self.plot_conf("time", ["A0 on A0", "A0 on A1", "A0 on A2"], ["-"] * 3, ["red", "blue", "black"]),
             "All on A0": self.plot_conf("time", ["A0 on A0", "A1 on A0", "A2 on A0"], ["-"] * 3, ["red", "blue", "black"]),
         }

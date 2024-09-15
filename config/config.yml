@@ -1,9 +1,9 @@
 game:
   honesties: [0.2, 0.8, 1]
   n_agents: 3 # Number of agents in simulation
-  n_rounds: 50 # Number of conversation rounds
-  n_stat: 2 # Number of simulations for statistic batch (different seeds)
-  characters_dict: [{"all": "ordinary"}, {0: "deceptive"}] # Characters of each agent
+  n_rounds: 500 # Number of conversation rounds
+  n_stat: 100 # Number of simulations for statistic batch (different seeds)
+  characters_dict: [{"all": "ordinary"}] # Characters of each agent
   folder: "evaluate/results" # Result folder
   mindI: []
   Ks: []
@@ -25,6 +25,7 @@ constants:
   agent_color: ["red", "black", "cyan", "yellow", "blue", "grey", "green"] # colors for the agents; if too small, list is repeated
   agent_color_alpha: [1, 0.85, 1.5, 1.5, 1, 1, 0.85] # transparency values for plotting, adjusted to Acolor; if too small, list is repeated
   BLUSH_FREQ_LIE: 0.1
+  F_CAUTION: 0.3
 
 switches:
   COMPRESSION_METHOD: "KL_minimization" # choose between 'KL_minimization', 'moment_matching', 'LUT'
