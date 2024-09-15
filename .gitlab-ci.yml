@@ -1,0 +1,12 @@
+stages:
+  - test
+  - deploy
+
+test:
+  stage: test
+  script:
+    - pip3 install -r requirements.txt
+    - pytest
+  only:
+    - merge_requests
+    - main

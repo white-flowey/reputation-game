@@ -1,0 +1,31 @@
+# Output files
+evaluate/results/logs/*
+evaluate/results/processor/*
+evaluate/results/simulation/*
+
+
+# Root files
+*todo.txt
+*run.sh
+
+# Python-related files
+__pycache__/
+*.py[cod]
+
+# Cython-related files
+*.c
+*.cpp
+*.h
+*.so
+*.pyd
+build/
+dist/
+*.egg-info/
+
+# Virtual environment
+venv/
+.env/
+
+# IDE-specific files (e.g., for PyCharm, VSCode)
+.idea/
+.vscode/
