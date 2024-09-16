@@ -24,13 +24,13 @@ class Postprocessor():
             mean_time_step = {"state": {"agents": []}}
             for a in conf("agents"):
                 a_b_I = [np.mean([float(results[sim][t]["state"]["agents"][a]["I"][a][b]) for sim in range(conf("n_stat"))]) for b in conf("agents")]
-                a_b_J = [np.mean([float(results[sim][t]["state"]["agents"][a]["J"][a][b]) for sim in range(conf("n_stat"))]) for b in conf("agents")]
-                a_b_C = [np.mean([float(results[sim][t]["state"]["agents"][a]["C"][a][b]) for sim in range(conf("n_stat"))]) for b in conf("agents")]
+                a_b_c_J = [[np.mean([float(results[sim][t]["state"]["agents"][a]["J"][a][b]) for sim in range(conf("n_stat"))]) for b in conf("agents")] for c in conf("agents")]
+                a_b_c_C = [[np.mean([float(results[sim][t]["state"]["agents"][a]["C"][b][c]) for sim in range(conf("n_stat"))]) for b in conf("agents")] for c in conf("agents")]
                 a_b_friends = [np.mean([float(results[sim][t]["state"]["agents"][a]["friendships"][b]) for sim in range(conf("n_stat"))]) for b in conf("agents")]
                 
                 a_kappa = np.mean([float(results[sim][t]["state"]["agents"][a]["kappa"]) for sim in range(conf("n_stat"))])
                 a_honesty = results[0][0]["state"]["agents"][a]["honesty"]
-                mean_time_step["state"]["agents"].append({"I": a_b_I, "J": a_b_J, "C": a_b_C, "friendships": a_b_friends, "kappa": a_kappa, "honesty": a_honesty})
+                mean_time_step["state"]["agents"].append({"I": a_b_I, "J": a_b_c_J, "C": a_b_c_C, "friendships": a_b_friends, "kappa": a_kappa, "honesty": a_honesty})
             
             mean_results.append(mean_time_step)
         return mean_results
@@ -45,20 +45,23 @@ class Postprocessor():
             for b in conf("agents"):
                 self.data[f"A{a} on A{b}"] = []
                 self.data[f"Friendship A{a}-A{b}"] = []
-                self.data[f"A{b} said last to A{a}"] = []
-                self.data[f"A{b} wants A{a} to believe"] = []
+                for c in conf("agents"):
+                    self.data[f"A{b} said last to A{a} about A{c}"] = []
+                    self.data[f"A{b} wants A{a} to believe about A{c}"] = []
 
         for t in self.results:
             for a in conf("agents"):
                 for b in conf("agents"):
                     if statistics:
                         self.data[f"A{a} on A{b}"].append(float(t["state"]["agents"][a]["I"][b]))
-                        self.data[f"A{b} said last to A{a}"].append(float(t["state"]["agents"][a]["J"][b]))
-                        self.data[f"A{b} wants A{a} to believe"].append(float(t["state"]["agents"][a]["C"][b]))
+                        for c in conf("agents"):
+                            self.data[f"A{b} said last to A{a} about A{c}"].append(float(t["state"]["agents"][a]["J"][b][c]))
+                            self.data[f"A{b} wants A{a} to believe about A{c}"].append(float(t["state"]["agents"][a]["C"][b][c]))
                     else:
                         self.data[f"A{a} on A{b}"].append(float(t["state"]["agents"][a]["I"][a][b]))
-                        self.data[f"A{b} said last to A{a}"].append(float(t["state"]["agents"][a]["J"][a][b]))
-                        self.data[f"A{b} wants A{a} to believe"].append(float(t["state"]["agents"][a]["C"][a][b]))
+                        for c in conf("agents"):
+                            self.data[f"A{b} said last to A{a} about A{c}"].append(float(t["state"]["agents"][a]["J"][b][c]))
+                            self.data[f"A{b} wants A{a} to believe about A{c}"].append(float(t["state"]["agents"][a]["C"][b][c]))
                     self.data[f"Friendship A{a}-A{b}"].append(float(t["state"]["agents"][a]["friendships"][b]))
                 self.data[f"Kappa A{a}"].append(float(t["state"]["agents"][a]["kappa"]))
                 self.data[f"Honesty A{a}"].append(float(t["state"]["agents"][a]["honesty"]))

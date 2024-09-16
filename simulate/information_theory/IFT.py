@@ -91,18 +91,18 @@ class IFT():
         value_at_0 = poly_start - slope * poly_start ** exp
         return ((value - value_at_0) / slope) ** (1 / exp) * (N - 1) / (poly_end - value_at_0)
     
-    def minimize_KL(self, u, v, mu_start=0, la_start=0):
-        def rev_loss(J): return jLoss(u, v, self.conf("MIN_KL"), J)
-        def jac_loss(J): return jgradLoss(u, v, self.conf("MIN_KL"), J)
-        def hess_loss(J): return jhessLoss(u, v, self.conf("MIN_KL"), J)
+    # def minimize_KL(self, u, v, mu_start=0, la_start=0):
+    #     def rev_loss(J): return jLoss(u, v, self.conf("MIN_KL"), J)
+    #     def jac_loss(J): return jgradLoss(u, v, self.conf("MIN_KL"), J)
+    #     def hess_loss(J): return jhessLoss(u, v, self.conf("MIN_KL"), J)
         
-        initial_guess = [mu_start, la_start]
-        if self.conf("OPTIMIZATION_METHOD") == "trust-constr":
-            result = minimize(rev_loss, initial_guess, method="trust-constr", jac=jac_loss, hess=hess_loss, options={"gtol": self.conf("GTOL")})
-        elif self.conf("OPTIMIZATION_METHOD") == "L-BFGS-B":
-            result = minimize(rev_loss, initial_guess, method="L-BFGS-B")
+    #     initial_guess = [mu_start, la_start]
+    #     if self.conf("OPTIMIZATION_METHOD") == "trust-constr":
+    #         result = minimize(rev_loss, initial_guess, method="trust-constr", jac=jac_loss, hess=hess_loss, options={"gtol": self.conf("GTOL")})
+    #     elif self.conf("OPTIMIZATION_METHOD") == "L-BFGS-B":
+    #         result = minimize(rev_loss, initial_guess, method="L-BFGS-B")
 
-        return result.x[0], result.x[1]  # mu, la
+    #     return result.x[0], result.x[1]  # mu, la
     
     def KL(self, IP, IQ):
         muP, muQ = IP.mu, IQ.mu
@@ -117,5 +117,32 @@ class IFT():
         if (result := P - Q).check_positive:
             return result
         return Info(0, 0)
+    
+    def minimize_KL(self, u, v, mu_start=0, la_start=0):
+        def rev_loss(J):
+            return jLoss(u, v, self.conf("MIN_KL"), J)
+
+        def jac_loss(J):
+            return jgradLoss(u, v, self.conf("MIN_KL"), J)
+
+        def hes_loss(J):
+            return jhessLoss(u, v, self.conf("MIN_KL"), J)
+
+        if self.conf("MINIMIZE_FUNCTION") == "DEFAULT":
+            res1 = [mu_start, la_start]
+            fun0, fun1 = 1, 0
+
+            while fun1 < fun0:
+                res0 = minimize(rev_loss, res1, method="trust-exact", jac=jac_loss, hess=hes_loss, tol=self.conf("GTOL"))
+                fun0, res1 = res0.fun, minimize(rev_loss, res0.x, method="trust-ncg", jac=jac_loss, hess=hes_loss, tol=self.conf("GTOL"))
+                fun1, res1 = res1.fun, res1.x
+            return res1[0], res1[1]
+        
+        elif self.conf("MINIMIZE_FUNCTION") == "UPDATED": 
+            initial_guesss = [mu_start, la_start]
+            result = minimize(rev_loss, initial_guesss, method="trust-exact", jac=jac_loss, hess=hes_loss, tol=self.conf("GTOL")).x
+
+            return result[0], result[1]
+
     
 Ift = IFT()

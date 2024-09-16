@@ -15,11 +15,10 @@ class Simulation():
         self.make_random_dict(seed)
         self.init_agents()
 
-
     def make_random_dict(self, seed_var):
         seed_offsets = {
             "honesties": self.conf("seed"),
-            "varying_random_honesties": seed_var,
+            "varying_random_honesties": self.conf("seed") + seed_var,
             "fr_affinities": self.conf("seed") + seed_var + 1,
             "shynesses": self.conf("seed") + seed_var + 2,
             "one_to_one": self.conf("seed") + 10 * seed_var - 1,

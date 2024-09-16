@@ -17,7 +17,8 @@ class Info:
 
     def __str__(self):
         # return (f"x = {self.mean:10.4f} ± {self.rms:10.4f} "f"({self.mu:5.2f}, {self.la:5.2f})")
-        mu, la = f"{self.mu:5.2f}".lstrip(), f"{self.la:5.2f}".lstrip()
+        # mu, la = f"{self.mu:5.2f}".lstrip(), f"{self.la:5.2f}".lstrip()
+        mu, la = f"{self.mu}".lstrip(), f"{self.la}".lstrip()
         return (f"({mu}, {la})")
 
     def __add__(self, other):
@@ -31,6 +32,9 @@ class Info:
 
     def __rmul__(self, a):
         return self * a
+    
+    def round(self, digits):
+        return Info(round(self.mu, digits), round(self.la, digits))
 
     def draw(self):
         return Beta.random_state.beta(self.mu + 1, self.la + 1)
@@ -55,5 +59,7 @@ class Info:
     
     def check_positive(self):
         return self.mu >= 0 and self.la >= 0
+    
+
     
 Inf = Info()

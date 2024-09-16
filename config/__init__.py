@@ -1,1 +1,1 @@
-from .config import conf, replace_conf, restore_conf, init_conf
+from .config import conf, replace_conf, restore_conf, init_conf, config

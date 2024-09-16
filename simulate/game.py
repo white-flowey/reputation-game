@@ -20,32 +20,40 @@ class Game():
             self.simulations = [Simulation(seed, self.characters_setup) for seed in range(self.conf("n_stat"))]
     
     def play(self, simulation):
-        simulation.log.start(simulation.id, simulation.agents)
         print(f"Started simulation {simulation.id}")
+        if self.conf("LOGGING"): simulation.log.initial_status(simulation.agents)
+
         rounds = [{"time": 0, "speaker": 0, "state": simulation.save_state().copy()}]
         for round in range(self.conf("n_rounds")):
             for i, agent in enumerate(simulation.agents):
-                simulation.log.time(round, i, agent.id)
-                rounds.append({"time": (round + 1) * 3 + i + 1, "speaker": agent.id, "state": self.conversation(agent, simulation).save_state().copy()})
+                time = round * 3 + i + 1
+                rounds.append({"time": time, "speaker": agent.id, "state": self.conversation(agent, simulation, time).save_state().copy()})
         
+        if self.conf("LOGGING"): simulation.log.save_data_as_json()
         return rounds
     
-    def conversation(self, speaker, simulation):
-        agents_pre = [a.save_state(include_info=True)["I"] for a in simulation.agents]
+    def conversation(self, speaker, simulation, time):
+        if self.conf("LOGGING"): simulation.log.time(time)
+
         one_to_one = self.conf("p_one_to_one") > simulation.random_dict["n_recipients"].uniform()
+
         listener_weights = speaker.rank_communication_partners()
         topic = speaker.draw_topic(simulation.agents)
+        
         if one_to_one:
             listeners = [simulation.agents[speaker.draw_max_from_list(listener_weights, "recipients")]]
-            speaker.buffer.append(listeners[0].talk(topic, [speaker]))
-            listener_weights = [1]
+            message = speaker.talk(topic, listeners)
+            listeners[0].buffer.append(message)
+            
+            response = listeners[0].talk(topic, speaker)
+            speaker.buffer.append(response)
+
+            [a.update_from_buffer() for a in [speaker, listeners[0]]]
         else: # Broadcast
             listeners = [a for a in simulation.agents if a.id != speaker.id]
-        
-        message = speaker.talk(topic, listeners, listener_weights)
-        [listener.buffer.append(message) for listener in listeners]
-        [a.update_from_buffer() for a in [speaker] + listeners]
-
-        simulation.log.conversation(speaker, listeners, topic)
-        simulation.log.update(speaker, topic, listeners, agents_pre)
+            message = speaker.talk(topic, listeners, listener_weights)
+            [listener.buffer.append(message) for listener in listeners]
+            
+            [a.update_from_buffer() for a in listeners]
+    
         return simulation

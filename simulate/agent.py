@@ -23,18 +23,23 @@ class Agent:
             print("YES")
         self.J = [[Info(0,0) for _ in conf("agents")] for _ in conf("agents")]
         self.C = [[Info(0,0) for _ in conf("agents")] for _ in conf("agents")]
-        self.K = conf("Ks")[id] if conf("Ks") else []
+        self.K = conf("Ks")[id] if conf("Ks") else [np.sqrt(np.pi) for _ in range(self.conf("KLENGTH"))]
         self.kappa = median(self.K) / np.sqrt(np.pi) if conf("Ks") else 1
         self.buffer = []
         
-    def save_state(self, include_info=False):
-        if include_info:
-            return {"id": self.id, "I": [[str(self.I[a][b]) for b in self.conf("agents")] for a in self.conf("agents")]}
+    def save_state(self, log=False):
+        if log:
+            return {"id": self.id, "honesty": round(self.honesty, 2), "friendships": [round(I.mean, 2) for I in self.friendships], "character": self.character, 
+                "I": [[str(self.I[a][b].round(2)) for b in self.conf("agents")] for a in self.conf("agents")],
+                "J": [[str(self.J[a][b].round(2)) for b in self.conf("agents")] for a in self.conf("agents")],
+                "C": [[str(self.C[a][b].round(2)) for b in self.conf("agents")] for a in self.conf("agents")],
+                "K": [round(k, 2) for k in self.K], "kappa": round(self.kappa, 2)
+            }
         else:
             return {"id": self.id, "honesty": self.honesty, "friendships": [I.mean for I in self.friendships], "character": self.character, 
                 "I": [[self.I[a][b].mean for b in self.conf("agents")] for a in self.conf("agents")],
                 "J": [[self.J[a][b].mean for b in self.conf("agents")] for a in self.conf("agents")],
-                "C": [[self.J[a][b].mean for b in self.conf("agents")] for a in self.conf("agents")],
+                "C": [[self.C[a][b].mean for b in self.conf("agents")] for a in self.conf("agents")],
                 "K": self.K, "kappa": self.kappa
             }
 
@@ -51,7 +56,7 @@ class Agent:
         self.deceptive = False
         self.listening = True
         self.shyness = 1
-        self.shameless = 1
+        self.shameless = 0
         self.disturbing = False
         self.flattering = False
 
@@ -90,6 +95,9 @@ class Agent:
 
     def rank_communication_partners(self):
         # shyness
+        if self.character == "ordinary":
+            id = self.random_dict["recipients"].choice([id for id in self.conf("agents") if id != self.id])
+            return [1 if i == id else 0 for i in self.conf("agents")]
         friendship_weights = np.array([self.friendships[i].mean for i in self.conf("agents")])
         relation_weights = np.multiply(friendship_weights ** self.conf("FRIENDSHIP_AFFECTS_B"), np.array([self.n_conversations[i]["partner"] for i in self.conf("agents")]) ** self.conf("RELATION_AFFECTS_B"))
 
@@ -98,7 +106,6 @@ class Agent:
         weights[self.id] = 0
         weights = [weight / sum(weights) for weight in weights]
 
-        self.log.partner_selection(friendship_weights, relation_weights, strategic_weights, weights)
         return weights
 
 
@@ -106,6 +113,8 @@ class Agent:
         # direct vs. indirect contact, self-conversation update, friendship affinity
         if getattr(self, "egocentric", False) and self.egocentric > self.random_dict["egocentric"].uniform(): 
             return self
+        if self.character == "ordinary": return agents[self.random_dict["topic"].choice(self.conf("agents"))] 
+        
         relation_weights = np.array([self.n_conversations[i]["partner"] for i in self.conf("agents")]) ** self.conf("RELATION_AFFECTS_C")
         friendship_weights = np.array([self.friendships[i].mean for i in self.conf("agents")]) ** self.conf("FRIENDSHIP_AFFECTS_C")
         aggressive_weights = np.array([1 - i for i in friendship_weights]) ** (self.aggressive > self.random_dict["aggressive"].uniform())
@@ -115,17 +124,18 @@ class Agent:
     
 
     def talk(self, topic, listeners, listener_weights=[1]):
+        if not isinstance(listeners, list): listeners = [listeners]
         if len(listeners) > 1:
             assumed_opinion = Ift.make_average_opinion(listener_weights, [self.I[a][topic.id] for a in self.conf("agents")]) ** self.shyness
         else:
             assumed_opinion = self.I[listeners[0].id][topic.id]
 
-        if self.random_dict["honests"].uniform() < self.honesty:
+        if self.random_dict["honests"].uniform() <= self.honesty:
             message = Message(self.id, topic.id, listeners, self.I[self.id][topic.id], True, False)
-        elif not self.deceptive:
+        elif False: # ADD OTHER CHARACTERS
             message = Message(self.id, topic.id, listeners, Info(0, 0), False, False)
         else:
-            blush = self.conf("BLUSH_FREQ_LIE") > self.random_dict["blush"].uniform() * (1 - self.shameless)
+            blush = self.conf("BLUSH_FREQ_LIE") > (self.random_dict["blush"].uniform() + self.shameless)
             KL_target = self.random_dict["lies"].exponential(self.kappa) * (2 * self.conf("F_CAUTION") if self.disturbing else self.conf("F_CAUTION"))
 
             def lie_size(x, is_positive):
@@ -140,16 +150,19 @@ class Agent:
                 lie = Info(opt_lie_size * ((1 - self.memory[topic.id].mean) if self.conf("SCALED_FLATTERING") else 1), 0)
             else:
                 friendship = self.friendships[topic.id].mean
-                lie = Info(
-                    (friendship > 0.5) * 2 * (friendship - 0.5) * opt_lie_size, 
-                    - (friendship < 0.5) * 2 * (friendship - 0.5) * opt_lie_size
-                ) if aggressive else Info(0, 0)
+                if self.conf("CONTINUOUS_FRIENDSHIP"):
+                    lie = Info(
+                        (friendship > 0.5) * 2 * (friendship - 0.5) * opt_lie_size,
+                        - (friendship < 0.5) * 2 * (friendship - 0.5) * opt_lie_size
+                    ) if aggressive else Info(0, 0) # CHECK
+                else:
+                    if friendship == 0.5: lie = Info(0, 0)
+                    else: lie = Info((friendship > 0.5) * opt_lie_size, (friendship < 0.5) * opt_lie_size)
 
             message = Message(self.id, topic.id, listeners, assumed_opinion + lie, False, blush)
         
+        if self.conf("LOGGING"): self.log.conversation(self, listeners, listener_weights, message)
         self.awareness(message)
-
-        self.log.message(message)
         return message
 
 
@@ -161,6 +174,8 @@ class Agent:
         if topic == self.id and self.conf("ACTIVE_SELF_FRIENDSHIP"):
             friendship = statement.mean - median([self.J[i][self.id] for i in self.conf("agents") if i != self.id])
             self.friendships[self.id] = self.friendships[self.id] + Info(friendship > 0, friendship < 0)
+        
+        if self.conf("LOGGING"): self.log.self_update(self, topic)
             
     
     def update_from_buffer(self):
@@ -192,7 +207,8 @@ class Agent:
             return
 
         surprise = Ift.KL(statement, topic_rep)
-        trust = speaker_rep.mean / (speaker_rep.mean + (surprise / (self.kappa + self.conf("TINY")) ** 2 * 0.5) * (1 - speaker_rep.mean) * (np.inf if blush else (1 - self.conf("BLUSH_FREQ_LIE"))))
+        Rb = np.inf if blush else (1 - self.conf("BLUSH_FREQ_LIE"))
+        trust = 0 if blush else speaker_rep.mean / (speaker_rep.mean + 0.5 * (surprise / (self.kappa)) ** 2 * Rb * (1 - speaker_rep.mean))        
 
         if speaker == topic:  # Confession
             if statement.mean < speaker_rep.mean and not blush:
@@ -202,12 +218,13 @@ class Agent:
             self.update_memory(speaker, trust, speaker_rep + Info(1, 0), speaker_rep + Info(0, 1), speaker_rep)
             self.update_memory(topic, trust, Itruth_naive, topic_rep, topic_rep)            
 
-        self.log.listen(message, self, topic_rep, surprise, trust, self.kappa)
-
         self.K = self.K[1:] + [surprise] if len(self.K) == 10 else self.K + [surprise]
-        self.kappa = median(self.K) / np.sqrt(np.pi) + self.conf("TINY")
-        self.maintain_friendship(message)
+        self.kappa = median(self.K) / np.sqrt(np.pi)
+        if self.id == topic:
+            self.maintain_friendship(message)
         self.update_ToM(message, trust)
+
+        if self.conf("LOGGING"): self.log.update(self, message, trust)
 
 
     def update_memory(self, topic, trust, Itruth, Ilie, Istart=None):
@@ -216,7 +233,6 @@ class Agent:
         if (coef_sum := update_info.mu + update_info.la) > self.conf("MAX_COUNT"):
             update_info *= self.conf("MAX_COUNT") / coef_sum
 
-        self.log.match(self.id, topic, trust, Itruth, Ilie, Istart, update_info)
         self.I[self.id][topic] = update_info
 
 
@@ -224,9 +240,10 @@ class Agent:
         speaker, statement = message.speaker, message.statement.mean
         
         x_median = median([self.J[b][self.id].mean for b in self.conf("agents") if b not in (self.id, speaker)])
-        update = (1, 0) if statement > x_median else (0, 1) if statement < x_median else None
+        update = Info(1, 0) if statement > x_median else Info(0, 1) if statement < x_median else self.friendships[message.speaker]
         if update:
-            self.friendships[speaker] = self.friendships[speaker] + Info(*update)
+            self.friendships[speaker] = self.friendships[speaker] + update if self.conf("CONTINUOUS_FRIENDSHIP") else update
+            
 
 
     def update_ToM(self, message, trust):
@@ -234,7 +251,7 @@ class Agent:
         
         self.I[speaker][topic] = trust * statement + (1 - trust) * self.I[speaker][topic]
         self.J[speaker][topic] = statement
-        self.C[speaker][topic] = (1 - trust) * statement + trust * self.I[speaker][topic]
+        self.C[speaker][topic] = (1 - trust) * statement + trust * self.C[speaker][topic]
 
 
 ### HELPER ###

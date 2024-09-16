@@ -54,7 +54,7 @@ class Config:
     
     
     def set_config_defaults_if_needed(self):
-        self.conf["agents"] = range(self.conf["n_agents"])
+        self.conf["agents"] = list(range(self.conf["n_agents"]))
         characters = self.conf["characters_dict"]
         for i, character in enumerate(characters):
             if "all" in character.keys():
