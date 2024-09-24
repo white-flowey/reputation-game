@@ -5,9 +5,11 @@ evaluate/results/simulation/*
 
 
 # Root files
+*todo.txt
 *todo.md
 *run.sh
 config/config.yml
+*output.prof
 
 # Python-related files
 __pycache__/

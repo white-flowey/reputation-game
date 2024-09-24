@@ -2,13 +2,12 @@ import pytest
 
 from simulate import Game
 from simulate.information_theory import Info
-from config import replace_conf, restore_conf, init_conf
-conf = init_conf()
+from config import config_swap, init_conf
 
 def test_characters():
-    replace_conf("config/tests/config_characters.yml")
-    try:
-        game = Game()
+    with config_swap("config/tests/config_characters.yml"):
+        conf = init_conf()
+        game = Game(conf("characters_dict")[0])
         game.setup_simulations()
         sim = game.simulations[0]
         agents = sim.agents
@@ -23,10 +22,9 @@ def test_characters():
         aggr_agent = get_agent_by_character(sim, "aggressive")
         set_target(aggr_agent, agents, friend=False)
 
-    finally:
-        restore_conf()
-
 def get_agent_by_character(simulation, character):
+    for a in simulation.agents:
+        print(a.character)
     return [a for a in simulation.agents if a.character == character][0]
 
 def set_target(agent, agents, friend=True, character="ordinary"):

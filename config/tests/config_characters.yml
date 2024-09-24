@@ -14,10 +14,9 @@ randomseed:
   seed: 21 # 21 is a nice simulation
   seed_offset: 0
 
-multiprocessing:
-  n_parallel_core_jobs: 2
 
 parameters:
+  KLENGTH: 10
   p_one_to_one: 1 # which fraction of conversations is 1-to-1
 
 constants:
@@ -42,22 +41,22 @@ switches:
   RELATION_AFFECTS_C: False # if True, ordinary agents' selection of communication topics will be affected by their relation strength
   RANDOM_FRIENDSHIP_AFFINITIES: False # if True, intrinsic friendship affinities will be drawn randomly. If False, they are all 1
 
-names_dict: {
-    "deaf": "00_deaf",
-    "naive": "01_naive",
-    "uncritical": "03_uncritical",
-    "ordinary": "04_ordinary",
-    "strategic": "05_strategic",
-    "egocentric": "06_egocentric",
-    "deceptive": "07_deceptive",
-    "flattering": "08_flattering",
-    "aggressive": "09_aggressive",
-    "shameless": "10_shameless",
-    "smart": "11_smart",
-    "clever": "12_clever",
-    "manipulative": "13_manipulative",
-    "dominant": "14_dominant",
-    "destructive": "15_destructive",
-    "good": "16_good",
-    "antistrategic": "17_antistrategic",
+character_ids_dict: {
+    "deaf": "00",
+    "naive": "01",
+    "uncritical": "03",
+    "ordinary": "04",
+    "strategic": "05",
+    "egocentric": "06",
+    "deceptive": "07",
+    "flattering": "08",
+    "aggressive": "09",
+    "shameless": "10",
+    "smart": "11",
+    "clever": "12",
+    "manipulative": "13",
+    "dominant": "14",
+    "destructive": "15",
+    "good": "16",
+    "antistrategic": "17",
 }

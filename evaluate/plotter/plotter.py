@@ -1,5 +1,4 @@
 import os
-import json
 import matplotlib.pyplot as plt
 from matplotlib.backends.backend_qt5agg import NavigationToolbar2QT as NavigationToolbar
 from PyQt5.QtWidgets import (
@@ -8,7 +7,7 @@ from PyQt5.QtWidgets import (
 from PyQt5.QtCore import Qt
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
 
-from config import conf
+from ..postprocessor import Postprocessor
 
 
 class Plotter(QWidget):
@@ -82,16 +81,14 @@ class Plotter(QWidget):
     
     def load_data(self, filename):
         if filename != "Select file":
-            file_path = os.path.join(conf("folder"), "processor", filename)
-            with open(file_path, "r") as json_file:
-                self.data = json.load(json_file)
-
-        self.x_axis_select.deleteLater()
-        self.fields = sorted(self.data.keys())
-        self.x_axis_select = self.create_select(self.fields, 1, 1)
+            filename = "/".join(["evaluate", "results", "simulation", filename])
+            self.data = Postprocessor(filename).select
+            self.x_axis_select.deleteLater()
+            self.fields = sorted(self.data.keys())
+            self.x_axis_select = self.create_select(self.fields, 1, 1)
 
     def list_json_files(self):
-        json_files = [f for f in os.listdir("evaluate/results/processor") if f.endswith('.json')]
+        json_files = [f for f in os.listdir("evaluate/results/simulation") if f.endswith('.json')]
         return ["Select file"] + json_files
 
     def apply_preconfigured(self, plot_name):
@@ -162,7 +159,8 @@ class Plotter(QWidget):
     def preconfigure_plots(self):
         return {
             "Select plot": "",
-            "All on All": self.plot_conf("time", ["A0 on A0", "A0 on A1", "A0 on A2","A1 on A0", "A1 on A1", "A1 on A2", "A2 on A0", "A2 on A1", "A2 on A2", "Honesty A0", "Honesty A1", "Honesty A2"], 
+            "All on All": self.plot_conf("time", ["A0 on A0", "A0 on A1", "A0 on A2","A1 on A0", "A1 on A1", "A1 on A2", 
+                                                  "A2 on A0", "A2 on A1", "A2 on A2", "Honesty A0", "Honesty A1", "Honesty A2"], 
                                          ["-."] * 3 + [":"] * 3 + ["--"] * 3 + ["-"] * 3, ["red", "blue", "black"] * 4),
             "A0 on All": self.plot_conf("time", ["A0 on A0", "A0 on A1", "A0 on A2"], ["-"] * 3, ["red", "blue", "black"]),
             "All on A0": self.plot_conf("time", ["A0 on A0", "A1 on A0", "A2 on A0"], ["-"] * 3, ["red", "blue", "black"]),

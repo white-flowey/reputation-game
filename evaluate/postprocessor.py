@@ -1,4 +1,4 @@
-import os
+from timeit import default_timer as timer
 import json
 import numpy as np
 
@@ -6,87 +6,89 @@ from config import conf
 
 class Postprocessor():
     def __init__(self, filename):
-        self.raw = self.load_results(filename)
-        self.results = self.raw[0] if len(self.raw) == 1 else self.statistics(self.raw)
-        self.data = {}
-        
-        self.get_time()
-        self.get_data(conf("n_stat") > 1)
-        self.save_data_as_json()
+        self.data = self.load_results(filename)
+        self.data = [self.make_time_series_data(result) for result in self.data]
+        self.data = self.statistics(self.data)
+        self.select = self.create_select_for_plotter()
 
     def load_results(self, filename):
         with open(filename, "r") as json_file:
             return json.load(json_file)
-
-    def statistics(self, results):
-        mean_results = []
-        for t in range(conf("n_rounds")):
-            mean_time_step = {"state": {"agents": []}}
-            for a in conf("agents"):
-                a_b_I = [np.mean([float(results[sim][t]["state"]["agents"][a]["I"][a][b]) for sim in range(conf("n_stat"))]) for b in conf("agents")]
-                a_b_c_J = [[np.mean([float(results[sim][t]["state"]["agents"][a]["J"][a][b]) for sim in range(conf("n_stat"))]) for b in conf("agents")] for c in conf("agents")]
-                a_b_c_C = [[np.mean([float(results[sim][t]["state"]["agents"][a]["C"][b][c]) for sim in range(conf("n_stat"))]) for b in conf("agents")] for c in conf("agents")]
-                a_b_friends = [np.mean([float(results[sim][t]["state"]["agents"][a]["friendships"][b]) for sim in range(conf("n_stat"))]) for b in conf("agents")]
-                
-                a_kappa = np.mean([float(results[sim][t]["state"]["agents"][a]["kappa"]) for sim in range(conf("n_stat"))])
-                a_honesty = results[0][0]["state"]["agents"][a]["honesty"]
-                mean_time_step["state"]["agents"].append({"I": a_b_I, "J": a_b_c_J, "C": a_b_c_C, "friendships": a_b_friends, "kappa": a_kappa, "honesty": a_honesty})
-            
-            mean_results.append(mean_time_step)
-        return mean_results
-
-    def get_time(self):
-        self.data["time"] = list(range(len(self.results)))
-
-    def get_data(self, statistics=False):
+        
+    def make_time_series_data(self, data):
+        ts = self.initialise_time_series()
+        ts = self.set_agent_start_values(ts, data[0])
         for a in conf("agents"):
-            self.data[f"Kappa A{a}"] = []
-            self.data[f"Honesty A{a}"] = []
-            for b in conf("agents"):
-                self.data[f"A{a} on A{b}"] = []
-                self.data[f"Friendship A{a}-A{b}"] = []
-                for c in conf("agents"):
-                    self.data[f"A{b} said last to A{a} about A{c}"] = []
-                    self.data[f"A{b} wants A{a} to believe about A{c}"] = []
-
-        for t in self.results:
-            for a in conf("agents"):
-                for b in conf("agents"):
-                    if statistics:
-                        self.data[f"A{a} on A{b}"].append(float(t["state"]["agents"][a]["I"][b]))
-                        for c in conf("agents"):
-                            self.data[f"A{b} said last to A{a} about A{c}"].append(float(t["state"]["agents"][a]["J"][b][c]))
-                            self.data[f"A{b} wants A{a} to believe about A{c}"].append(float(t["state"]["agents"][a]["C"][b][c]))
-                    else:
-                        self.data[f"A{a} on A{b}"].append(float(t["state"]["agents"][a]["I"][a][b]))
-                        for c in conf("agents"):
-                            self.data[f"A{b} said last to A{a} about A{c}"].append(float(t["state"]["agents"][a]["J"][b][c]))
-                            self.data[f"A{b} wants A{a} to believe about A{c}"].append(float(t["state"]["agents"][a]["C"][b][c]))
-                    self.data[f"Friendship A{a}-A{b}"].append(float(t["state"]["agents"][a]["friendships"][b]))
-                self.data[f"Kappa A{a}"].append(float(t["state"]["agents"][a]["kappa"]))
-                self.data[f"Honesty A{a}"].append(float(t["state"]["agents"][a]["honesty"]))
+            for t, entry in enumerate(data[1:], start=1):
+                ts[a]["I"][:, t] = ts[a]["I"][:, t-1]
+                ts[a]["lastK"][t] = ts[a]["lastK"][t-1]
+                ts[a]["kappa"][t] = ts[a]["kappa"][t-1]
+                ts[a]["friendships"][:, t] = ts[a]["friendships"][:, t-1]
+                ts[a]["J"][:, :, t] = ts[a]["J"][:, :, t-1]
+                if str(a) in entry.keys():
+                    entry = entry[str(a)]
+                    partner = entry['partner']
+                    topic = entry['topic']
                 
-    def build_result_file_names(self):
-        basis_mode = conf("characters_dict").get("all")
-        all_modes = list(conf("characters_dict").values())
+                    ts[a]["I"][a][t] = entry["Iself"]
+                    ts[a]["I"][partner][t] = entry["Ipartner"]
+                    ts[a]["I"][topic][t] = entry.get("Itopic", ts[a]["I"][topic][t-1])
 
-        if basis_mode in all_modes:
-            all_modes.remove(basis_mode)
+                    ts[a]["J"][a][topic][t] = entry["Jself"]
+                    ts[a]["J"][partner][topic][t] = entry["Jpartner"]
 
-        if not all_modes or all([m == basis_mode for m in all_modes]):
-            self.title = f"{basis_mode} agents"
-        elif len(all_modes) == self.n_agents:
-            self.title = ",".join(all_modes) + " agents"
-        elif len(all_modes) == self.n_agents - 1:
-            self.title = ",".join(all_modes) + f" among {basis_mode} agent"
-        else:
-            self.title = ",".join(all_modes) + f" among {basis_mode} agents"
-
-        self.outfile = os.path.join(conf("folder") + self.name)
+                    ts[a]["lastK"][t] = entry["lastK"]
+                    ts[a]["kappa"][t] = entry["kappa"]
+                    ts[a]["friendships"][partner][t] = entry.get("friendships", ts[a]["friendships"][partner][t-1])
+        return ts
     
-    def save_data_as_json(self):
-        file_path = os.path.join(conf("folder"), "processor", self.raw[0][0]["state"]["name"]) + ".json"
-        os.makedirs(conf("folder"), exist_ok=True)
-
-        with open(file_path, 'w') as json_file:
-            json.dump(self.data, json_file, indent=4)
+    def initialise_time_series(self):
+        times, n_agents = conf("times"), conf("n_agents")
+        time_series = {id: {
+                "honesty": np.zeros(times),
+                "I": np.zeros((n_agents, times)),
+                "J": np.zeros((n_agents, n_agents, times)),
+                "Iothers": np.zeros((n_agents, n_agents, times)),
+                "lastK": np.zeros(times),
+                "kappa": np.zeros(times),
+                "friendships": np.zeros((n_agents, times))}
+            for id in conf("agents") } 
+        return time_series    
+    
+    def set_agent_start_values(self, ts, data):
+        for a in conf("agents"):
+            a_field = str(a)
+            ts[a]["honesty"][:] = [data[a_field]["honesty"]] * conf("times")
+            ts[a]["lastK"][0] = data[a_field]["lastK"]
+            ts[a]["kappa"][0] = data[a_field]["kappa"]
+            ts[a]["I"][:, 0] = data[a_field]["I"][:]
+            ts[a]["friendships"][:, 0] = data[a_field]["friendships"][:]
+            ts[a]["J"][:, :, 0] = data[a_field]["J"][:][:]
+            ts[a]["Iothers"][:, :, 0] = data[a_field]["Iothers"][:][:]
+        return ts
+    
+    def statistics(self, results):
+        agg_ts = self.initialise_time_series()
+        for a in conf("agents"):
+            for t in range(conf("times")):
+                agg_ts[a]["honesty"][t] = np.mean([result[a]["honesty"][t] for result in results])
+                agg_ts[a]["lastK"][t] = np.mean([result[a]["lastK"][t] for result in results])
+                agg_ts[a]["kappa"][t] = np.mean([result[a]["kappa"][t] for result in results])
+                for b in conf("agents"):
+                    agg_ts[a]["I"][b, t] = np.mean([result[a]["I"][b, t] for result in results], axis=0)
+                    agg_ts[a]["friendships"][b, t] = np.mean([result[a]["friendships"][b, t] for result in results], axis=0)
+                    for c in conf("agents"):
+                        agg_ts[a]["J"][b, c, t] = np.mean([result[a]["J"][b, c, t] for result in results], axis=0)
+        return agg_ts
+    
+    def create_select_for_plotter(self):
+        select = {"time": list(range(conf("times")))}
+        for a in conf("agents"):
+            select[f"Honesty A{a}"] = self.data[a]["honesty"]
+            select[f"Kappa A{a}"] = self.data[a]["kappa"]
+            for b in conf("agents"):
+                select[f"A{a} on A{b}"] = self.data[a]["I"][b]
+                select[f"Friendship A{a}-A{b}"] = self.data[a]["friendships"][b]
+                for c in conf("agents"):
+                    select[f"A{b} said last to A{a} about A{c}"] = self.data[a]["J"][b][c]
+        return select
