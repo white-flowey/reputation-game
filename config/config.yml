@@ -1,12 +1,12 @@
 game:
-  honesties: [0.17, 0.8, 0.95]
+  honesties_dict: {0: 0.17, 1: 0.8, 2: 0.95}
   n_agents: 3 # Number of agents in simulation
   n_rounds: 300 # Number of conversation rounds
-  n_stat: 100 # Number of simulations for statistic batch (different seeds)
-  characters_dict: [{"all": "ordinary"}] # Characters of each agent
+  n_stat: 1 # Number of simulations for statistic batch (different seeds)
+  characters_dict: [{0: "deceptive", "all": "ordinary"}] # Characters of each agent
   folder: "evaluate/results" # Result folder
-  mindI: []
-  Ks: []
+  mindI_dict: {}
+  Ks_dict: {}
 
 randomseed:
   seed: 21 # 21 is a nice simulation
@@ -19,8 +19,9 @@ parameters:
 
 constants:
   MIN_KL: -0.9999999
-  BLUSH_FREQ_LIE: 0.1
-  F_CAUTION: 0.3
+  BLUSH_FREQ_LIE: 0.1 # Frequency of blushing when lieing
+  F_CAUTION: 0.3 # Scales down lie tolerance when finding maximum lie size
+  Q: 10 # Factor by how much personal interactions weigh more than having heard about someone
 
 switches:
   MINIMIZE_FUNCTION: "SHORT" # choose beetween 'SHORT', 'ACCURATE'

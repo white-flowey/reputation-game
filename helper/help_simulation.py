@@ -26,7 +26,7 @@ def make_random_dict(simulation_seed: int) -> dict:
         "honests": fixed_seed + 10 * simulation_seed + 3,
         "lies": fixed_seed + 10 * simulation_seed + 4,
         "blush": fixed_seed + 10 * simulation_seed + 5,
-        "ego": fixed_seed + 10 * simulation_seed + 6,
+        "egocentric": fixed_seed + 10 * simulation_seed + 6,
         "strategic": fixed_seed + 10 * simulation_seed + 7,
         "flattering": fixed_seed + 10 * simulation_seed + 8,
         "aggressive": fixed_seed + 10 * simulation_seed + 9

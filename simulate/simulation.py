@@ -46,14 +46,14 @@ class Simulation:
         The random dict is simulation-specific, thus passed onto the simulation's agents.
         """
         agents = self.conf("agents")
-        honesties = (self.conf("honesties") or 
+        honesties = (self.conf("honesties_dict") or 
                     sorted([Info(0, 0).draw() for _ in agents]) if self.conf("RANDOM_HONESTIES") 
                     else np.linspace(0, 1, self.conf("n_agents")))
 
         characters = [self.characters_setup.get(agent, self.characters_setup["all"]) for agent in agents]
         
-        self.agents = [Agent(id, honesty, character, self.random, self.log, self.conf) 
-                        for id, honesty, character in zip(agents, honesties, characters)]
+        self.agents = [Agent(id, honesties[id], character, self.random, self.log, self.conf) 
+                        for id, character in zip(agents, characters)]
     
     def schedule_conversations(self) -> list[Conversation]:
         """

@@ -44,7 +44,7 @@ class Agent:
         """Sets up the agent's character attributes based on the provided character mapping e.g., self.deceptive."
 
         Args:
-            character (str): Character traits of the agent.
+            character (str): Character string of the agent.
         """
         for key, value in character_mapping(character).items():
             setattr(self, key, value)
@@ -54,16 +54,18 @@ class Agent:
         n_agents = self.conf("n_agents")
         self.friendships = [Info(1, 0) if i == self.id else Info(0, 0) for i in agents]
         self.I = [Info(0, 0)] * n_agents
-        self.Iothers = [[Info(0, 0)] * n_agents for _ in range(n_agents)]  # Changed to avoid reference issue
-        self.J = [[Info(0, 0)] * n_agents for _ in range(n_agents)]  # Changed to avoid reference issue
-        self.C = [[Info(0, 0)] * n_agents for _ in range(n_agents)]  # Changed to avoid reference issue
+        self.Iothers = [[Info(0, 0)] * n_agents for _ in range(n_agents)]
+        self.J = [[Info(0, 0)] * n_agents for _ in range(n_agents)]
+        self.C = [[Info(0, 0)] * n_agents for _ in range(n_agents)]
         self.K = [np.sqrt(np.pi)] * self.conf("KLENGTH")
         self.kappa = 1
-        self.n_conversations = [{"partner": 0, "topic": 0} for _ in range(n_agents)]  # Changed to avoid reference issue
+        self.n_conversations = [{"partner": 0, "topic": 0} for _ in range(n_agents)]
 
     def initialise_memory(self) -> None:
         """Initializes the agent's memory with predefined values from the configuration."""
-        if self.conf("mindI"):
-            self.I = [Info(self.conf("mindI")[b][0], self.conf("mindI")[b][1]) for b in agents]
-        self.K = self.conf("Ks")[self.id] if self.conf("Ks") else [np.sqrt(np.pi) for _ in range(self.conf("KLENGTH"))]
-        self.kappa = median(self.K) / np.sqrt(np.pi) if self.conf("Ks") else 1
+        if self.id in self.conf("mindI_dict"):
+            for b in self.conf("mindI_dict")[self.id].keys():
+                self.I[b] = Info(self.conf("mindI_dict")[self.id][b][0], self.conf("mindI_dict")[self.id][b][1])
+        if self.id in self.conf("Ks_dict"):
+            self.K = self.conf("Ks_dixt")[self.id] if self.conf("Ks_dict") else [np.sqrt(np.pi) for _ in range(self.conf("KLENGTH"))]
+        self.kappa = median(self.K) / np.sqrt(np.pi)

@@ -22,6 +22,7 @@ class Sender():
         Returns:
             dict: A message containing the statement and whether the sender blushes.
         """
+        [self.count_conversations(listener, topic) for listener in listeners["ids"]]
         if honest := self.tells_truth_now():
             statement = self.a.I[topic]
             message = {"statement": statement, "blushes": False}
@@ -113,6 +114,7 @@ class Sender():
         return self.a.conf("BLUSH_FREQ_LIE") > (self.a.random["blush"].uniform() + self.a.shameless)
 
 
-    # def count_conversations(self, speaker, topic):
-    #     self.n_conversations[speaker]["partner"] += 1
-    #     self.n_conversations[topic]["topic"] += 1
+    def count_conversations(self, partner: int, topic: int):
+        """Keeping track of the times an agent has talked WITH or ABOUT someone."""
+        self.a.n_conversations[partner]["partner"] += 1
+        self.a.n_conversations[topic]["topic"] += 1

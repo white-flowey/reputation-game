@@ -72,7 +72,7 @@ class Receiver():
         Returns:
             float: The computed surprise factor.
         """
-        if not self.a.listening: return 1
+        if not self.a.listening or self.a.uncritical: return 1
         
         surprise = Ift.KL(statement, self.a.I[topic])
         surprise_factor = 0.5 * (surprise / self.a.kappa) ** 2

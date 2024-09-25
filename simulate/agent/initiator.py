@@ -55,10 +55,13 @@ class Initiator:
             return self.a.id
 
         agents = self.a.conf("agents")
-        rel_weights = (np.array([self.a.n_conversations[i]["partner"] for i in agents]) ** 
-                       self.a.conf("RELATION_AFFECTS_C") ** self.a.shyness)
+
         friend_weights = np.array([self.a.friendships[i].mean for i in agents]) ** self.a.conf("FRIENDSHIP_AFFECTS_C")
-        agg_weights = (1 - friend_weights) ** self.a.aggressive > self.a.random["aggressive"].uniform()
+        rel_weights = (np.array([self.a.n_conversations[i]["topic"] for i in agents]) +
+                        np.array([self.a.n_conversations[i]["partner"] for i in agents]) * self.a.conf("Q")) ** self.a.conf("RELATION_AFFECTS_C")
+        
+        rel_weights = rel_weights * friend_weights * self.a.shyness
+        agg_weights = (1 - friend_weights) ** (self.a.aggressive > self.a.random["aggressive"].uniform())
         weights = rel_weights * friend_weights * agg_weights  
         return draw_max_from_list(self.a.random, weights, "topic")
 
@@ -72,13 +75,15 @@ class Initiator:
             np.ndarray: An array of weights representing the ranking of the listeners.
         """
         friend_weights = np.array([self.a.friendships[i].mean for i in others]) ** self.a.conf("FRIENDSHIP_AFFECTS_B")
-        rel_weights = (friend_weights * np.array([self.a.n_conversations[i]["partner"] for i in others]) ** 
-                       self.a.conf("RELATION_AFFECTS_B") ** self.a.shyness)
+        rel_weights = (np.array([self.a.n_conversations[i]["topic"] for i in others]) +
+                        np.array([self.a.n_conversations[i]["partner"] for i in others]) * self.a.conf("Q")) ** self.a.conf("RELATION_AFFECTS_B")
+        rel_weights = rel_weights * friend_weights * self.a.shyness
 
         strat_weights = np.array([(self.a.I[b].mean if self.a.strategic > 0 else 1 - self.a.I[b].mean) 
                                    ** abs(self.a.strategic) for b in others])
         weights = rel_weights * strat_weights
-        return weights / weights.sum()  # Normalize the weights
+        weights_sum = weights.sum()
+        return weights / weights_sum if weights_sum > 0 else weights  # Normalize the weights
 
     def draw_topic(self, agents: list[int]) -> int:
         """Draws a topic based on the weights derived from relationships and friendships.

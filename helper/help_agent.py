@@ -21,7 +21,7 @@ def character_mapping(character: str) -> dict:
     default = {
         "aggressive": 0, "strategic": 0, "deceptive": False, "listening": True,
         "shyness": 1, "shameless": 0, "disturbing": False, "flattering": False,
-        "naive": False, "uncritical": False
+        "naive": False, "uncritical": False, "egocentric": False
     }
 
     character_setup_dict = {
@@ -30,10 +30,10 @@ def character_mapping(character: str) -> dict:
         "strategic": {"strategic": 1}, "egocentric": {"egocentric": 0.5},
         "deceptive": {"deceptive": True, "honesty": 0}, "flattering": {"flattering": 1},
         "aggressive": {"aggressive": 1}, "shameless": {"shameless": True},
-        "smart": {"deceptive": True}, "clever": {"deceptive": True, "clever": True, "true_honesty": 0},
-        "honest": {"honest": True, "x": 1}, "manipulative": {"deceptive": True, "strategic": -1, "manipulative": True, "flattering": 1, "true_honesty": 0},
-        "dominant": {"deceptive": True, "strategic": 1, "egocentric": 0.5, "dominant": True, "true_honesty": 0},
-        "destructive": {"deceptive": True, "strategic": 1, "aggressive": 1, "shameless": 1, "destructive": True},
+        "smart": {"deceptive": True}, "clever": {"deceptive": True, "honesty": 0},
+        "honest": {"honest": True, "x": 1}, "manipulative": {"deceptive": True, "strategic": -1, "flattering": 1, "honesty": 0},
+        "dominant": {"deceptive": True, "strategic": 1, "egocentric": 0.5, "honesty": 0},
+        "destructive": {"deceptive": True, "strategic": 1, "aggressive": 1, "shameless": 1},
         "good": {"strategic": 1, "honest": True, "x": 1}, "disturbing": {"disturbing": True},
         "antistrategic": {"strategic": -0.5}
     }
