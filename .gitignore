@@ -27,6 +27,7 @@ dist/
 # Virtual environment
 venv/
 .env/
+myvenv/
 
 # IDE-specific files (e.g., for PyCharm, VSCode)
 .idea/
