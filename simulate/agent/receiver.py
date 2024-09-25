@@ -3,10 +3,29 @@ from statistics import median
 from simulate.information_theory import Info, Ift
 
 class Receiver():
-    def __init__(self, agent):
+    """Handles receiving messages from speakers, interpreting statements,
+    and updating the receiver's beliefs and friendships.
+    """
+    def __init__(self, agent) -> None:
+        """Initializes the Receiver with a reference to the associated agent.
+
+        Args:
+            agent (Agent): The agent that this receiver belongs to.
+        """
         self.a = agent
 
-    def receive(self, topic, speaker, statement, blush):
+    def receive(self, topic: int, speaker: int, statement: Info, blush: bool) -> dict:
+        """Processes a received statement, updates trust, and interprets the speaker and topic.
+
+        Args:
+            topic (int): The topic of conversation.
+            speaker (int): The ID of the speaker.
+            statement (Info): The statement received from the speaker.
+            blush (bool): Indicates if the speaker is blushing.
+
+        Returns:
+            dict: A dictionary containing trust and interpreted information about the speaker and topic.
+        """
         if topic == self.a.id:
             self.a.Updater.update_friendship(speaker, statement.mean)
         trust = self.compute_trust(topic=topic, speaker=speaker, statement=statement, blush=blush)
@@ -21,7 +40,18 @@ class Receiver():
         return reception
 
 
-    def compute_trust(self, topic: int, speaker: int, statement: Info, blush: bool):
+    def compute_trust(self, topic: int, speaker: int, statement: 'Info', blush: bool) -> float:
+        """Computes the trustworthiness of the speaker based on the received statement.
+
+        Args:
+            topic (int): The topic of conversation.
+            speaker (int): The ID of the speaker.
+            statement (Info): The statement received from the speaker.
+            blush (bool): Indicates if the speaker is blushing.
+
+        Returns:
+            float: The computed trust value.
+        """
         if self.a.naive: return 1
         if blush: return 0
         
@@ -32,7 +62,16 @@ class Receiver():
         denominator = surprise_factor * (1 - self.a.conf("BLUSH_FREQ_LIE") * (1 - assumed_honesty))
         return assumed_honesty / (assumed_honesty + denominator)
 
-    def handle_surprise(self, statement, topic):
+    def handle_surprise(self, statement: Info, topic: int) -> float:
+        """Calculates the surprise factor based on the received statement and topic.
+
+        Args:
+            statement (Info): The statement received from the speaker.
+            topic (int): The topic of conversation.
+
+        Returns:
+            float: The computed surprise factor.
+        """
         if not self.a.listening: return 1
         
         surprise = Ift.KL(statement, self.a.I[topic])
@@ -41,12 +80,32 @@ class Receiver():
         self.a.kappa = median(self.a.K) / np.sqrt(np.pi)
         return surprise_factor
 
-    def interprete_topic(self, speaker, topic, statement):
+    def interprete_topic(self, speaker: int, topic: int, statement: 'Info') -> dict:
+        """Interprets the information about the topic based on the statement.
+
+        Args:
+            speaker (int): The ID of the speaker.
+            topic (int): The topic of conversation.
+            statement (Info): The statement received from the speaker.
+
+        Returns:
+            dict: A dictionary containing the interpreted information about truth and lies.
+        """
         Itruth = Ift.get_info_difference(P=statement, Q=self.a.J[speaker][topic])
         Ilie = self.a.I[topic]
         return {"Itruth": Itruth, "Ilie": Ilie}
     
-    def interprete_speaker(self, speaker, topic, statement):
+    def interprete_speaker(self, speaker: int, topic: int, statement: 'Info') -> dict:
+        """Interprets the information about the speaker based on the statement.
+
+        Args:
+            speaker (int): The ID of the speaker.
+            topic (int): The topic of conversation.
+            statement (Info): The statement received from the speaker.
+
+        Returns:
+            dict: A dictionary containing the interpreted information about the speaker's truth and lies.
+        """
         Itruth = self.a.I[speaker] + Info(1, 0)
         if speaker == topic:
             Itruth = statement + Info(1, 0)

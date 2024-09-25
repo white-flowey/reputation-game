@@ -4,6 +4,7 @@ from config import conf
 def make_random_dict(simulation_seed: int) -> dict:
     """
     Generate a dictionary of seeded random number generators based on the configuration and seed variation.
+    Used throughout the simulation to make "random" decisions.
 
     Args:
         config (dict): A dictionary containing the base configuration, including a "seed" value.

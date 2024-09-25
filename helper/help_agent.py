@@ -1,9 +1,23 @@
-def set_mind(self, mind_model, other_attrs=None):
+def set_mind(agent, other_attrs=None) -> None:
+    """Sets the attributes of the agent based on the provided dictionary.
+
+    Args:
+        other_attrs (dict, optional): A dictionary of attribute names and values to set.
+            If None, no attributes are set. Defaults to None.
+    """
     if other_attrs:
         for key, value in other_attrs.items():
-            setattr(self, key, value)
+            setattr(agent, key, value)
 
-def character_mapping(character):
+def character_mapping(character: str) -> dict:
+    """Maps a character type to its corresponding attributes.
+
+    Args:
+        character (str): The character type to map.
+
+    Returns:
+        dict: A dictionary containing the attributes associated with the specified character type or defaults.
+    """
     default = {
         "aggressive": 0, "strategic": 0, "deceptive": False, "listening": True,
         "shyness": 1, "shameless": 0, "disturbing": False, "flattering": False,

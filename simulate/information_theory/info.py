@@ -1,69 +1,61 @@
-import numpy as np
-from scipy import integrate
 from scipy.stats import beta as Beta
 
-# from config import conf
-
 class Info:
-    def __init__(self, mu = 0, la = 0):
-        # total = mu + la
-        # if total > conf("MAX_COUNT"):
-        #     scale = conf("MAX_COUNT") / total
-        #     mu, la = mu * scale, la * scale
+    """
+    Represents information with parameters for a Beta distribution.
+    Instances of this class are the main mathematical object for Information Theoretical calculations in simulation.
+
+    Attributes:
+        mu (float): First shape parameter of the Beta distribution.
+        la (float): Second shape parameter of the Beta distribution.
+        mean (float): Mean of the Beta distribution calculated from mu and la.
+    """
+
+    def __init__(self, mu: float = 0, la: float = 0) -> None:
+        """
+        Initializes Info with mu and la parameters.
+
+        Args:
+            mu (float): First shape parameter (default is 0).
+            la (float): Second shape parameter (default is 0).
+        """
         MIN_KL = -0.9999
-        self.mu, self.la = max(mu, MIN_KL), max(la,MIN_KL)
-        self.mean = (self.mu + 1) / (self.mu + self.la + 2) 
-        # self.mean = Beta.mean(self.mu + 1, self.la + 1)
-        # self.rms = np.sqrt(Beta.var(self.mu + 1, self.la + 1))
+        self.mu, self.la = max(mu, MIN_KL), max(la, MIN_KL)
+        self.mean = (self.mu + 1) / (self.mu + self.la + 2)
 
-    def __str__(self):
-        # return (f"x = {self.mean:10.4f} ± {self.rms:10.4f} "f"({self.mu:5.2f}, {self.la:5.2f})")
-        # mu, la = f"{self.mu:5.2f}".lstrip(), f"{self.la:5.2f}".lstrip()
+    def __str__(self) -> str:
+        """Returns string representation of the Info instance."""
         mu, la = f"{self.mu}".lstrip(), f"{self.la}".lstrip()
-        return (f"({mu}, {la})")
+        return f"({mu}, {la})"
 
-    def __add__(self, other):
+    def __add__(self, other: 'Info') -> 'Info':
+        """Adds another Info instance."""
         return Info(self.mu + other.mu, self.la + other.la)
     
-    def __sub__(self, other):
+    def __sub__(self, other: 'Info') -> 'Info':
+        """Subtracts another Info instance."""
         return Info(self.mu - other.mu, self.la - other.la)
 
-    def __mul__(self, a):
+    def __mul__(self, a: float) -> 'Info':
+        """Multiplies by a scalar."""
         return Info(a * self.mu, a * self.la)
 
-    def __rmul__(self, a):
+    def __rmul__(self, a: float) -> 'Info':
+        """Supports right multiplication."""
         return self * a
     
-    def round(self, digits):
+    def round(self, digits: int) -> 'Info':
+        """Rounds mu and la to specified digits."""
         return Info(round(self.mu, digits), round(self.la, digits))
     
-    def round_mean(self):
+    def round_mean(self) -> float:
+        """Returns the rounded mean value."""
         return float(round(self.mean, 3))
 
-    def draw(self):
+    def draw(self) -> float:
+        """Draws a sample from the Beta distribution."""
         return Beta.random_state.beta(self.mu + 1, self.la + 1)
-
-    # def average(self, f):
-    #     return integrate.quad(lambda x: self.pdf(x, self.mu, self.la) * f(x), 0, 1)[0]
-
-    # def norm(self):
-    #     return self.average(lambda x: 1)
-
-    # def arr(self):
-    #     return np.array([self.mu, self.la])
-
-    # def to_list(self):
-    #     return {"mu": float(self.mu), "la": float(self.la)}
     
-    # def probability_density(self, x):
-    #     return Beta.pdf(x, self.mu + 1, self.la + 1)
-
-    # def hamiltonian(self, x, mu, la):
-    #     return -Beta.logpdf(x, mu + 1, la + 1)
-    
-    def check_positive(self):
+    def check_positive(self) -> bool:
+        """Checks if mu and la are non-negative."""
         return self.mu >= 0 and self.la >= 0
-    
-
-    
-Inf = Info()
