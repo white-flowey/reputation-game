@@ -1,0 +1,12 @@
+Evaluate
+===========
+
+.. automodule:: evaluate
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+.. automodule:: evaluate.logger
+   :members:
+   :undoc-members:
+   :show-inheritance:

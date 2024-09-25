@@ -1,0 +1,27 @@
+Postprocessor
+==============
+
+.. automodule:: evaluate.postprocessor
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+.. automodule:: evaluate.postprocessor.postprocessor
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+.. automodule:: evaluate.postprocessor.calculate_statistics
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+.. automodule:: evaluate.postprocessor.prepare_plotting
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+.. automodule:: evaluate.postprocessor.time_series_maker
+   :members:
+   :undoc-members:
+   :show-inheritance:

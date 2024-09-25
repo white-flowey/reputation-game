@@ -1,0 +1,32 @@
+Config
+===========
+
+.. automodule:: config
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+.. automodule:: config.config_loader
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+.. automodule:: config.config_loader.config_loader
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+.. automodule:: config.config_loader.config_checker
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+.. automodule:: config.config_loader.config_error
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+.. automodule:: config.config_loader.config_swap
+   :members:
+   :undoc-members:
+   :show-inheritance:

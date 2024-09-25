@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Information Theory &mdash; Reputation Game v2 0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=ef8776f5" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../_static/documentation_options.js?v=1b390748"></script>
+        <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Helper (Package)" href="../../helper/__helper__.html" />
+    <link rel="prev" title="Info" href="info.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            Reputation Game v2
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../config/__config__.html">Config (Package)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../main.html">Main</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../__simulate__.html">Simulation Package</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../game.html">Game</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../simulation.html">Simulate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../conversation.html">Conversation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../agent/__agent__.html">Agent (Package)</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="__information_theory__.html">Information Theory (Package)</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="info.html">Info</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Information Theory</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#simulate.information_theory.IFT.IFT"><code class="docutils literal notranslate"><span class="pre">IFT</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#simulate.information_theory.IFT.jLoss"><code class="docutils literal notranslate"><span class="pre">jLoss()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#simulate.information_theory.IFT.jgradLoss"><code class="docutils literal notranslate"><span class="pre">jgradLoss()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#simulate.information_theory.IFT.jhessLoss"><code class="docutils literal notranslate"><span class="pre">jhessLoss()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../helper/__helper__.html">Helper (Package)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../evaluate/__evaluate__.html">Evaluate (Package)</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Reputation Game v2</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../__simulate__.html">Simulation Package</a></li>
+          <li class="breadcrumb-item"><a href="__information_theory__.html">Information Theory (Package)</a></li>
+      <li class="breadcrumb-item active">Information Theory</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../_sources/source/simulate/information_theory/information_theory.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-simulate.information_theory.IFT">
+<span id="information-theory"></span><h1>Information Theory<a class="headerlink" href="#module-simulate.information_theory.IFT" title="Link to this heading">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="simulate.information_theory.IFT.IFT">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">simulate.information_theory.IFT.</span></span><span class="sig-name descname"><span class="pre">IFT</span></span><a class="headerlink" href="#simulate.information_theory.IFT.IFT" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Information Field Theory for matching and evaluating distributions.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="simulate.information_theory.IFT.IFT.KL">
+<span class="sig-name descname"><span class="pre">KL</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">IP</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="info.html#simulate.information_theory.info.Info" title="simulate.information_theory.info.Info"><span class="pre">Info</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">IQ</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="info.html#simulate.information_theory.info.Info" title="simulate.information_theory.info.Info"><span class="pre">Info</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#simulate.information_theory.IFT.IFT.KL" title="Link to this definition">¶</a></dt>
+<dd><p>Calculates Kullback-Leibler divergence between two Info instances.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>IP</strong> (<a class="reference internal" href="info.html#simulate.information_theory.info.Info" title="simulate.information_theory.info.Info"><em>Info</em></a>) – Info instance representing the first distribution.</p></li>
+<li><p><strong>IQ</strong> (<a class="reference internal" href="info.html#simulate.information_theory.info.Info" title="simulate.information_theory.info.Info"><em>Info</em></a>) – Info instance representing the second distribution.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The Kullback-Leibler divergence between IP and IQ.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simulate.information_theory.IFT.IFT.get_info_difference">
+<span class="sig-name descname"><span class="pre">get_info_difference</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">P</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="info.html#simulate.information_theory.info.Info" title="simulate.information_theory.info.Info"><span class="pre">Info</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">Q</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="info.html#simulate.information_theory.info.Info" title="simulate.information_theory.info.Info"><span class="pre">Info</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="info.html#simulate.information_theory.info.Info" title="simulate.information_theory.info.Info"><span class="pre">Info</span></a></span></span><a class="headerlink" href="#simulate.information_theory.IFT.IFT.get_info_difference" title="Link to this definition">¶</a></dt>
+<dd><p>Returns the difference between two Info instances.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>P</strong> (<a class="reference internal" href="info.html#simulate.information_theory.info.Info" title="simulate.information_theory.info.Info"><em>Info</em></a>) – First Info instance.</p></li>
+<li><p><strong>Q</strong> (<a class="reference internal" href="info.html#simulate.information_theory.info.Info" title="simulate.information_theory.info.Info"><em>Info</em></a>) – Second Info instance.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The difference between P and Q, or an Info instance with zero values if not positive.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="info.html#simulate.information_theory.info.Info" title="simulate.information_theory.info.Info">Info</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simulate.information_theory.IFT.IFT.make_average_opinion">
+<span class="sig-name descname"><span class="pre">make_average_opinion</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">norm_weights</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">infos</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="info.html#simulate.information_theory.info.Info" title="simulate.information_theory.info.Info"><span class="pre">Info</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="info.html#simulate.information_theory.info.Info" title="simulate.information_theory.info.Info"><span class="pre">Info</span></a></span></span><a class="headerlink" href="#simulate.information_theory.IFT.IFT.make_average_opinion" title="Link to this definition">¶</a></dt>
+<dd><p>Calculates the average opinion based on weighted Infos.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>norm_weights</strong> (<em>np.ndarray</em>) – Normalized weights for each Info instance.</p></li>
+<li><p><strong>infos</strong> (<em>list</em><em>[</em><a class="reference internal" href="info.html#simulate.information_theory.info.Info" title="simulate.information_theory.info.Info"><em>Info</em></a><em>]</em>) – List of Info instances to average.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>An Info instance representing the average opinion.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="info.html#simulate.information_theory.info.Info" title="simulate.information_theory.info.Info">Info</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simulate.information_theory.IFT.IFT.match">
+<span class="sig-name descname"><span class="pre">match</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">trust</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Itruth</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="info.html#simulate.information_theory.info.Info" title="simulate.information_theory.info.Info"><span class="pre">Info</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">Ilie</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="info.html#simulate.information_theory.info.Info" title="simulate.information_theory.info.Info"><span class="pre">Info</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">Istart</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="info.html#simulate.information_theory.info.Info" title="simulate.information_theory.info.Info"><span class="pre">Info</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="info.html#simulate.information_theory.info.Info" title="simulate.information_theory.info.Info"><span class="pre">Info</span></a></span></span><a class="headerlink" href="#simulate.information_theory.IFT.IFT.match" title="Link to this definition">¶</a></dt>
+<dd><p>Matches moments based on trust level.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>trust</strong> (<em>float</em>) – Trust level between 0 and 1, where 0 corresponds to
+complete reliance on Ilie and 1 on Itruth.</p></li>
+<li><p><strong>Itruth</strong> (<a class="reference internal" href="info.html#simulate.information_theory.info.Info" title="simulate.information_theory.info.Info"><em>Info</em></a>) – The Info instance representing the truthful distribution.</p></li>
+<li><p><strong>Ilie</strong> (<a class="reference internal" href="info.html#simulate.information_theory.info.Info" title="simulate.information_theory.info.Info"><em>Info</em></a>) – The Info instance representing the deceptive distribution.</p></li>
+<li><p><strong>Istart</strong> (<a class="reference internal" href="info.html#simulate.information_theory.info.Info" title="simulate.information_theory.info.Info"><em>Info</em></a>) – The starting Info instance to help in moment matching.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A new Info instance representing the matched distribution.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="info.html#simulate.information_theory.info.Info" title="simulate.information_theory.info.Info">Info</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simulate.information_theory.IFT.IFT.match_moments">
+<span class="sig-name descname"><span class="pre">match_moments</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">trust</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Itruth</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="info.html#simulate.information_theory.info.Info" title="simulate.information_theory.info.Info"><span class="pre">Info</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">Ilie</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="info.html#simulate.information_theory.info.Info" title="simulate.information_theory.info.Info"><span class="pre">Info</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="info.html#simulate.information_theory.info.Info" title="simulate.information_theory.info.Info"><span class="pre">Info</span></a></span></span><a class="headerlink" href="#simulate.information_theory.IFT.IFT.match_moments" title="Link to this definition">¶</a></dt>
+<dd><p>Matches moments between two Info instances based on trust level.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>trust</strong> (<em>float</em>) – Trust level between 0 and 1.</p></li>
+<li><p><strong>Itruth</strong> (<a class="reference internal" href="info.html#simulate.information_theory.info.Info" title="simulate.information_theory.info.Info"><em>Info</em></a>) – Info instance for the truthful distribution.</p></li>
+<li><p><strong>Ilie</strong> (<a class="reference internal" href="info.html#simulate.information_theory.info.Info" title="simulate.information_theory.info.Info"><em>Info</em></a>) – Info instance for the deceptive distribution.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A new Info instance with matched moments.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="info.html#simulate.information_theory.info.Info" title="simulate.information_theory.info.Info">Info</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simulate.information_theory.IFT.IFT.minimize_KL">
+<span class="sig-name descname"><span class="pre">minimize_KL</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">u</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mu_start</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">la_start</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#simulate.information_theory.IFT.IFT.minimize_KL" title="Link to this definition">¶</a></dt>
+<dd><p>Minimizes the KL divergence based on specified moments.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>u</strong> (<em>float</em>) – First moment.</p></li>
+<li><p><strong>v</strong> (<em>float</em>) – Second moment.</p></li>
+<li><p><strong>mu_start</strong> (<em>float</em><em>, </em><em>optional</em>) – Initial guess for mu. Defaults to 0.</p></li>
+<li><p><strong>la_start</strong> (<em>float</em><em>, </em><em>optional</em>) – Initial guess for la. Defaults to 0.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A tuple containing the optimized mu and la values.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple[float, float]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="simulate.information_theory.IFT.jLoss">
+<span class="sig-prename descclassname"><span class="pre">simulate.information_theory.IFT.</span></span><span class="sig-name descname"><span class="pre">jLoss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">u</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">MIN_KL</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">J</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#simulate.information_theory.IFT.jLoss" title="Link to this definition">¶</a></dt>
+<dd><p>Loss function for matching moments between distributions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>u</strong> (<em>float</em>) – First moment.</p></li>
+<li><p><strong>v</strong> (<em>float</em>) – Second moment.</p></li>
+<li><p><strong>MIN_KL</strong> (<em>float</em>) – Minimum Kullback-Leibler divergence value.</p></li>
+<li><p><strong>J</strong> (<em>np.ndarray</em>) – Current values for mu and la.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Computed loss value.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="simulate.information_theory.IFT.jgradLoss">
+<span class="sig-prename descclassname"><span class="pre">simulate.information_theory.IFT.</span></span><span class="sig-name descname"><span class="pre">jgradLoss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">u</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">MIN_KL</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">J</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="headerlink" href="#simulate.information_theory.IFT.jgradLoss" title="Link to this definition">¶</a></dt>
+<dd><p>Gradient of the loss function.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>u</strong> (<em>float</em>) – First moment.</p></li>
+<li><p><strong>v</strong> (<em>float</em>) – Second moment.</p></li>
+<li><p><strong>MIN_KL</strong> (<em>float</em>) – Minimum Kullback-Leibler divergence value.</p></li>
+<li><p><strong>J</strong> (<em>np.ndarray</em>) – Current values for mu and la.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Gradient of the loss with respect to mu and la.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="simulate.information_theory.IFT.jhessLoss">
+<span class="sig-prename descclassname"><span class="pre">simulate.information_theory.IFT.</span></span><span class="sig-name descname"><span class="pre">jhessLoss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">u</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">MIN_KL</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">J</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="headerlink" href="#simulate.information_theory.IFT.jhessLoss" title="Link to this definition">¶</a></dt>
+<dd><p>Hessian of the loss function.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>u</strong> (<em>float</em>) – First moment.</p></li>
+<li><p><strong>v</strong> (<em>float</em>) – Second moment.</p></li>
+<li><p><strong>MIN_KL</strong> (<em>float</em>) – Minimum Kullback-Leibler divergence value.</p></li>
+<li><p><strong>J</strong> (<em>np.ndarray</em>) – Current values for mu and la.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Hessian matrix of the loss function.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="info.html" class="btn btn-neutral float-left" title="Info" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../../helper/__helper__.html" class="btn btn-neutral float-right" title="Helper (Package)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Florian Wiethof.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

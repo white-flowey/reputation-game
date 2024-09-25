@@ -1,0 +1,22 @@
+Simulate
+===========
+
+.. automodule:: simulate
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+.. automodule:: simulate.game
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+.. automodule:: simulate.simulation
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+.. automodule:: simulate.conversation
+   :members:
+   :undoc-members:
+   :show-inheritance:

@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Plotter Tool &mdash; Reputation Game v2 0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=ef8776f5" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/documentation_options.js?v=1b390748"></script>
+        <script src="_static/doctools.js?v=9a2dae69"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Postprocessor" href="postprocessor.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Reputation Game v2
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="main.html">Main</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="main.html#main.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="simulate.html">Simulate</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="simulate.html#simulate.game.Game"><code class="docutils literal notranslate"><span class="pre">Game</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="simulate.html#simulate.game.Game.conf"><code class="docutils literal notranslate"><span class="pre">Game.conf</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="simulate.html#simulate.game.Game.characters_setup"><code class="docutils literal notranslate"><span class="pre">Game.characters_setup</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="simulate.html#simulate.game.Game.outfile_name"><code class="docutils literal notranslate"><span class="pre">Game.outfile_name</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="simulate.html#simulate.game.Game.simulations"><code class="docutils literal notranslate"><span class="pre">Game.simulations</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="simulate.html#simulate.game.Game.output"><code class="docutils literal notranslate"><span class="pre">Game.output()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="simulate.html#simulate.game.Game.run"><code class="docutils literal notranslate"><span class="pre">Game.run()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="simulate.html#simulate.game.Game.setup_simulations"><code class="docutils literal notranslate"><span class="pre">Game.setup_simulations()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="simulate.html#simulate.game.play"><code class="docutils literal notranslate"><span class="pre">play()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="simulate.html#simulate.simulation.Simulation"><code class="docutils literal notranslate"><span class="pre">Simulation</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="simulate.html#simulate.simulation.Simulation.conf"><code class="docutils literal notranslate"><span class="pre">Simulation.conf</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="simulate.html#simulate.simulation.Simulation.random"><code class="docutils literal notranslate"><span class="pre">Simulation.random</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="simulate.html#simulate.simulation.Simulation.characters_setup"><code class="docutils literal notranslate"><span class="pre">Simulation.characters_setup</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="simulate.html#simulate.simulation.Simulation.id"><code class="docutils literal notranslate"><span class="pre">Simulation.id</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="simulate.html#simulate.simulation.Simulation.log"><code class="docutils literal notranslate"><span class="pre">Simulation.log</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="simulate.html#simulate.simulation.Simulation.agents"><code class="docutils literal notranslate"><span class="pre">Simulation.agents</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="simulate.html#simulate.simulation.Simulation.conversations"><code class="docutils literal notranslate"><span class="pre">Simulation.conversations</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="simulate.html#simulate.simulation.Simulation.init_agents"><code class="docutils literal notranslate"><span class="pre">Simulation.init_agents()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="simulate.html#simulate.simulation.Simulation.play"><code class="docutils literal notranslate"><span class="pre">Simulation.play()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="simulate.html#simulate.simulation.Simulation.schedule_conversations"><code class="docutils literal notranslate"><span class="pre">Simulation.schedule_conversations()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="simulate.html#simulate.conversation.Conversation"><code class="docutils literal notranslate"><span class="pre">Conversation</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="simulate.html#simulate.conversation.Conversation.conf"><code class="docutils literal notranslate"><span class="pre">Conversation.conf</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="simulate.html#simulate.conversation.Conversation.speaker"><code class="docutils literal notranslate"><span class="pre">Conversation.speaker</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="simulate.html#simulate.conversation.Conversation.random"><code class="docutils literal notranslate"><span class="pre">Conversation.random</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="simulate.html#simulate.conversation.Conversation.agents"><code class="docutils literal notranslate"><span class="pre">Conversation.agents</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="simulate.html#simulate.conversation.Conversation.setting"><code class="docutils literal notranslate"><span class="pre">Conversation.setting</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="simulate.html#simulate.conversation.Conversation.listeners"><code class="docutils literal notranslate"><span class="pre">Conversation.listeners</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="simulate.html#simulate.conversation.Conversation.topic"><code class="docutils literal notranslate"><span class="pre">Conversation.topic</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="simulate.html#simulate.conversation.Conversation.initiate_conversation"><code class="docutils literal notranslate"><span class="pre">Conversation.initiate_conversation()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="simulate.html#simulate.conversation.Conversation.pick_listeners"><code class="docutils literal notranslate"><span class="pre">Conversation.pick_listeners()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="simulate.html#simulate.conversation.Conversation.pick_setting"><code class="docutils literal notranslate"><span class="pre">Conversation.pick_setting()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="simulate.html#simulate.conversation.Conversation.pick_topic"><code class="docutils literal notranslate"><span class="pre">Conversation.pick_topic()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="simulate.html#simulate.conversation.Conversation.run_conversation_protocol"><code class="docutils literal notranslate"><span class="pre">Conversation.run_conversation_protocol()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="simulate.html#simulate.conversation.Conversation.save_state"><code class="docutils literal notranslate"><span class="pre">Conversation.save_state()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="agent.html">Agent</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="agent.html#simulate.agent.agent.Agent"><code class="docutils literal notranslate"><span class="pre">Agent</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="agent.html#simulate.agent.agent.Agent.initialise_memory"><code class="docutils literal notranslate"><span class="pre">Agent.initialise_memory()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="agent.html#simulate.agent.agent.Agent.setup_character"><code class="docutils literal notranslate"><span class="pre">Agent.setup_character()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="agent.html#simulate.agent.agent.Agent.setup_memory"><code class="docutils literal notranslate"><span class="pre">Agent.setup_memory()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="agent.html#simulate.agent.initiator.Initiator"><code class="docutils literal notranslate"><span class="pre">Initiator</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="agent.html#simulate.agent.initiator.Initiator.draw_topic"><code class="docutils literal notranslate"><span class="pre">Initiator.draw_topic()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="agent.html#simulate.agent.initiator.Initiator.pick_listeners"><code class="docutils literal notranslate"><span class="pre">Initiator.pick_listeners()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="agent.html#simulate.agent.initiator.Initiator.pick_setting"><code class="docutils literal notranslate"><span class="pre">Initiator.pick_setting()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="agent.html#simulate.agent.initiator.Initiator.pick_topic"><code class="docutils literal notranslate"><span class="pre">Initiator.pick_topic()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="agent.html#simulate.agent.initiator.Initiator.rank_listeners"><code class="docutils literal notranslate"><span class="pre">Initiator.rank_listeners()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="agent.html#simulate.agent.receiver.Receiver"><code class="docutils literal notranslate"><span class="pre">Receiver</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="agent.html#simulate.agent.receiver.Receiver.compute_trust"><code class="docutils literal notranslate"><span class="pre">Receiver.compute_trust()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="agent.html#simulate.agent.receiver.Receiver.handle_surprise"><code class="docutils literal notranslate"><span class="pre">Receiver.handle_surprise()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="agent.html#simulate.agent.receiver.Receiver.interprete_speaker"><code class="docutils literal notranslate"><span class="pre">Receiver.interprete_speaker()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="agent.html#simulate.agent.receiver.Receiver.interprete_topic"><code class="docutils literal notranslate"><span class="pre">Receiver.interprete_topic()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="agent.html#simulate.agent.receiver.Receiver.receive"><code class="docutils literal notranslate"><span class="pre">Receiver.receive()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="agent.html#simulate.agent.saver.StateSaver"><code class="docutils literal notranslate"><span class="pre">StateSaver</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="agent.html#simulate.agent.saver.StateSaver.initial_state"><code class="docutils literal notranslate"><span class="pre">StateSaver.initial_state()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="agent.html#simulate.agent.saver.StateSaver.log_state"><code class="docutils literal notranslate"><span class="pre">StateSaver.log_state()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="agent.html#simulate.agent.saver.StateSaver.save_state"><code class="docutils literal notranslate"><span class="pre">StateSaver.save_state()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="agent.html#simulate.agent.sender.Sender"><code class="docutils literal notranslate"><span class="pre">Sender</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="agent.html#simulate.agent.sender.Sender.assume_others_opinion"><code class="docutils literal notranslate"><span class="pre">Sender.assume_others_opinion()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="agent.html#simulate.agent.sender.Sender.blushes"><code class="docutils literal notranslate"><span class="pre">Sender.blushes()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="agent.html#simulate.agent.sender.Sender.choose_lie_method"><code class="docutils literal notranslate"><span class="pre">Sender.choose_lie_method()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="agent.html#simulate.agent.sender.Sender.get_maximum_lie_size"><code class="docutils literal notranslate"><span class="pre">Sender.get_maximum_lie_size()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="agent.html#simulate.agent.sender.Sender.talk"><code class="docutils literal notranslate"><span class="pre">Sender.talk()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="agent.html#simulate.agent.sender.Sender.tells_truth_now"><code class="docutils literal notranslate"><span class="pre">Sender.tells_truth_now()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="agent.html#simulate.agent.updater.Updater"><code class="docutils literal notranslate"><span class="pre">Updater</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="agent.html#simulate.agent.updater.Updater.add_to_buffer"><code class="docutils literal notranslate"><span class="pre">Updater.add_to_buffer()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="agent.html#simulate.agent.updater.Updater.awareness"><code class="docutils literal notranslate"><span class="pre">Updater.awareness()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="agent.html#simulate.agent.updater.Updater.update"><code class="docutils literal notranslate"><span class="pre">Updater.update()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="agent.html#simulate.agent.updater.Updater.update_ToM"><code class="docutils literal notranslate"><span class="pre">Updater.update_ToM()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="agent.html#simulate.agent.updater.Updater.update_friendship"><code class="docutils literal notranslate"><span class="pre">Updater.update_friendship()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="information_theory.html">Information Theory</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="information_theory.html#simulate.information_theory.IFT.IFT"><code class="docutils literal notranslate"><span class="pre">IFT</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="information_theory.html#simulate.information_theory.IFT.IFT.KL"><code class="docutils literal notranslate"><span class="pre">IFT.KL()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="information_theory.html#simulate.information_theory.IFT.IFT.get_info_difference"><code class="docutils literal notranslate"><span class="pre">IFT.get_info_difference()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="information_theory.html#simulate.information_theory.IFT.IFT.make_average_opinion"><code class="docutils literal notranslate"><span class="pre">IFT.make_average_opinion()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="information_theory.html#simulate.information_theory.IFT.IFT.match"><code class="docutils literal notranslate"><span class="pre">IFT.match()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="information_theory.html#simulate.information_theory.IFT.IFT.match_moments"><code class="docutils literal notranslate"><span class="pre">IFT.match_moments()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="information_theory.html#simulate.information_theory.IFT.IFT.minimize_KL"><code class="docutils literal notranslate"><span class="pre">IFT.minimize_KL()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="information_theory.html#simulate.information_theory.IFT.jLoss"><code class="docutils literal notranslate"><span class="pre">jLoss()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="information_theory.html#simulate.information_theory.IFT.jgradLoss"><code class="docutils literal notranslate"><span class="pre">jgradLoss()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="information_theory.html#simulate.information_theory.IFT.jhessLoss"><code class="docutils literal notranslate"><span class="pre">jhessLoss()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="information_theory.html#simulate.information_theory.info.Info"><code class="docutils literal notranslate"><span class="pre">Info</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="information_theory.html#simulate.information_theory.info.Info.mu"><code class="docutils literal notranslate"><span class="pre">Info.mu</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="information_theory.html#simulate.information_theory.info.Info.la"><code class="docutils literal notranslate"><span class="pre">Info.la</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="information_theory.html#simulate.information_theory.info.Info.mean"><code class="docutils literal notranslate"><span class="pre">Info.mean</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="information_theory.html#simulate.information_theory.info.Info.check_positive"><code class="docutils literal notranslate"><span class="pre">Info.check_positive()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="information_theory.html#simulate.information_theory.info.Info.draw"><code class="docutils literal notranslate"><span class="pre">Info.draw()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="information_theory.html#simulate.information_theory.info.Info.round"><code class="docutils literal notranslate"><span class="pre">Info.round()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="information_theory.html#simulate.information_theory.info.Info.round_mean"><code class="docutils literal notranslate"><span class="pre">Info.round_mean()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="helper.html">Helper</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="helper.html#helper.help_agent.character_mapping"><code class="docutils literal notranslate"><span class="pre">character_mapping()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="helper.html#helper.help_agent.set_mind"><code class="docutils literal notranslate"><span class="pre">set_mind()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="helper.html#helper.help_conversation.draw_max_from_list"><code class="docutils literal notranslate"><span class="pre">draw_max_from_list()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="helper.html#helper.help_main.make_outfile_name"><code class="docutils literal notranslate"><span class="pre">make_outfile_name()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="helper.html#helper.help_main.parse_arguments"><code class="docutils literal notranslate"><span class="pre">parse_arguments()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="helper.html#helper.help_main.save_data_as_json"><code class="docutils literal notranslate"><span class="pre">save_data_as_json()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="helper.html#helper.help_plotter.create_button"><code class="docutils literal notranslate"><span class="pre">create_button()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="helper.html#helper.help_plotter.create_label"><code class="docutils literal notranslate"><span class="pre">create_label()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="helper.html#helper.help_plotter.create_select"><code class="docutils literal notranslate"><span class="pre">create_select()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="helper.html#helper.help_plotter.update_plot"><code class="docutils literal notranslate"><span class="pre">update_plot()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="helper.html#helper.help_simulation.make_random_dict"><code class="docutils literal notranslate"><span class="pre">make_random_dict()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="helper.html#helper.run_parallel.batch_tasks"><code class="docutils literal notranslate"><span class="pre">batch_tasks()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="helper.html#helper.run_parallel.launch_parallel"><code class="docutils literal notranslate"><span class="pre">launch_parallel()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="helper.html#helper.run_parallel.process_batch"><code class="docutils literal notranslate"><span class="pre">process_batch()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="helper.html#helper.run_parallel.run_parallel"><code class="docutils literal notranslate"><span class="pre">run_parallel()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="config.html">Config</a></li>
+<li class="toctree-l1"><a class="reference internal" href="evaluate.html">Evaluate</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="evaluate.html#evaluate.logger.Logger"><code class="docutils literal notranslate"><span class="pre">Logger</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="evaluate.html#evaluate.logger.Logger.conversation"><code class="docutils literal notranslate"><span class="pre">Logger.conversation()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="evaluate.html#evaluate.logger.Logger.initial_status"><code class="docutils literal notranslate"><span class="pre">Logger.initial_status()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="evaluate.html#evaluate.logger.Logger.log"><code class="docutils literal notranslate"><span class="pre">Logger.log()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="evaluate.html#evaluate.logger.Logger.save_data_as_json"><code class="docutils literal notranslate"><span class="pre">Logger.save_data_as_json()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="evaluate.html#evaluate.logger.Logger.self_update"><code class="docutils literal notranslate"><span class="pre">Logger.self_update()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="evaluate.html#evaluate.logger.Logger.time"><code class="docutils literal notranslate"><span class="pre">Logger.time()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="evaluate.html#evaluate.logger.Logger.update"><code class="docutils literal notranslate"><span class="pre">Logger.update()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="postprocessor.html">Postprocessor</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="postprocessor.html#evaluate.postprocessor.postprocessor.Postprocessor"><code class="docutils literal notranslate"><span class="pre">Postprocessor</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="postprocessor.html#evaluate.postprocessor.postprocessor.Postprocessor.load_results"><code class="docutils literal notranslate"><span class="pre">Postprocessor.load_results()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="postprocessor.html#evaluate.postprocessor.calculate_statistics.calculate_statistics"><code class="docutils literal notranslate"><span class="pre">calculate_statistics()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="postprocessor.html#evaluate.postprocessor.calculate_statistics.initialise_time_series"><code class="docutils literal notranslate"><span class="pre">initialise_time_series()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="postprocessor.html#evaluate.postprocessor.prepare_plotting.create_select_for_plotter"><code class="docutils literal notranslate"><span class="pre">create_select_for_plotter()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="postprocessor.html#evaluate.postprocessor.time_series_maker.TimeSeriesMaker"><code class="docutils literal notranslate"><span class="pre">TimeSeriesMaker</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="postprocessor.html#evaluate.postprocessor.time_series_maker.TimeSeriesMaker.carry_forward_values"><code class="docutils literal notranslate"><span class="pre">TimeSeriesMaker.carry_forward_values()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="postprocessor.html#evaluate.postprocessor.time_series_maker.TimeSeriesMaker.initialise_time_series"><code class="docutils literal notranslate"><span class="pre">TimeSeriesMaker.initialise_time_series()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="postprocessor.html#evaluate.postprocessor.time_series_maker.TimeSeriesMaker.make_time_series_data"><code class="docutils literal notranslate"><span class="pre">TimeSeriesMaker.make_time_series_data()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="postprocessor.html#evaluate.postprocessor.time_series_maker.TimeSeriesMaker.set_agent_start_values"><code class="docutils literal notranslate"><span class="pre">TimeSeriesMaker.set_agent_start_values()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="postprocessor.html#evaluate.postprocessor.time_series_maker.TimeSeriesMaker.update_agent_time_series"><code class="docutils literal notranslate"><span class="pre">TimeSeriesMaker.update_agent_time_series()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="postprocessor.html#evaluate.postprocessor.time_series_maker.TimeSeriesMaker.update_entry_for_agent"><code class="docutils literal notranslate"><span class="pre">TimeSeriesMaker.update_entry_for_agent()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Plotter Tool</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#evaluate.plotter_tool.plotter_grid.PlotterGrid"><code class="docutils literal notranslate"><span class="pre">PlotterGrid</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#evaluate.plotter_tool.plotter_grid.PlotterGrid.add_plotter"><code class="docutils literal notranslate"><span class="pre">PlotterGrid.add_plotter()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#evaluate.plotter_tool.plotter_grid.PlotterGrid.remove_plotter"><code class="docutils literal notranslate"><span class="pre">PlotterGrid.remove_plotter()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#evaluate.plotter_tool.plotter_grid.PlotterGrid.setup_main"><code class="docutils literal notranslate"><span class="pre">PlotterGrid.setup_main()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#evaluate.plotter_tool.plotter_grid.PlotterGrid.setup_plotters"><code class="docutils literal notranslate"><span class="pre">PlotterGrid.setup_plotters()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#evaluate.plotter_tool.plotter_grid.PlotterGrid.update_plotter_layout"><code class="docutils literal notranslate"><span class="pre">PlotterGrid.update_plotter_layout()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#evaluate.plotter_tool.plotter_grid.plot"><code class="docutils literal notranslate"><span class="pre">plot()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#evaluate.plotter_tool.plotter.plotter.Plotter"><code class="docutils literal notranslate"><span class="pre">Plotter</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#evaluate.plotter_tool.plotter.plotter.Plotter.add_remove_button"><code class="docutils literal notranslate"><span class="pre">Plotter.add_remove_button()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#evaluate.plotter_tool.plotter.plotter.Plotter.adjust_plot_size"><code class="docutils literal notranslate"><span class="pre">Plotter.adjust_plot_size()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#evaluate.plotter_tool.plotter.plotter.Plotter.plot_data"><code class="docutils literal notranslate"><span class="pre">Plotter.plot_data()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#evaluate.plotter_tool.plotter.plotter.Plotter.setup_main"><code class="docutils literal notranslate"><span class="pre">Plotter.setup_main()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#evaluate.plotter_tool.plotter.plotter.Plotter.setup_plot"><code class="docutils literal notranslate"><span class="pre">Plotter.setup_plot()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#evaluate.plotter_tool.plotter.control_panel.ControlPanel"><code class="docutils literal notranslate"><span class="pre">ControlPanel</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#evaluate.plotter_tool.plotter.control_panel.ControlPanel.apply_preconfigured"><code class="docutils literal notranslate"><span class="pre">ControlPanel.apply_preconfigured()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#evaluate.plotter_tool.plotter.control_panel.ControlPanel.list_json_files"><code class="docutils literal notranslate"><span class="pre">ControlPanel.list_json_files()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#evaluate.plotter_tool.plotter.control_panel.ControlPanel.load_data"><code class="docutils literal notranslate"><span class="pre">ControlPanel.load_data()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#evaluate.plotter_tool.plotter.control_panel.ControlPanel.select_color"><code class="docutils literal notranslate"><span class="pre">ControlPanel.select_color()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#evaluate.plotter_tool.plotter.control_panel.ControlPanel.setup_main_menu"><code class="docutils literal notranslate"><span class="pre">ControlPanel.setup_main_menu()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#evaluate.plotter_tool.plotter.control_panel.ControlPanel.toggle"><code class="docutils literal notranslate"><span class="pre">ControlPanel.toggle()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#evaluate.plotter_tool.plotter.control_updater.ControlUpdater"><code class="docutils literal notranslate"><span class="pre">ControlUpdater</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#evaluate.plotter_tool.plotter.control_updater.ControlUpdater.add_y_axis"><code class="docutils literal notranslate"><span class="pre">ControlUpdater.add_y_axis()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#evaluate.plotter_tool.plotter.control_updater.ControlUpdater.remove_y_axis"><code class="docutils literal notranslate"><span class="pre">ControlUpdater.remove_y_axis()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#evaluate.plotter_tool.plotter.plot_configurator.PlotConfigurator"><code class="docutils literal notranslate"><span class="pre">PlotConfigurator</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#evaluate.plotter_tool.plotter.plot_configurator.PlotConfigurator.plot_conf"><code class="docutils literal notranslate"><span class="pre">PlotConfigurator.plot_conf()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Reputation Game v2</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Plotter Tool</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/plotter.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-evaluate.plotter_tool">
+<span id="plotter-tool"></span><h1>Plotter Tool<a class="headerlink" href="#module-evaluate.plotter_tool" title="Link to this heading">¶</a></h1>
+<dl class="py class" id="module-evaluate.plotter_tool.plotter_grid">
+<dt class="sig sig-object py" id="evaluate.plotter_tool.plotter_grid.PlotterGrid">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">evaluate.plotter_tool.plotter_grid.</span></span><span class="sig-name descname"><span class="pre">PlotterGrid</span></span><a class="headerlink" href="#evaluate.plotter_tool.plotter_grid.PlotterGrid" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">QMainWindow</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="evaluate.plotter_tool.plotter_grid.PlotterGrid.add_plotter">
+<span class="sig-name descname"><span class="pre">add_plotter</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#evaluate.plotter_tool.plotter_grid.PlotterGrid.add_plotter" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="evaluate.plotter_tool.plotter_grid.PlotterGrid.remove_plotter">
+<span class="sig-name descname"><span class="pre">remove_plotter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">plotter</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#evaluate.plotter_tool.plotter_grid.PlotterGrid.remove_plotter" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="evaluate.plotter_tool.plotter_grid.PlotterGrid.setup_main">
+<span class="sig-name descname"><span class="pre">setup_main</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#evaluate.plotter_tool.plotter_grid.PlotterGrid.setup_main" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="evaluate.plotter_tool.plotter_grid.PlotterGrid.setup_plotters">
+<span class="sig-name descname"><span class="pre">setup_plotters</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#evaluate.plotter_tool.plotter_grid.PlotterGrid.setup_plotters" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="evaluate.plotter_tool.plotter_grid.PlotterGrid.update_plotter_layout">
+<span class="sig-name descname"><span class="pre">update_plotter_layout</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#evaluate.plotter_tool.plotter_grid.PlotterGrid.update_plotter_layout" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="evaluate.plotter_tool.plotter_grid.plot">
+<span class="sig-prename descclassname"><span class="pre">evaluate.plotter_tool.plotter_grid.</span></span><span class="sig-name descname"><span class="pre">plot</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#evaluate.plotter_tool.plotter_grid.plot" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py class" id="module-evaluate.plotter_tool.plotter.plotter">
+<span id="module-evaluate.plotter_tool.plotter"></span><dt class="sig sig-object py" id="evaluate.plotter_tool.plotter.plotter.Plotter">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">evaluate.plotter_tool.plotter.plotter.</span></span><span class="sig-name descname"><span class="pre">Plotter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">remove_callback</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#evaluate.plotter_tool.plotter.plotter.Plotter" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">QWidget</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="evaluate.plotter_tool.plotter.plotter.Plotter.add_remove_button">
+<span class="sig-name descname"><span class="pre">add_remove_button</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#evaluate.plotter_tool.plotter.plotter.Plotter.add_remove_button" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="evaluate.plotter_tool.plotter.plotter.Plotter.adjust_plot_size">
+<span class="sig-name descname"><span class="pre">adjust_plot_size</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#evaluate.plotter_tool.plotter.plotter.Plotter.adjust_plot_size" title="Link to this definition">¶</a></dt>
+<dd><p>Update the layout to adjust the plot size when controls are hidden/shown.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="evaluate.plotter_tool.plotter.plotter.Plotter.plot_data">
+<span class="sig-name descname"><span class="pre">plot_data</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#evaluate.plotter_tool.plotter.plotter.Plotter.plot_data" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="evaluate.plotter_tool.plotter.plotter.Plotter.setup_main">
+<span class="sig-name descname"><span class="pre">setup_main</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#evaluate.plotter_tool.plotter.plotter.Plotter.setup_main" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="evaluate.plotter_tool.plotter.plotter.Plotter.setup_plot">
+<span class="sig-name descname"><span class="pre">setup_plot</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#evaluate.plotter_tool.plotter.plotter.Plotter.setup_plot" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class" id="module-evaluate.plotter_tool.plotter.control_panel">
+<dt class="sig sig-object py" id="evaluate.plotter_tool.plotter.control_panel.ControlPanel">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">evaluate.plotter_tool.plotter.control_panel.</span></span><span class="sig-name descname"><span class="pre">ControlPanel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">plotter</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#evaluate.plotter_tool.plotter.control_panel.ControlPanel" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">QGridLayout</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="evaluate.plotter_tool.plotter.control_panel.ControlPanel.apply_preconfigured">
+<span class="sig-name descname"><span class="pre">apply_preconfigured</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#evaluate.plotter_tool.plotter.control_panel.ControlPanel.apply_preconfigured" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="evaluate.plotter_tool.plotter.control_panel.ControlPanel.list_json_files">
+<span class="sig-name descname"><span class="pre">list_json_files</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#evaluate.plotter_tool.plotter.control_panel.ControlPanel.list_json_files" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="evaluate.plotter_tool.plotter.control_panel.ControlPanel.load_data">
+<span class="sig-name descname"><span class="pre">load_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#evaluate.plotter_tool.plotter.control_panel.ControlPanel.load_data" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="evaluate.plotter_tool.plotter.control_panel.ControlPanel.select_color">
+<span class="sig-name descname"><span class="pre">select_color</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#evaluate.plotter_tool.plotter.control_panel.ControlPanel.select_color" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="evaluate.plotter_tool.plotter.control_panel.ControlPanel.setup_main_menu">
+<span class="sig-name descname"><span class="pre">setup_main_menu</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#evaluate.plotter_tool.plotter.control_panel.ControlPanel.setup_main_menu" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="evaluate.plotter_tool.plotter.control_panel.ControlPanel.toggle">
+<span class="sig-name descname"><span class="pre">toggle</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#evaluate.plotter_tool.plotter.control_panel.ControlPanel.toggle" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class" id="module-evaluate.plotter_tool.plotter.control_updater">
+<dt class="sig sig-object py" id="evaluate.plotter_tool.plotter.control_updater.ControlUpdater">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">evaluate.plotter_tool.plotter.control_updater.</span></span><span class="sig-name descname"><span class="pre">ControlUpdater</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">controls</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plotter</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#evaluate.plotter_tool.plotter.control_updater.ControlUpdater" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="evaluate.plotter_tool.plotter.control_updater.ControlUpdater.add_y_axis">
+<span class="sig-name descname"><span class="pre">add_y_axis</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#evaluate.plotter_tool.plotter.control_updater.ControlUpdater.add_y_axis" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="evaluate.plotter_tool.plotter.control_updater.ControlUpdater.remove_y_axis">
+<span class="sig-name descname"><span class="pre">remove_y_axis</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#evaluate.plotter_tool.plotter.control_updater.ControlUpdater.remove_y_axis" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class" id="module-evaluate.plotter_tool.plotter.plot_configurator">
+<dt class="sig sig-object py" id="evaluate.plotter_tool.plotter.plot_configurator.PlotConfigurator">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">evaluate.plotter_tool.plotter.plot_configurator.</span></span><span class="sig-name descname"><span class="pre">PlotConfigurator</span></span><a class="headerlink" href="#evaluate.plotter_tool.plotter.plot_configurator.PlotConfigurator" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="evaluate.plotter_tool.plotter.plot_configurator.PlotConfigurator.plot_conf">
+<span class="sig-name descname"><span class="pre">plot_conf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">style</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#evaluate.plotter_tool.plotter.plot_configurator.PlotConfigurator.plot_conf" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="postprocessor.html" class="btn btn-neutral float-left" title="Postprocessor" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Florian Wiethof.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

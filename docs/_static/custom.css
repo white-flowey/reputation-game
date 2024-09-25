@@ -1,0 +1,23 @@
+/* Reduce the font size of headers */
+h1,
+h2,
+h3 {
+  font-size: 1.2em; /* adjust to your preference */
+}
+
+/* Change the font size of the body text */
+body {
+  font-size: 0.9em; /* adjust to your preference */
+}
+
+/* Style the table of contents */
+.wy-nav-content {
+  background-color: #f9f9f9; /* light background */
+  padding: 10px;
+}
+
+/* Style the sidebar */
+.sphinxsidebar {
+  background-color: #eaeaea; /* sidebar background */
+  padding: 15px;
+}

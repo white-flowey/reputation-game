@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Evaluate (Package) &mdash; Reputation Game v2 0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=ef8776f5" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/documentation_options.js?v=1b390748"></script>
+        <script src="../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Logger" href="logger.html" />
+    <link rel="prev" title="Run Parallel" href="../helper/run_parallel.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Reputation Game v2
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../config/__config.html">Config (Package)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../config/config_loader/config_loader.html">Config Loader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../config/config_loader/config_checker.html">Config Checker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../config/config_loader/config_error.html">Config Error</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../config/config_loader/config_swap.html">Config Swap</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../main.html">Main</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../main.html#main.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../simulate/__simulate__.html">Simulation Package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../simulate/game.html">Game</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../simulate/game.html#simulate.game.Game"><code class="docutils literal notranslate"><span class="pre">Game</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../simulate/game.html#simulate.game.Game.conf"><code class="docutils literal notranslate"><span class="pre">Game.conf</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../simulate/game.html#simulate.game.Game.characters_setup"><code class="docutils literal notranslate"><span class="pre">Game.characters_setup</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../simulate/game.html#simulate.game.Game.outfile_name"><code class="docutils literal notranslate"><span class="pre">Game.outfile_name</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../simulate/game.html#simulate.game.Game.simulations"><code class="docutils literal notranslate"><span class="pre">Game.simulations</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../simulate/game.html#simulate.game.Game.output"><code class="docutils literal notranslate"><span class="pre">Game.output()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../simulate/game.html#simulate.game.Game.run"><code class="docutils literal notranslate"><span class="pre">Game.run()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../simulate/game.html#simulate.game.Game.setup_simulations"><code class="docutils literal notranslate"><span class="pre">Game.setup_simulations()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../simulate/game.html#simulate.game.play"><code class="docutils literal notranslate"><span class="pre">play()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../simulate/simulation.html">Simulate</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../simulate/simulation.html#simulate.simulation.Simulation"><code class="docutils literal notranslate"><span class="pre">Simulation</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../simulate/simulation.html#simulate.simulation.Simulation.conf"><code class="docutils literal notranslate"><span class="pre">Simulation.conf</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../simulate/simulation.html#simulate.simulation.Simulation.random"><code class="docutils literal notranslate"><span class="pre">Simulation.random</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../simulate/simulation.html#simulate.simulation.Simulation.characters_setup"><code class="docutils literal notranslate"><span class="pre">Simulation.characters_setup</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../simulate/simulation.html#simulate.simulation.Simulation.id"><code class="docutils literal notranslate"><span class="pre">Simulation.id</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../simulate/simulation.html#simulate.simulation.Simulation.log"><code class="docutils literal notranslate"><span class="pre">Simulation.log</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../simulate/simulation.html#simulate.simulation.Simulation.agents"><code class="docutils literal notranslate"><span class="pre">Simulation.agents</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../simulate/simulation.html#simulate.simulation.Simulation.conversations"><code class="docutils literal notranslate"><span class="pre">Simulation.conversations</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../simulate/simulation.html#simulate.simulation.Simulation.init_agents"><code class="docutils literal notranslate"><span class="pre">Simulation.init_agents()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../simulate/simulation.html#simulate.simulation.Simulation.play"><code class="docutils literal notranslate"><span class="pre">Simulation.play()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../simulate/simulation.html#simulate.simulation.Simulation.schedule_conversations"><code class="docutils literal notranslate"><span class="pre">Simulation.schedule_conversations()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../simulate/conversation.html">Conversation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../simulate/conversation.html#simulate.conversation.Conversation"><code class="docutils literal notranslate"><span class="pre">Conversation</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../simulate/conversation.html#simulate.conversation.Conversation.conf"><code class="docutils literal notranslate"><span class="pre">Conversation.conf</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../simulate/conversation.html#simulate.conversation.Conversation.speaker"><code class="docutils literal notranslate"><span class="pre">Conversation.speaker</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../simulate/conversation.html#simulate.conversation.Conversation.random"><code class="docutils literal notranslate"><span class="pre">Conversation.random</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../simulate/conversation.html#simulate.conversation.Conversation.agents"><code class="docutils literal notranslate"><span class="pre">Conversation.agents</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../simulate/conversation.html#simulate.conversation.Conversation.setting"><code class="docutils literal notranslate"><span class="pre">Conversation.setting</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../simulate/conversation.html#simulate.conversation.Conversation.listeners"><code class="docutils literal notranslate"><span class="pre">Conversation.listeners</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../simulate/conversation.html#simulate.conversation.Conversation.topic"><code class="docutils literal notranslate"><span class="pre">Conversation.topic</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../simulate/conversation.html#simulate.conversation.Conversation.initiate_conversation"><code class="docutils literal notranslate"><span class="pre">Conversation.initiate_conversation()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../simulate/conversation.html#simulate.conversation.Conversation.pick_listeners"><code class="docutils literal notranslate"><span class="pre">Conversation.pick_listeners()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../simulate/conversation.html#simulate.conversation.Conversation.pick_setting"><code class="docutils literal notranslate"><span class="pre">Conversation.pick_setting()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../simulate/conversation.html#simulate.conversation.Conversation.pick_topic"><code class="docutils literal notranslate"><span class="pre">Conversation.pick_topic()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../simulate/conversation.html#simulate.conversation.Conversation.run_conversation_protocol"><code class="docutils literal notranslate"><span class="pre">Conversation.run_conversation_protocol()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../simulate/conversation.html#simulate.conversation.Conversation.save_state"><code class="docutils literal notranslate"><span class="pre">Conversation.save_state()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../simulate/agent/__agent__.html">Agent (Package)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../simulate/agent/agent.html">Agent</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../simulate/agent/agent.html#simulate.agent.agent.Agent"><code class="docutils literal notranslate"><span class="pre">Agent</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../simulate/agent/initiator.html">Initiator</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../simulate/agent/initiator.html#simulate.agent.initiator.Initiator"><code class="docutils literal notranslate"><span class="pre">Initiator</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../simulate/agent/receiver.html">Receiver</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../simulate/agent/receiver.html#simulate.agent.receiver.Receiver"><code class="docutils literal notranslate"><span class="pre">Receiver</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../simulate/agent/saver.html">Saver</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../simulate/agent/saver.html#simulate.agent.saver.StateSaver"><code class="docutils literal notranslate"><span class="pre">StateSaver</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../simulate/agent/sender.html">Sender</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../simulate/agent/sender.html#simulate.agent.sender.Sender"><code class="docutils literal notranslate"><span class="pre">Sender</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../simulate/agent/updater.html">Updater</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../simulate/agent/updater.html#simulate.agent.updater.Updater"><code class="docutils literal notranslate"><span class="pre">Updater</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../simulate/information_theory/__information_theory__.html">Information Theory (Package)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../simulate/information_theory/info.html">Info</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../simulate/information_theory/info.html#simulate.information_theory.info.Info"><code class="docutils literal notranslate"><span class="pre">Info</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../simulate/information_theory/information_theory.html">Information Theory</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../simulate/information_theory/information_theory.html#simulate.information_theory.IFT.IFT"><code class="docutils literal notranslate"><span class="pre">IFT</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../simulate/information_theory/information_theory.html#simulate.information_theory.IFT.jLoss"><code class="docutils literal notranslate"><span class="pre">jLoss()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../simulate/information_theory/information_theory.html#simulate.information_theory.IFT.jgradLoss"><code class="docutils literal notranslate"><span class="pre">jgradLoss()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../simulate/information_theory/information_theory.html#simulate.information_theory.IFT.jhessLoss"><code class="docutils literal notranslate"><span class="pre">jhessLoss()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../helper/__helper__.html">Helper (Package)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../helper/help_agent.html">Help Agent</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../helper/help_agent.html#helper.help_agent.character_mapping"><code class="docutils literal notranslate"><span class="pre">character_mapping()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../helper/help_agent.html#helper.help_agent.set_mind"><code class="docutils literal notranslate"><span class="pre">set_mind()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../helper/help_conversation.html">Help Conversation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../helper/help_conversation.html#helper.help_conversation.draw_max_from_list"><code class="docutils literal notranslate"><span class="pre">draw_max_from_list()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../helper/help_main.html">Help main</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../helper/help_main.html#helper.help_main.make_outfile_name"><code class="docutils literal notranslate"><span class="pre">make_outfile_name()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../helper/help_main.html#helper.help_main.parse_arguments"><code class="docutils literal notranslate"><span class="pre">parse_arguments()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../helper/help_main.html#helper.help_main.save_data_as_json"><code class="docutils literal notranslate"><span class="pre">save_data_as_json()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../helper/help_plotter.html">Help Plotter</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../helper/help_plotter.html#helper.help_plotter.create_button"><code class="docutils literal notranslate"><span class="pre">create_button()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../helper/help_plotter.html#helper.help_plotter.create_label"><code class="docutils literal notranslate"><span class="pre">create_label()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../helper/help_plotter.html#helper.help_plotter.create_select"><code class="docutils literal notranslate"><span class="pre">create_select()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../helper/help_plotter.html#helper.help_plotter.update_plot"><code class="docutils literal notranslate"><span class="pre">update_plot()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../helper/help_simulation.html">Help Simulation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../helper/help_simulation.html#helper.help_simulation.make_random_dict"><code class="docutils literal notranslate"><span class="pre">make_random_dict()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../helper/run_parallel.html">Run Parallel</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../helper/run_parallel.html#helper.run_parallel.batch_tasks"><code class="docutils literal notranslate"><span class="pre">batch_tasks()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../helper/run_parallel.html#helper.run_parallel.launch_parallel"><code class="docutils literal notranslate"><span class="pre">launch_parallel()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../helper/run_parallel.html#helper.run_parallel.process_batch"><code class="docutils literal notranslate"><span class="pre">process_batch()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../helper/run_parallel.html#helper.run_parallel.run_parallel"><code class="docutils literal notranslate"><span class="pre">run_parallel()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Evaluate (Package)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="logger.html">Logger</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="logger.html#evaluate.logger.Logger"><code class="docutils literal notranslate"><span class="pre">Logger</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="logger.html#evaluate.logger.Logger.conversation"><code class="docutils literal notranslate"><span class="pre">Logger.conversation()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="logger.html#evaluate.logger.Logger.initial_status"><code class="docutils literal notranslate"><span class="pre">Logger.initial_status()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="logger.html#evaluate.logger.Logger.log"><code class="docutils literal notranslate"><span class="pre">Logger.log()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="logger.html#evaluate.logger.Logger.save_data_as_json"><code class="docutils literal notranslate"><span class="pre">Logger.save_data_as_json()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="logger.html#evaluate.logger.Logger.self_update"><code class="docutils literal notranslate"><span class="pre">Logger.self_update()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="logger.html#evaluate.logger.Logger.time"><code class="docutils literal notranslate"><span class="pre">Logger.time()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="logger.html#evaluate.logger.Logger.update"><code class="docutils literal notranslate"><span class="pre">Logger.update()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="postprocessor/__postprocessor.html">Postprocessor (Package)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="postprocessor/postprocessor.html">Postprocessor</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="postprocessor/postprocessor.html#evaluate.postprocessor.postprocessor.Postprocessor"><code class="docutils literal notranslate"><span class="pre">Postprocessor</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="postprocessor/time_series_maker.html">time_series_maker</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="postprocessor/time_series_maker.html#evaluate.postprocessor.time_series_maker.TimeSeriesMaker"><code class="docutils literal notranslate"><span class="pre">TimeSeriesMaker</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="postprocessor/calculate_statistics.html">calculate_statistics</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="postprocessor/calculate_statistics.html#evaluate.postprocessor.calculate_statistics.calculate_statistics"><code class="docutils literal notranslate"><span class="pre">calculate_statistics()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="postprocessor/calculate_statistics.html#evaluate.postprocessor.calculate_statistics.initialise_time_series"><code class="docutils literal notranslate"><span class="pre">initialise_time_series()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="postprocessor/prepare_plotting.html">prepare_plotting</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="postprocessor/prepare_plotting.html#evaluate.postprocessor.prepare_plotting.create_select_for_plotter"><code class="docutils literal notranslate"><span class="pre">create_select_for_plotter()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="plotter_tool/__plotter_tool.html">Plotter Tool (Package)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="plotter_tool/plotter_grid.html">Plotter Grid</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="plotter_tool/plotter_grid.html#evaluate.plotter_tool.plotter_grid.PlotterGrid"><code class="docutils literal notranslate"><span class="pre">PlotterGrid</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="plotter_tool/plotter_grid.html#evaluate.plotter_tool.plotter_grid.plot"><code class="docutils literal notranslate"><span class="pre">plot()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Reputation Game v2</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Evaluate (Package)</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/source/evaluate/__evaluate.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="evaluate-package">
+<h1>Evaluate (Package)<a class="headerlink" href="#evaluate-package" title="Link to this heading">¶</a></h1>
+<p>Handles logging, postprocessing and plotting simulation data.</p>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="logger.html">Logger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="postprocessor/__postprocessor.html">Postprocessor (Package)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plotter_tool/__plotter_tool.html">Plotter Tool (Package)</a></li>
+</ul>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../helper/run_parallel.html" class="btn btn-neutral float-left" title="Run Parallel" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="logger.html" class="btn btn-neutral float-right" title="Logger" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Florian Wiethof.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

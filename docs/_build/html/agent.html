@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Agent &mdash; Reputation Game v2 0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=ef8776f5" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/documentation_options.js?v=1b390748"></script>
+        <script src="_static/doctools.js?v=9a2dae69"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Information Theory" href="information_theory.html" />
+    <link rel="prev" title="Simulate" href="simulate.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Reputation Game v2
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="main.html">Main</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="main.html#main.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="simulate.html">Simulate</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="simulate.html#simulate.game.Game"><code class="docutils literal notranslate"><span class="pre">Game</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="simulate.html#simulate.game.Game.conf"><code class="docutils literal notranslate"><span class="pre">Game.conf</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="simulate.html#simulate.game.Game.characters_setup"><code class="docutils literal notranslate"><span class="pre">Game.characters_setup</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="simulate.html#simulate.game.Game.outfile_name"><code class="docutils literal notranslate"><span class="pre">Game.outfile_name</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="simulate.html#simulate.game.Game.simulations"><code class="docutils literal notranslate"><span class="pre">Game.simulations</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="simulate.html#simulate.game.Game.output"><code class="docutils literal notranslate"><span class="pre">Game.output()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="simulate.html#simulate.game.Game.run"><code class="docutils literal notranslate"><span class="pre">Game.run()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="simulate.html#simulate.game.Game.setup_simulations"><code class="docutils literal notranslate"><span class="pre">Game.setup_simulations()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="simulate.html#simulate.game.play"><code class="docutils literal notranslate"><span class="pre">play()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="simulate.html#simulate.simulation.Simulation"><code class="docutils literal notranslate"><span class="pre">Simulation</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="simulate.html#simulate.simulation.Simulation.conf"><code class="docutils literal notranslate"><span class="pre">Simulation.conf</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="simulate.html#simulate.simulation.Simulation.random"><code class="docutils literal notranslate"><span class="pre">Simulation.random</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="simulate.html#simulate.simulation.Simulation.characters_setup"><code class="docutils literal notranslate"><span class="pre">Simulation.characters_setup</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="simulate.html#simulate.simulation.Simulation.id"><code class="docutils literal notranslate"><span class="pre">Simulation.id</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="simulate.html#simulate.simulation.Simulation.log"><code class="docutils literal notranslate"><span class="pre">Simulation.log</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="simulate.html#simulate.simulation.Simulation.agents"><code class="docutils literal notranslate"><span class="pre">Simulation.agents</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="simulate.html#simulate.simulation.Simulation.conversations"><code class="docutils literal notranslate"><span class="pre">Simulation.conversations</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="simulate.html#simulate.simulation.Simulation.init_agents"><code class="docutils literal notranslate"><span class="pre">Simulation.init_agents()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="simulate.html#simulate.simulation.Simulation.play"><code class="docutils literal notranslate"><span class="pre">Simulation.play()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="simulate.html#simulate.simulation.Simulation.schedule_conversations"><code class="docutils literal notranslate"><span class="pre">Simulation.schedule_conversations()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="simulate.html#simulate.conversation.Conversation"><code class="docutils literal notranslate"><span class="pre">Conversation</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="simulate.html#simulate.conversation.Conversation.conf"><code class="docutils literal notranslate"><span class="pre">Conversation.conf</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="simulate.html#simulate.conversation.Conversation.speaker"><code class="docutils literal notranslate"><span class="pre">Conversation.speaker</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="simulate.html#simulate.conversation.Conversation.random"><code class="docutils literal notranslate"><span class="pre">Conversation.random</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="simulate.html#simulate.conversation.Conversation.agents"><code class="docutils literal notranslate"><span class="pre">Conversation.agents</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="simulate.html#simulate.conversation.Conversation.setting"><code class="docutils literal notranslate"><span class="pre">Conversation.setting</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="simulate.html#simulate.conversation.Conversation.listeners"><code class="docutils literal notranslate"><span class="pre">Conversation.listeners</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="simulate.html#simulate.conversation.Conversation.topic"><code class="docutils literal notranslate"><span class="pre">Conversation.topic</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="simulate.html#simulate.conversation.Conversation.initiate_conversation"><code class="docutils literal notranslate"><span class="pre">Conversation.initiate_conversation()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="simulate.html#simulate.conversation.Conversation.pick_listeners"><code class="docutils literal notranslate"><span class="pre">Conversation.pick_listeners()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="simulate.html#simulate.conversation.Conversation.pick_setting"><code class="docutils literal notranslate"><span class="pre">Conversation.pick_setting()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="simulate.html#simulate.conversation.Conversation.pick_topic"><code class="docutils literal notranslate"><span class="pre">Conversation.pick_topic()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="simulate.html#simulate.conversation.Conversation.run_conversation_protocol"><code class="docutils literal notranslate"><span class="pre">Conversation.run_conversation_protocol()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="simulate.html#simulate.conversation.Conversation.save_state"><code class="docutils literal notranslate"><span class="pre">Conversation.save_state()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Agent</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#simulate.agent.agent.Agent"><code class="docutils literal notranslate"><span class="pre">Agent</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#simulate.agent.agent.Agent.initialise_memory"><code class="docutils literal notranslate"><span class="pre">Agent.initialise_memory()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#simulate.agent.agent.Agent.setup_character"><code class="docutils literal notranslate"><span class="pre">Agent.setup_character()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#simulate.agent.agent.Agent.setup_memory"><code class="docutils literal notranslate"><span class="pre">Agent.setup_memory()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#simulate.agent.initiator.Initiator"><code class="docutils literal notranslate"><span class="pre">Initiator</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#simulate.agent.initiator.Initiator.draw_topic"><code class="docutils literal notranslate"><span class="pre">Initiator.draw_topic()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#simulate.agent.initiator.Initiator.pick_listeners"><code class="docutils literal notranslate"><span class="pre">Initiator.pick_listeners()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#simulate.agent.initiator.Initiator.pick_setting"><code class="docutils literal notranslate"><span class="pre">Initiator.pick_setting()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#simulate.agent.initiator.Initiator.pick_topic"><code class="docutils literal notranslate"><span class="pre">Initiator.pick_topic()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#simulate.agent.initiator.Initiator.rank_listeners"><code class="docutils literal notranslate"><span class="pre">Initiator.rank_listeners()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#simulate.agent.receiver.Receiver"><code class="docutils literal notranslate"><span class="pre">Receiver</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#simulate.agent.receiver.Receiver.compute_trust"><code class="docutils literal notranslate"><span class="pre">Receiver.compute_trust()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#simulate.agent.receiver.Receiver.handle_surprise"><code class="docutils literal notranslate"><span class="pre">Receiver.handle_surprise()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#simulate.agent.receiver.Receiver.interprete_speaker"><code class="docutils literal notranslate"><span class="pre">Receiver.interprete_speaker()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#simulate.agent.receiver.Receiver.interprete_topic"><code class="docutils literal notranslate"><span class="pre">Receiver.interprete_topic()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#simulate.agent.receiver.Receiver.receive"><code class="docutils literal notranslate"><span class="pre">Receiver.receive()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#simulate.agent.saver.StateSaver"><code class="docutils literal notranslate"><span class="pre">StateSaver</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#simulate.agent.saver.StateSaver.initial_state"><code class="docutils literal notranslate"><span class="pre">StateSaver.initial_state()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#simulate.agent.saver.StateSaver.log_state"><code class="docutils literal notranslate"><span class="pre">StateSaver.log_state()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#simulate.agent.saver.StateSaver.save_state"><code class="docutils literal notranslate"><span class="pre">StateSaver.save_state()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#simulate.agent.sender.Sender"><code class="docutils literal notranslate"><span class="pre">Sender</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#simulate.agent.sender.Sender.assume_others_opinion"><code class="docutils literal notranslate"><span class="pre">Sender.assume_others_opinion()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#simulate.agent.sender.Sender.blushes"><code class="docutils literal notranslate"><span class="pre">Sender.blushes()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#simulate.agent.sender.Sender.choose_lie_method"><code class="docutils literal notranslate"><span class="pre">Sender.choose_lie_method()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#simulate.agent.sender.Sender.get_maximum_lie_size"><code class="docutils literal notranslate"><span class="pre">Sender.get_maximum_lie_size()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#simulate.agent.sender.Sender.talk"><code class="docutils literal notranslate"><span class="pre">Sender.talk()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#simulate.agent.sender.Sender.tells_truth_now"><code class="docutils literal notranslate"><span class="pre">Sender.tells_truth_now()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#simulate.agent.updater.Updater"><code class="docutils literal notranslate"><span class="pre">Updater</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#simulate.agent.updater.Updater.add_to_buffer"><code class="docutils literal notranslate"><span class="pre">Updater.add_to_buffer()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#simulate.agent.updater.Updater.awareness"><code class="docutils literal notranslate"><span class="pre">Updater.awareness()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#simulate.agent.updater.Updater.update"><code class="docutils literal notranslate"><span class="pre">Updater.update()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#simulate.agent.updater.Updater.update_ToM"><code class="docutils literal notranslate"><span class="pre">Updater.update_ToM()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#simulate.agent.updater.Updater.update_friendship"><code class="docutils literal notranslate"><span class="pre">Updater.update_friendship()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="information_theory.html">Information Theory</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="information_theory.html#simulate.information_theory.IFT.IFT"><code class="docutils literal notranslate"><span class="pre">IFT</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="information_theory.html#simulate.information_theory.IFT.IFT.KL"><code class="docutils literal notranslate"><span class="pre">IFT.KL()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="information_theory.html#simulate.information_theory.IFT.IFT.get_info_difference"><code class="docutils literal notranslate"><span class="pre">IFT.get_info_difference()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="information_theory.html#simulate.information_theory.IFT.IFT.make_average_opinion"><code class="docutils literal notranslate"><span class="pre">IFT.make_average_opinion()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="information_theory.html#simulate.information_theory.IFT.IFT.match"><code class="docutils literal notranslate"><span class="pre">IFT.match()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="information_theory.html#simulate.information_theory.IFT.IFT.match_moments"><code class="docutils literal notranslate"><span class="pre">IFT.match_moments()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="information_theory.html#simulate.information_theory.IFT.IFT.minimize_KL"><code class="docutils literal notranslate"><span class="pre">IFT.minimize_KL()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="information_theory.html#simulate.information_theory.IFT.jLoss"><code class="docutils literal notranslate"><span class="pre">jLoss()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="information_theory.html#simulate.information_theory.IFT.jgradLoss"><code class="docutils literal notranslate"><span class="pre">jgradLoss()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="information_theory.html#simulate.information_theory.IFT.jhessLoss"><code class="docutils literal notranslate"><span class="pre">jhessLoss()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="information_theory.html#simulate.information_theory.info.Info"><code class="docutils literal notranslate"><span class="pre">Info</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="information_theory.html#simulate.information_theory.info.Info.mu"><code class="docutils literal notranslate"><span class="pre">Info.mu</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="information_theory.html#simulate.information_theory.info.Info.la"><code class="docutils literal notranslate"><span class="pre">Info.la</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="information_theory.html#simulate.information_theory.info.Info.mean"><code class="docutils literal notranslate"><span class="pre">Info.mean</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="information_theory.html#simulate.information_theory.info.Info.check_positive"><code class="docutils literal notranslate"><span class="pre">Info.check_positive()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="information_theory.html#simulate.information_theory.info.Info.draw"><code class="docutils literal notranslate"><span class="pre">Info.draw()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="information_theory.html#simulate.information_theory.info.Info.round"><code class="docutils literal notranslate"><span class="pre">Info.round()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="information_theory.html#simulate.information_theory.info.Info.round_mean"><code class="docutils literal notranslate"><span class="pre">Info.round_mean()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="helper.html">Helper</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="helper.html#helper.help_agent.character_mapping"><code class="docutils literal notranslate"><span class="pre">character_mapping()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="helper.html#helper.help_agent.set_mind"><code class="docutils literal notranslate"><span class="pre">set_mind()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="helper.html#helper.help_conversation.draw_max_from_list"><code class="docutils literal notranslate"><span class="pre">draw_max_from_list()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="helper.html#helper.help_main.make_outfile_name"><code class="docutils literal notranslate"><span class="pre">make_outfile_name()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="helper.html#helper.help_main.parse_arguments"><code class="docutils literal notranslate"><span class="pre">parse_arguments()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="helper.html#helper.help_main.save_data_as_json"><code class="docutils literal notranslate"><span class="pre">save_data_as_json()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="helper.html#helper.help_plotter.create_button"><code class="docutils literal notranslate"><span class="pre">create_button()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="helper.html#helper.help_plotter.create_label"><code class="docutils literal notranslate"><span class="pre">create_label()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="helper.html#helper.help_plotter.create_select"><code class="docutils literal notranslate"><span class="pre">create_select()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="helper.html#helper.help_plotter.update_plot"><code class="docutils literal notranslate"><span class="pre">update_plot()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="helper.html#helper.help_simulation.make_random_dict"><code class="docutils literal notranslate"><span class="pre">make_random_dict()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="helper.html#helper.run_parallel.batch_tasks"><code class="docutils literal notranslate"><span class="pre">batch_tasks()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="helper.html#helper.run_parallel.launch_parallel"><code class="docutils literal notranslate"><span class="pre">launch_parallel()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="helper.html#helper.run_parallel.process_batch"><code class="docutils literal notranslate"><span class="pre">process_batch()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="helper.html#helper.run_parallel.run_parallel"><code class="docutils literal notranslate"><span class="pre">run_parallel()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="config.html">Config</a></li>
+<li class="toctree-l1"><a class="reference internal" href="evaluate.html">Evaluate</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="evaluate.html#evaluate.logger.Logger"><code class="docutils literal notranslate"><span class="pre">Logger</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="evaluate.html#evaluate.logger.Logger.conversation"><code class="docutils literal notranslate"><span class="pre">Logger.conversation()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="evaluate.html#evaluate.logger.Logger.initial_status"><code class="docutils literal notranslate"><span class="pre">Logger.initial_status()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="evaluate.html#evaluate.logger.Logger.log"><code class="docutils literal notranslate"><span class="pre">Logger.log()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="evaluate.html#evaluate.logger.Logger.save_data_as_json"><code class="docutils literal notranslate"><span class="pre">Logger.save_data_as_json()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="evaluate.html#evaluate.logger.Logger.self_update"><code class="docutils literal notranslate"><span class="pre">Logger.self_update()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="evaluate.html#evaluate.logger.Logger.time"><code class="docutils literal notranslate"><span class="pre">Logger.time()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="evaluate.html#evaluate.logger.Logger.update"><code class="docutils literal notranslate"><span class="pre">Logger.update()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="postprocessor.html">Postprocessor</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="postprocessor.html#evaluate.postprocessor.postprocessor.Postprocessor"><code class="docutils literal notranslate"><span class="pre">Postprocessor</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="postprocessor.html#evaluate.postprocessor.postprocessor.Postprocessor.load_results"><code class="docutils literal notranslate"><span class="pre">Postprocessor.load_results()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="postprocessor.html#evaluate.postprocessor.calculate_statistics.calculate_statistics"><code class="docutils literal notranslate"><span class="pre">calculate_statistics()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="postprocessor.html#evaluate.postprocessor.calculate_statistics.initialise_time_series"><code class="docutils literal notranslate"><span class="pre">initialise_time_series()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="postprocessor.html#evaluate.postprocessor.prepare_plotting.create_select_for_plotter"><code class="docutils literal notranslate"><span class="pre">create_select_for_plotter()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="postprocessor.html#evaluate.postprocessor.time_series_maker.TimeSeriesMaker"><code class="docutils literal notranslate"><span class="pre">TimeSeriesMaker</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="postprocessor.html#evaluate.postprocessor.time_series_maker.TimeSeriesMaker.carry_forward_values"><code class="docutils literal notranslate"><span class="pre">TimeSeriesMaker.carry_forward_values()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="postprocessor.html#evaluate.postprocessor.time_series_maker.TimeSeriesMaker.initialise_time_series"><code class="docutils literal notranslate"><span class="pre">TimeSeriesMaker.initialise_time_series()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="postprocessor.html#evaluate.postprocessor.time_series_maker.TimeSeriesMaker.make_time_series_data"><code class="docutils literal notranslate"><span class="pre">TimeSeriesMaker.make_time_series_data()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="postprocessor.html#evaluate.postprocessor.time_series_maker.TimeSeriesMaker.set_agent_start_values"><code class="docutils literal notranslate"><span class="pre">TimeSeriesMaker.set_agent_start_values()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="postprocessor.html#evaluate.postprocessor.time_series_maker.TimeSeriesMaker.update_agent_time_series"><code class="docutils literal notranslate"><span class="pre">TimeSeriesMaker.update_agent_time_series()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="postprocessor.html#evaluate.postprocessor.time_series_maker.TimeSeriesMaker.update_entry_for_agent"><code class="docutils literal notranslate"><span class="pre">TimeSeriesMaker.update_entry_for_agent()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="plotter.html">Plotter Tool</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="plotter.html#evaluate.plotter_tool.plotter_grid.PlotterGrid"><code class="docutils literal notranslate"><span class="pre">PlotterGrid</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="plotter.html#evaluate.plotter_tool.plotter_grid.PlotterGrid.add_plotter"><code class="docutils literal notranslate"><span class="pre">PlotterGrid.add_plotter()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="plotter.html#evaluate.plotter_tool.plotter_grid.PlotterGrid.remove_plotter"><code class="docutils literal notranslate"><span class="pre">PlotterGrid.remove_plotter()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="plotter.html#evaluate.plotter_tool.plotter_grid.PlotterGrid.setup_main"><code class="docutils literal notranslate"><span class="pre">PlotterGrid.setup_main()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="plotter.html#evaluate.plotter_tool.plotter_grid.PlotterGrid.setup_plotters"><code class="docutils literal notranslate"><span class="pre">PlotterGrid.setup_plotters()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="plotter.html#evaluate.plotter_tool.plotter_grid.PlotterGrid.update_plotter_layout"><code class="docutils literal notranslate"><span class="pre">PlotterGrid.update_plotter_layout()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="plotter.html#evaluate.plotter_tool.plotter_grid.plot"><code class="docutils literal notranslate"><span class="pre">plot()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="plotter.html#evaluate.plotter_tool.plotter.plotter.Plotter"><code class="docutils literal notranslate"><span class="pre">Plotter</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="plotter.html#evaluate.plotter_tool.plotter.plotter.Plotter.add_remove_button"><code class="docutils literal notranslate"><span class="pre">Plotter.add_remove_button()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="plotter.html#evaluate.plotter_tool.plotter.plotter.Plotter.adjust_plot_size"><code class="docutils literal notranslate"><span class="pre">Plotter.adjust_plot_size()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="plotter.html#evaluate.plotter_tool.plotter.plotter.Plotter.plot_data"><code class="docutils literal notranslate"><span class="pre">Plotter.plot_data()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="plotter.html#evaluate.plotter_tool.plotter.plotter.Plotter.setup_main"><code class="docutils literal notranslate"><span class="pre">Plotter.setup_main()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="plotter.html#evaluate.plotter_tool.plotter.plotter.Plotter.setup_plot"><code class="docutils literal notranslate"><span class="pre">Plotter.setup_plot()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="plotter.html#evaluate.plotter_tool.plotter.control_panel.ControlPanel"><code class="docutils literal notranslate"><span class="pre">ControlPanel</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="plotter.html#evaluate.plotter_tool.plotter.control_panel.ControlPanel.apply_preconfigured"><code class="docutils literal notranslate"><span class="pre">ControlPanel.apply_preconfigured()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="plotter.html#evaluate.plotter_tool.plotter.control_panel.ControlPanel.list_json_files"><code class="docutils literal notranslate"><span class="pre">ControlPanel.list_json_files()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="plotter.html#evaluate.plotter_tool.plotter.control_panel.ControlPanel.load_data"><code class="docutils literal notranslate"><span class="pre">ControlPanel.load_data()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="plotter.html#evaluate.plotter_tool.plotter.control_panel.ControlPanel.select_color"><code class="docutils literal notranslate"><span class="pre">ControlPanel.select_color()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="plotter.html#evaluate.plotter_tool.plotter.control_panel.ControlPanel.setup_main_menu"><code class="docutils literal notranslate"><span class="pre">ControlPanel.setup_main_menu()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="plotter.html#evaluate.plotter_tool.plotter.control_panel.ControlPanel.toggle"><code class="docutils literal notranslate"><span class="pre">ControlPanel.toggle()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="plotter.html#evaluate.plotter_tool.plotter.control_updater.ControlUpdater"><code class="docutils literal notranslate"><span class="pre">ControlUpdater</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="plotter.html#evaluate.plotter_tool.plotter.control_updater.ControlUpdater.add_y_axis"><code class="docutils literal notranslate"><span class="pre">ControlUpdater.add_y_axis()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="plotter.html#evaluate.plotter_tool.plotter.control_updater.ControlUpdater.remove_y_axis"><code class="docutils literal notranslate"><span class="pre">ControlUpdater.remove_y_axis()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="plotter.html#evaluate.plotter_tool.plotter.plot_configurator.PlotConfigurator"><code class="docutils literal notranslate"><span class="pre">PlotConfigurator</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="plotter.html#evaluate.plotter_tool.plotter.plot_configurator.PlotConfigurator.plot_conf"><code class="docutils literal notranslate"><span class="pre">PlotConfigurator.plot_conf()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Reputation Game v2</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Agent</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/agent.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-simulate.agent">
+<span id="agent"></span><h1>Agent<a class="headerlink" href="#module-simulate.agent" title="Link to this heading">¶</a></h1>
+<dl class="py class" id="module-simulate.agent.agent">
+<dt class="sig sig-object py" id="simulate.agent.agent.Agent">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">simulate.agent.agent.</span></span><span class="sig-name descname"><span class="pre">Agent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">honesty</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">character</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_dict</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">log</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">any</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">conf</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simulate.agent.agent.Agent" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Represents an agent in the simulation with defined characteristics and memory.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="simulate.agent.agent.Agent.initialise_memory">
+<span class="sig-name descname"><span class="pre">initialise_memory</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#simulate.agent.agent.Agent.initialise_memory" title="Link to this definition">¶</a></dt>
+<dd><p>Initializes the agent’s memory with predefined values from the configuration.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simulate.agent.agent.Agent.setup_character">
+<span class="sig-name descname"><span class="pre">setup_character</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">character</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#simulate.agent.agent.Agent.setup_character" title="Link to this definition">¶</a></dt>
+<dd><p>Sets up the agent’s character attributes based on the provided character mapping e.g., self.deceptive.”</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>character</strong> (<em>str</em>) – Character traits of the agent.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simulate.agent.agent.Agent.setup_memory">
+<span class="sig-name descname"><span class="pre">setup_memory</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#simulate.agent.agent.Agent.setup_memory" title="Link to this definition">¶</a></dt>
+<dd><p>Initializes the agent’s memory structures for friendships and information states.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class" id="module-simulate.agent.initiator">
+<dt class="sig sig-object py" id="simulate.agent.initiator.Initiator">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">simulate.agent.initiator.</span></span><span class="sig-name descname"><span class="pre">Initiator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">agent</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simulate.agent.initiator.Initiator" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Responsible for initiating conversations by selecting settings, listeners, and topics based on agent characteristics.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="simulate.agent.initiator.Initiator.draw_topic">
+<span class="sig-name descname"><span class="pre">draw_topic</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">agents</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#simulate.agent.initiator.Initiator.draw_topic" title="Link to this definition">¶</a></dt>
+<dd><p>Draws a topic based on the weights derived from relationships and friendships.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>agents</strong> (<em>list</em><em>[</em><em>int</em><em>]</em>) – A list of agent IDs.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The ID of the drawn topic.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simulate.agent.initiator.Initiator.pick_listeners">
+<span class="sig-name descname"><span class="pre">pick_listeners</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">setting</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="headerlink" href="#simulate.agent.initiator.Initiator.pick_listeners" title="Link to this definition">¶</a></dt>
+<dd><p>Selects listeners based on the conversation setting and the agent’s character.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>setting</strong> (<em>str</em>) – The setting for the conversation.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A dictionary containing the selected listener IDs and their weights.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simulate.agent.initiator.Initiator.pick_setting">
+<span class="sig-name descname"><span class="pre">pick_setting</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#simulate.agent.initiator.Initiator.pick_setting" title="Link to this definition">¶</a></dt>
+<dd><p>Selects the conversation setting (one-to-one or one-to-all) based on a probability.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The chosen setting, either “one_to_one” or “one_to_all”.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simulate.agent.initiator.Initiator.pick_topic">
+<span class="sig-name descname"><span class="pre">pick_topic</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#simulate.agent.initiator.Initiator.pick_topic" title="Link to this definition">¶</a></dt>
+<dd><p>Selects the conversation topic based on the agent’s character and relationships.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The ID of the chosen topic.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simulate.agent.initiator.Initiator.rank_listeners">
+<span class="sig-name descname"><span class="pre">rank_listeners</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">others</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="headerlink" href="#simulate.agent.initiator.Initiator.rank_listeners" title="Link to this definition">¶</a></dt>
+<dd><p>Ranks potential listeners based on friendship and relationship weights.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>others</strong> (<em>list</em><em>[</em><em>int</em><em>]</em>) – A list of IDs of potential listeners.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>An array of weights representing the ranking of the listeners.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class" id="module-simulate.agent.receiver">
+<dt class="sig sig-object py" id="simulate.agent.receiver.Receiver">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">simulate.agent.receiver.</span></span><span class="sig-name descname"><span class="pre">Receiver</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">agent</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simulate.agent.receiver.Receiver" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Handles receiving messages from speakers, interpreting statements,
+and updating the receiver’s beliefs and friendships.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="simulate.agent.receiver.Receiver.compute_trust">
+<span class="sig-name descname"><span class="pre">compute_trust</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">topic</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">speaker</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">statement</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="information_theory.html#simulate.information_theory.info.Info" title="simulate.information_theory.info.Info"><span class="pre">Info</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">blush</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#simulate.agent.receiver.Receiver.compute_trust" title="Link to this definition">¶</a></dt>
+<dd><p>Computes the trustworthiness of the speaker based on the received statement.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>topic</strong> (<em>int</em>) – The topic of conversation.</p></li>
+<li><p><strong>speaker</strong> (<em>int</em>) – The ID of the speaker.</p></li>
+<li><p><strong>statement</strong> (<a class="reference internal" href="information_theory.html#simulate.information_theory.info.Info" title="simulate.information_theory.info.Info"><em>Info</em></a>) – The statement received from the speaker.</p></li>
+<li><p><strong>blush</strong> (<em>bool</em>) – Indicates if the speaker is blushing.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The computed trust value.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simulate.agent.receiver.Receiver.handle_surprise">
+<span class="sig-name descname"><span class="pre">handle_surprise</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">statement</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="information_theory.html#simulate.information_theory.info.Info" title="simulate.information_theory.info.Info"><span class="pre">Info</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">topic</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#simulate.agent.receiver.Receiver.handle_surprise" title="Link to this definition">¶</a></dt>
+<dd><p>Calculates the surprise factor based on the received statement and topic.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>statement</strong> (<a class="reference internal" href="information_theory.html#simulate.information_theory.info.Info" title="simulate.information_theory.info.Info"><em>Info</em></a>) – The statement received from the speaker.</p></li>
+<li><p><strong>topic</strong> (<em>int</em>) – The topic of conversation.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The computed surprise factor.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simulate.agent.receiver.Receiver.interprete_speaker">
+<span class="sig-name descname"><span class="pre">interprete_speaker</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">speaker</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">topic</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">statement</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="information_theory.html#simulate.information_theory.info.Info" title="simulate.information_theory.info.Info"><span class="pre">Info</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="headerlink" href="#simulate.agent.receiver.Receiver.interprete_speaker" title="Link to this definition">¶</a></dt>
+<dd><p>Interprets the information about the speaker based on the statement.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>speaker</strong> (<em>int</em>) – The ID of the speaker.</p></li>
+<li><p><strong>topic</strong> (<em>int</em>) – The topic of conversation.</p></li>
+<li><p><strong>statement</strong> (<a class="reference internal" href="information_theory.html#simulate.information_theory.info.Info" title="simulate.information_theory.info.Info"><em>Info</em></a>) – The statement received from the speaker.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A dictionary containing the interpreted information about the speaker’s truth and lies.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simulate.agent.receiver.Receiver.interprete_topic">
+<span class="sig-name descname"><span class="pre">interprete_topic</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">speaker</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">topic</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">statement</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="information_theory.html#simulate.information_theory.info.Info" title="simulate.information_theory.info.Info"><span class="pre">Info</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="headerlink" href="#simulate.agent.receiver.Receiver.interprete_topic" title="Link to this definition">¶</a></dt>
+<dd><p>Interprets the information about the topic based on the statement.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>speaker</strong> (<em>int</em>) – The ID of the speaker.</p></li>
+<li><p><strong>topic</strong> (<em>int</em>) – The topic of conversation.</p></li>
+<li><p><strong>statement</strong> (<a class="reference internal" href="information_theory.html#simulate.information_theory.info.Info" title="simulate.information_theory.info.Info"><em>Info</em></a>) – The statement received from the speaker.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A dictionary containing the interpreted information about truth and lies.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simulate.agent.receiver.Receiver.receive">
+<span class="sig-name descname"><span class="pre">receive</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">topic</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">speaker</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">statement</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="information_theory.html#simulate.information_theory.info.Info" title="simulate.information_theory.info.Info"><span class="pre">Info</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">blush</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="headerlink" href="#simulate.agent.receiver.Receiver.receive" title="Link to this definition">¶</a></dt>
+<dd><p>Processes a received statement, updates trust, and interprets the speaker and topic.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>topic</strong> (<em>int</em>) – The topic of conversation.</p></li>
+<li><p><strong>speaker</strong> (<em>int</em>) – The ID of the speaker.</p></li>
+<li><p><strong>statement</strong> (<a class="reference internal" href="information_theory.html#simulate.information_theory.info.Info" title="simulate.information_theory.info.Info"><em>Info</em></a>) – The statement received from the speaker.</p></li>
+<li><p><strong>blush</strong> (<em>bool</em>) – Indicates if the speaker is blushing.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A dictionary containing trust and interpreted information about the speaker and topic.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class" id="module-simulate.agent.saver">
+<dt class="sig sig-object py" id="simulate.agent.saver.StateSaver">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">simulate.agent.saver.</span></span><span class="sig-name descname"><span class="pre">StateSaver</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">agent</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simulate.agent.saver.StateSaver" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Handles compressing an agent’s state into a small dict for logging or writing to JSON.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="simulate.agent.saver.StateSaver.initial_state">
+<span class="sig-name descname"><span class="pre">initial_state</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="headerlink" href="#simulate.agent.saver.StateSaver.initial_state" title="Link to this definition">¶</a></dt>
+<dd><p>Gets the initial state of the agent.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A dictionary containing the initial state information of the agent.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simulate.agent.saver.StateSaver.log_state">
+<span class="sig-name descname"><span class="pre">log_state</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="headerlink" href="#simulate.agent.saver.StateSaver.log_state" title="Link to this definition">¶</a></dt>
+<dd><p>Logs the current state of the agent.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A dictionary containing the logged state information of the agent.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simulate.agent.saver.StateSaver.save_state">
+<span class="sig-name descname"><span class="pre">save_state</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">topic</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">partners</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">setting</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="headerlink" href="#simulate.agent.saver.StateSaver.save_state" title="Link to this definition">¶</a></dt>
+<dd><p>Saves the current state based on the conversation setting.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>topic</strong> (<em>int</em>) – The topic of conversation.</p></li>
+<li><p><strong>partners</strong> (<em>list</em>) – The list of partners involved in the conversation.</p></li>
+<li><p><strong>setting</strong> (<em>str</em>) – The setting of the conversation (‘one_to_one’ or ‘one_to_all’).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A dictionary containing the saved state information for the conversation.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class" id="module-simulate.agent.sender">
+<dt class="sig sig-object py" id="simulate.agent.sender.Sender">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">simulate.agent.sender.</span></span><span class="sig-name descname"><span class="pre">Sender</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">agent</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simulate.agent.sender.Sender" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Handles creating a statement about a topic, constructing a lie if needed, and blushing.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="simulate.agent.sender.Sender.assume_others_opinion">
+<span class="sig-name descname"><span class="pre">assume_others_opinion</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">listeners</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">list</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">topic</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="information_theory.html#simulate.information_theory.info.Info" title="simulate.information_theory.info.Info"><span class="pre">Info</span></a></span></span><a class="headerlink" href="#simulate.agent.sender.Sender.assume_others_opinion" title="Link to this definition">¶</a></dt>
+<dd><p>Assumes the opinions of other listeners on the given topic.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>listeners</strong> (<em>dict</em><em>[</em><em>list</em><em>]</em>) – A dictionary containing listeners’ IDs and weights.</p></li>
+<li><p><strong>topic</strong> (<em>int</em>) – The topic of conversation.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The assumed opinion of others on the topic.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="information_theory.html#simulate.information_theory.info.Info" title="simulate.information_theory.info.Info">Info</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simulate.agent.sender.Sender.blushes">
+<span class="sig-name descname"><span class="pre">blushes</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#simulate.agent.sender.Sender.blushes" title="Link to this definition">¶</a></dt>
+<dd><p>Determines whether the sender blushes when lying.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simulate.agent.sender.Sender.choose_lie_method">
+<span class="sig-name descname"><span class="pre">choose_lie_method</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">topic</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lie</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="information_theory.html#simulate.information_theory.info.Info" title="simulate.information_theory.info.Info"><span class="pre">Info</span></a></span></span><a class="headerlink" href="#simulate.agent.sender.Sender.choose_lie_method" title="Link to this definition">¶</a></dt>
+<dd><p>Chooses the lie method based on the topic and agent character.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>topic</strong> (<em>int</em>) – The topic of conversation.</p></li>
+<li><p><strong>lie</strong> (<em>float</em>) – The calculated lie size.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The chosen method of lying based on various factors.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="information_theory.html#simulate.information_theory.info.Info" title="simulate.information_theory.info.Info">Info</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simulate.agent.sender.Sender.get_maximum_lie_size">
+<span class="sig-name descname"><span class="pre">get_maximum_lie_size</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">topic</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">assumed_opinion</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="information_theory.html#simulate.information_theory.info.Info" title="simulate.information_theory.info.Info"><span class="pre">Info</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#simulate.agent.sender.Sender.get_maximum_lie_size" title="Link to this definition">¶</a></dt>
+<dd><p>Calculates the maximum size of a lie that can be told based on the difference to the assumed opinion.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>topic</strong> (<em>int</em>) – The topic of conversation.</p></li>
+<li><p><strong>assumed_opinion</strong> (<a class="reference internal" href="information_theory.html#simulate.information_theory.info.Info" title="simulate.information_theory.info.Info"><em>Info</em></a>) – The assumed opinion on the topic.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The maximum size of the lie that can be told.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simulate.agent.sender.Sender.talk">
+<span class="sig-name descname"><span class="pre">talk</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">listeners</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">list</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">topic</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="headerlink" href="#simulate.agent.sender.Sender.talk" title="Link to this definition">¶</a></dt>
+<dd><p>Simulates the process of talking by sending a message to listeners.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>listeners</strong> (<em>dict</em><em>[</em><em>list</em><em>]</em>) – A dictionary containing listeners’ IDs and weights.</p></li>
+<li><p><strong>topic</strong> (<em>int</em>) – The topic of conversation.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A message containing the statement and whether the sender blushes.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simulate.agent.sender.Sender.tells_truth_now">
+<span class="sig-name descname"><span class="pre">tells_truth_now</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#simulate.agent.sender.Sender.tells_truth_now" title="Link to this definition">¶</a></dt>
+<dd><p>Determines whether the sender is telling the truth at the current moment.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class" id="module-simulate.agent.updater">
+<dt class="sig sig-object py" id="simulate.agent.updater.Updater">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">simulate.agent.updater.</span></span><span class="sig-name descname"><span class="pre">Updater</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">agent</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">log</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simulate.agent.updater.Updater" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Handles updating the mind attributes of the associated agent.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="simulate.agent.updater.Updater.add_to_buffer">
+<span class="sig-name descname"><span class="pre">add_to_buffer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#simulate.agent.updater.Updater.add_to_buffer" title="Link to this definition">¶</a></dt>
+<dd><p>Adds an object to the internal buffer for later processing.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simulate.agent.updater.Updater.awareness">
+<span class="sig-name descname"><span class="pre">awareness</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">honest</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">topic</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">statement</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="information_theory.html#simulate.information_theory.info.Info" title="simulate.information_theory.info.Info"><span class="pre">Info</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#simulate.agent.updater.Updater.awareness" title="Link to this definition">¶</a></dt>
+<dd><p>Updates the agent’s awareness of a topic based on the received statement.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>honest</strong> (<em>bool</em>) – Indicates if the speaker is honest.</p></li>
+<li><p><strong>topic</strong> (<em>int</em>) – The topic being discussed.</p></li>
+<li><p><strong>statement</strong> (<a class="reference internal" href="information_theory.html#simulate.information_theory.info.Info" title="simulate.information_theory.info.Info"><em>Info</em></a>) – The statement made by the speaker.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simulate.agent.updater.Updater.update">
+<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">topic</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">speaker</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#simulate.agent.updater.Updater.update" title="Link to this definition">¶</a></dt>
+<dd><p>Updates the beliefs of the agent based on buffered information.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>topic</strong> (<em>int</em>) – The topic being discussed.</p></li>
+<li><p><strong>speaker</strong> (<em>int</em>) – The speaker providing information.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simulate.agent.updater.Updater.update_ToM">
+<span class="sig-name descname"><span class="pre">update_ToM</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">trust</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">speaker</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">topic</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">statement</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="information_theory.html#simulate.information_theory.info.Info" title="simulate.information_theory.info.Info"><span class="pre">Info</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#simulate.agent.updater.Updater.update_ToM" title="Link to this definition">¶</a></dt>
+<dd><p>Updates the Theory of Mind (ToM) for the speaker based on trust and the statement.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>trust</strong> (<em>float</em>) – The level of trust in the speaker’s statement.</p></li>
+<li><p><strong>speaker</strong> (<em>int</em>) – The ID of the speaker.</p></li>
+<li><p><strong>topic</strong> (<em>int</em>) – The topic being discussed.</p></li>
+<li><p><strong>statement</strong> (<a class="reference internal" href="information_theory.html#simulate.information_theory.info.Info" title="simulate.information_theory.info.Info"><em>Info</em></a>) – The statement made by the speaker.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simulate.agent.updater.Updater.update_friendship">
+<span class="sig-name descname"><span class="pre">update_friendship</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">speaker</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">statement</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#simulate.agent.updater.Updater.update_friendship" title="Link to this definition">¶</a></dt>
+<dd><p>Updates the friendship value between the agent and another speaker.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>speaker</strong> (<em>int</em>) – The ID of the speaker whose friendship value is being updated.</p></li>
+<li><p><strong>statement</strong> (<em>float</em>) – The statement (Beta.mean) made by the speaker used to evaluate the update.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="simulate.html" class="btn btn-neutral float-left" title="Simulate" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="information_theory.html" class="btn btn-neutral float-right" title="Information Theory" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Florian Wiethof.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

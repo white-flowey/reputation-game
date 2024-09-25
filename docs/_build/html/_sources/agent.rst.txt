@@ -1,0 +1,36 @@
+Agent
+=========
+.. automodule:: simulate.agent
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+.. automodule:: simulate.agent.agent
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+.. automodule:: simulate.agent.initiator
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+.. automodule:: simulate.agent.receiver
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+.. automodule:: simulate.agent.saver
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+.. automodule:: simulate.agent.sender
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+.. automodule:: simulate.agent.updater
+   :members:
+   :undoc-members:
+   :show-inheritance:

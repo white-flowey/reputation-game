@@ -1,0 +1,37 @@
+Plotter Tool
+=============
+
+.. automodule:: evaluate.plotter_tool
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+.. automodule:: evaluate.plotter_tool.plotter_grid
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+.. automodule:: evaluate.plotter_tool.plotter
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+.. automodule:: evaluate.plotter_tool.plotter.plotter
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+.. automodule:: evaluate.plotter_tool.plotter.control_panel
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+.. automodule:: evaluate.plotter_tool.plotter.control_updater
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+.. automodule:: evaluate.plotter_tool.plotter.plot_configurator
+   :members:
+   :undoc-members:
+   :show-inheritance:

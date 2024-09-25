@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Updater &mdash; Reputation Game v2 0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=ef8776f5" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../_static/documentation_options.js?v=1b390748"></script>
+        <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Information Theory (Package)" href="../information_theory/__information_theory__.html" />
+    <link rel="prev" title="Sender" href="sender.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            Reputation Game v2
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../config/__config__.html">Config (Package)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../main.html">Main</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../__simulate__.html">Simulation Package</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../game.html">Game</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../simulation.html">Simulate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../conversation.html">Conversation</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="__agent__.html">Agent (Package)</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="agent.html">Agent</a></li>
+<li class="toctree-l3"><a class="reference internal" href="initiator.html">Initiator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="receiver.html">Receiver</a></li>
+<li class="toctree-l3"><a class="reference internal" href="saver.html">Saver</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sender.html">Sender</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Updater</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#simulate.agent.updater.Updater"><code class="docutils literal notranslate"><span class="pre">Updater</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../information_theory/__information_theory__.html">Information Theory (Package)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../helper/__helper__.html">Helper (Package)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../evaluate/__evaluate__.html">Evaluate (Package)</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Reputation Game v2</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../__simulate__.html">Simulation Package</a></li>
+          <li class="breadcrumb-item"><a href="__agent__.html">Agent (Package)</a></li>
+      <li class="breadcrumb-item active">Updater</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../_sources/source/simulate/agent/updater.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-simulate.agent.updater">
+<span id="updater"></span><h1>Updater<a class="headerlink" href="#module-simulate.agent.updater" title="Link to this heading">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="simulate.agent.updater.Updater">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">simulate.agent.updater.</span></span><span class="sig-name descname"><span class="pre">Updater</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">agent</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">log</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simulate.agent.updater.Updater" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Handles updating the mind attributes of the associated agent.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="simulate.agent.updater.Updater.add_to_buffer">
+<span class="sig-name descname"><span class="pre">add_to_buffer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#simulate.agent.updater.Updater.add_to_buffer" title="Link to this definition">¶</a></dt>
+<dd><p>Adds an object to the internal buffer for later processing.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simulate.agent.updater.Updater.awareness">
+<span class="sig-name descname"><span class="pre">awareness</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">honest</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">topic</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">statement</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../information_theory/info.html#simulate.information_theory.info.Info" title="simulate.information_theory.info.Info"><span class="pre">Info</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#simulate.agent.updater.Updater.awareness" title="Link to this definition">¶</a></dt>
+<dd><p>Updates the agent’s awareness of a topic based on the received statement.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>honest</strong> (<em>bool</em>) – Indicates if the speaker is honest.</p></li>
+<li><p><strong>topic</strong> (<em>int</em>) – The topic being discussed.</p></li>
+<li><p><strong>statement</strong> (<a class="reference internal" href="../information_theory/info.html#simulate.information_theory.info.Info" title="simulate.information_theory.info.Info"><em>Info</em></a>) – The statement made by the speaker.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simulate.agent.updater.Updater.update">
+<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">topic</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">speaker</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#simulate.agent.updater.Updater.update" title="Link to this definition">¶</a></dt>
+<dd><p>Updates the beliefs of the agent based on buffered information.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>topic</strong> (<em>int</em>) – The topic being discussed.</p></li>
+<li><p><strong>speaker</strong> (<em>int</em>) – The speaker providing information.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simulate.agent.updater.Updater.update_ToM">
+<span class="sig-name descname"><span class="pre">update_ToM</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">trust</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">speaker</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">topic</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">statement</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../information_theory/info.html#simulate.information_theory.info.Info" title="simulate.information_theory.info.Info"><span class="pre">Info</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#simulate.agent.updater.Updater.update_ToM" title="Link to this definition">¶</a></dt>
+<dd><p>Updates the Theory of Mind (ToM) for the speaker based on trust and the statement.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>trust</strong> (<em>float</em>) – The level of trust in the speaker’s statement.</p></li>
+<li><p><strong>speaker</strong> (<em>int</em>) – The ID of the speaker.</p></li>
+<li><p><strong>topic</strong> (<em>int</em>) – The topic being discussed.</p></li>
+<li><p><strong>statement</strong> (<a class="reference internal" href="../information_theory/info.html#simulate.information_theory.info.Info" title="simulate.information_theory.info.Info"><em>Info</em></a>) – The statement made by the speaker.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simulate.agent.updater.Updater.update_friendship">
+<span class="sig-name descname"><span class="pre">update_friendship</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">speaker</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">statement</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#simulate.agent.updater.Updater.update_friendship" title="Link to this definition">¶</a></dt>
+<dd><p>Updates the friendship value between the agent and another speaker.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>speaker</strong> (<em>int</em>) – The ID of the speaker whose friendship value is being updated.</p></li>
+<li><p><strong>statement</strong> (<em>float</em>) – The statement (Beta.mean) made by the speaker used to evaluate the update.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="sender.html" class="btn btn-neutral float-left" title="Sender" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../information_theory/__information_theory__.html" class="btn btn-neutral float-right" title="Information Theory (Package)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Florian Wiethof.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

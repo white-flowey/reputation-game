@@ -1,0 +1,16 @@
+Information Theory
+==========
+.. automodule:: simulate.information_theory
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+.. automodule:: simulate.information_theory.IFT
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+.. automodule:: simulate.information_theory.info
+   :members:
+   :undoc-members:
+   :show-inheritance:
