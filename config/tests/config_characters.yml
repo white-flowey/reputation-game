@@ -1,5 +1,5 @@
 game:
-  honesties: []
+  honesties_dict: {}
   n_agents: 17 # Number of agents in simulation
   n_rounds: 1 # Number of conversation rounds
   n_stat: 1 # Number of simulations for statistic batch (different seeds)
@@ -7,8 +7,8 @@ game:
                       6: "deceptive", 7: "flattering", 8: "aggressive", 9: "shameless", 10: "smart", 11: "clever", 
                       12: "manipulative", 13: "dominant", 14: "destructive", 15: "good", 16: "antistrategic"}]
   folder: "evaluate/results" # Result folder
-  mindI: []
-  Ks: []
+  mindI_dict: {}
+  Ks_dict: {}
 
 randomseed:
   seed: 21 # 21 is a nice simulation

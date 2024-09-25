@@ -13,7 +13,6 @@ def test_characters():
         agents = sim.agents
 
         assert get_agent_by_character(sim, "deceptive").character == "deceptive"
-        
         assert get_agent_by_character(sim, "egocentric").egocentric == 0.5
         assert get_agent_by_character(sim, "strategic").strategic == 1
         assert get_agent_by_character(sim, "deceptive").deceptive
