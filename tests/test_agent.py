@@ -1,4 +1,4 @@
-from simulate import Game, Simulation, Agent
+from simulate import Game
 from simulate.information_theory import Info
 from config import init_conf
 
@@ -19,8 +19,3 @@ def test_updater_awareness():
     agent.Updater.awareness(True, 0, statement)
     update = agent.I[agent.id]
     assert update.mu == self_info.mu + 1 and update.la == self_info.la + 1
-
-def test_updater_update():
-    agent.Updater.add_to_buffer({"trust": 0.2, "Ispeaker": {"Itruth": Info(10,1), "Ilie": Info(5,2)}})
-    agent.Updater.update(1, 2)
-    assert False

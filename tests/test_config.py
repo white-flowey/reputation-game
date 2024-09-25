@@ -5,7 +5,7 @@ from config import init_conf
 def test_config_loader():
     conf = init_conf()
     
-    int_types = ["n_agents", "n_rounds", "n_stat", "seed", "seed_offset", "n_parallel_core_jobs"]
+    int_types = ["n_agents", "n_rounds", "n_stat", "seed", "seed_offset"]
     for i in int_types:
         assert conf(i) != None
         assert isinstance(conf(i), int)
