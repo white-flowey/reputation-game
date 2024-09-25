@@ -8,7 +8,6 @@ evaluate/results/simulation/*
 *todo.txt
 *todo.md
 *run.sh
-config/config.yml
 *output.prof
 
 # Python-related files
