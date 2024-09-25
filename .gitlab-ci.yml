@@ -5,7 +5,7 @@ stages:
 test:
   stage: test
   script:
-    - pip install -r requirements.txt
+    - pip install -r requirements_39.txt
     - pytest
   only:
     - merge_requests
