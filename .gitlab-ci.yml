@@ -1,3 +1,5 @@
+image: python:3.11
+
 stages:
   - test
   - deploy
@@ -5,7 +7,7 @@ stages:
 test:
   stage: test
   script:
-    - pip install -r requirements_39.txt
+    - pip install -r requirements.txt
     - pytest
   only:
     - merge_requests
