@@ -2,7 +2,7 @@
 evaluate/results/logs/*
 evaluate/results/processor/*
 evaluate/results/simulation/*
-
+docs/call_graphs/*
 
 # Root files
 *todo.txt
