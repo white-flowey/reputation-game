@@ -1,5 +1,5 @@
 game:
-  honesties_dict: {0: 0.17, 1: 0.8, 2: 0.95}
+  honesties_dict: {0: 0.14, 1: 0.8, 2: 0.97}
   n_agents: 3 # Number of agents in simulation
   n_rounds: 300 # Number of conversation rounds
   n_stat: 100 # Number of simulations for statistic batch (different seeds)
@@ -18,7 +18,7 @@ parameters:
   LOGGING: False
 
 constants:
-  MIN_KL: -0.9999999
+  MIN_KL: -0.99999
   BLUSH_FREQ_LIE: 0.1 # Frequency of blushing when lieing
   F_CAUTION: 0.3 # Scales down lie tolerance when finding maximum lie size
   Q: 10 # Factor by how much personal interactions weigh more than having heard about someone

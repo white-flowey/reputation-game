@@ -121,7 +121,7 @@ class IFT:
         Returns:
             tuple[float, float]: A tuple containing the optimized mu and la values.
         """
-        def rev_loss(J: np.ndarray) -> float:
+        def rev_loss(J: np.ndarray) -> float: 
             return jLoss(u, v, self.conf("MIN_KL"), J)
 
         def jac_loss(J: np.ndarray) -> np.ndarray:
@@ -132,9 +132,9 @@ class IFT:
 
         initial_guess = [mu_start, la_start]
         if self.conf("MINIMIZE_FUNCTION") == "ACCURATE":
-            fun0, fun1 = 1, 0
+            fun0, fun1, res1 = 1, 0, initial_guess
             while fun1 < fun0:
-                res0 = minimize(rev_loss, initial_guess, method="trust-exact", jac=jac_loss, hess=hes_loss, tol=self.conf("GTOL"))
+                res0 = minimize(rev_loss, res1, method="trust-exact", jac=jac_loss, hess=hes_loss, tol=self.conf("GTOL"))
                 fun0, res0 = res0.fun, res0.x 
                 res1 = minimize(rev_loss, res0, method="trust-ncg", jac=jac_loss, hess=hes_loss, tol=self.conf("GTOL"))
                 fun1, res1 = res1.fun, res1.x
@@ -161,7 +161,6 @@ def jLoss(u: float, v: float, MIN_KL: float, J: np.ndarray) -> float:
     return (mu * u + la * v +
             gammaln(mu + 1) + gammaln(la + 1) - gammaln(mu + la + 2) +
             (J[0] - mu) ** 2 + (J[1] - la) ** 2)
-
 
 @jit
 def jgradLoss(u: float, v: float, MIN_KL: float, J: np.ndarray) -> np.ndarray:
