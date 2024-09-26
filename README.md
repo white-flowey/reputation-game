@@ -51,4 +51,4 @@ python call_graph_maker.py simulate/agent
 python call_graph_maker.py evaluate
 ```
 
-The resulting call graph is stored as a PNG in docs/call_graphs.
+The resulting call graph is stored as a PNG in docs/call_graphs. You might need to additionally install GraphViz on your system.
