@@ -34,3 +34,21 @@ cd docs
 make html
 open _build/html/index.html
 ```
+
+To create a Call Graph for some package:
+
+```
+cd docs
+python call_graph_maker.py PATHNAME
+open _build/html/index.html
+```
+
+Make sure that PATHNAME is written starting from the root folder. Examples:
+
+```
+python call_graph_maker.py simulate
+python call_graph_maker.py simulate/agent
+python call_graph_maker.py evaluate
+```
+
+The resulting call graph is stored as a PNG in docs/call_graphs.

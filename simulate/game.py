@@ -50,7 +50,7 @@ class Game:
             if len(self.simulations) == 1:
                 results = [self.simulations[0].play()]
             else:
-                results = launch_parallel(self.simulations, play)
+                results = launch_parallel(self.simulations, play_simulation)
             print(f"Time elapsed: {round(timer() - start_time, 3)}s")
             self.output(results, self.outfile_name)
         else:
@@ -69,7 +69,7 @@ class Game:
         print(f"Saving time: {round(timer() - start, 2)}s")
 
 
-def play(sim: Simulation) -> dict:
+def play_simulation(sim: Simulation) -> dict:
     """
     Plays a simulation. This is just a function for parallel processing.
 
