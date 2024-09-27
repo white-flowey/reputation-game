@@ -34,7 +34,6 @@ def make_outfile_name(character):
     if len(character) == 1 and "all" in character:
         name = "_".join([ids[basis_character], basis_character])
     elif "all" in character:
-        print(character)
         name = ids[next(c for c in characters if c != basis_character)] + "+" + basis_character
     else:
         name = "mix_" + "|".join(f"{int(ids[c]):02d}" for c in sorted({*characters, basis_character}))

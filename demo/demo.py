@@ -88,7 +88,7 @@ class Plotter():
         self.figure, self.ax = plt.subplots(figsize=(10, 5))
         self.plots = PlotConfigurator().preconfigured
         self.selected_plot = st.selectbox("Select Preconfigured Plot", options=list(self.plots.keys()))
-        if st.session_state.results is not None and self.plots != "Select plot":
+        if st.session_state.results is not None and self.selected_plot != "Select plot":
             self.plot_data()
         else:
             st.write("No results to plot. Please configure and run the simulation on the left.")
@@ -96,8 +96,6 @@ class Plotter():
     def plot_data(self):
         """Plot the selected data with specified axes and styles."""
         self.plot = self.plots[self.selected_plot]
-        print(self.plots)
-        print(self.plot)
         self.ax.clear()
         x_field = self.plot["x_axis"]
         for y_axis in self.plot["y_axes"]:
