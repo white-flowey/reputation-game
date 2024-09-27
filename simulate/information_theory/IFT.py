@@ -29,12 +29,12 @@ class IFT:
         Returns:
             Info: A new Info instance representing the matched distribution.
         """
-        Istart = self.match_moments(trust, Itruth, Ilie)
-
         if trust == 0: 
             return Ilie
         elif trust == 1: 
             return Itruth
+        
+        Istart = self.match_moments(trust, Itruth, Ilie)
         
         u = trust * (digamma(Itruth.mu + Itruth.la + 2) - digamma(Itruth.mu + 1)) + \
             (1 - trust) * (digamma(Ilie.mu + Ilie.la + 2) - digamma(Ilie.mu + 1))

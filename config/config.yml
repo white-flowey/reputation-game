@@ -1,15 +1,15 @@
 game:
-  honesties_dict: {0: 0.14, 1: 0.8, 2: 0.97}
+  honesties_dict: {0: 0.17, 1: 0.8, 2: 0.95}
   n_agents: 3 # Number of agents in simulation
-  n_rounds: 300 # Number of conversation rounds
-  n_stat: 100 # Number of simulations for statistic batch (different seeds)
+  n_rounds: 500 # Number of conversation rounds
+  n_stat: 1 # Number of simulations for statistic batch (different seeds)
   characters_dict: [{"all": "ordinary"}] # Characters of each agent
   folder: "evaluate/results" # Result folder
   mindI_dict: {}
   Ks_dict: {}
 
 randomseed:
-  seed: 21 # 21 is a nice simulation
+  seed: 15 # 15 is a nice simulation
   seed_offset: 0
 
 parameters:
@@ -25,7 +25,7 @@ constants:
 
 switches:
   MINIMIZE_FUNCTION: "SHORT" # choose beetween 'SHORT', 'ACCURATE'
-  GTOL: 0.0000000001
+  GTOL: 0.000000000000001
   
   RANDOM_HONESTIES: True # if True, intrinsic honesties of agents will be randomly distributed. If False, thay are equally distributed between 0 and 1. make shure honesties is None in the game specification
   CONTINUOUS_FRIENDSHIP: False
