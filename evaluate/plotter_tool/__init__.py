@@ -1,2 +1,2 @@
 from .plotter_grid import plot
-from .plotter import Plotter
+from .plotter import Plotter, PlotConfigurator

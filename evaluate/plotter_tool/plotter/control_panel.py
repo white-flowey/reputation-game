@@ -45,7 +45,7 @@ class ControlPanel(QGridLayout):
             self.setup_main_menu()
         if filename != "Select file":
             filename = "/".join(["evaluate/results/simulation", filename])
-            self.plotter.data = Postprocessor(filename).select
+            self.plotter.data = Postprocessor(filename=filename).select
             self.x_axis_select.deleteLater()
             self.fields = sorted(self.plotter.data.keys())
             self.x_axis_select = create_select(self.fields, 1, 1, self, func=self.plotter.plot_data)

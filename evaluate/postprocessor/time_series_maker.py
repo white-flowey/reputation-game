@@ -49,8 +49,9 @@ class TimeSeriesMaker:
         Returns:
             dict: Updated time series data structure with initial values.
         """
+        is_str_key = isinstance(list(data.keys())[0], str)
         for a in conf("agents"):
-            a_field = str(a)
+            a_field = str(a) if is_str_key else a
             ts[a]["honesty"][:] = [data[a_field]["honesty"]] * times
             ts[a]["lastK"][0] = data[a_field]["lastK"]
             ts[a]["kappa"][0] = data[a_field]["kappa"]
@@ -74,8 +75,10 @@ class TimeSeriesMaker:
         """
         for t, entry in enumerate(data[1:], start=1):
             ts = self.carry_forward_values(ts, a, t)
-            if str(a) in entry.keys():
-                ts = self.update_entry_for_agent(ts, a, t, entry[str(a)])
+            is_str_key = isinstance(list(entry.keys())[0], str)
+            a = str(a) if is_str_key else a
+            if a in entry.keys():
+                ts = self.update_entry_for_agent(ts, a, t, entry[a])
             else:
                 ts[a]["lastK"][t] = ts[a]["lastK"][t-1]
                 ts[a]["kappa"][t] = ts[a]["kappa"][t-1]

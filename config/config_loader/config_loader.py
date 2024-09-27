@@ -59,10 +59,11 @@ class ConfigLoader:
         """Set default values for the configuration attributes."""
         self.conf["agents"] = list(range(self.conf["n_agents"]))
         self.conf["times"] = self.conf["n_rounds"] * 3 + 1
-        for character in self.conf["characters_dict"]:
+        for i, character in enumerate(self.conf["characters_dict"]):
             if "all" in character and len(character) > self.conf["n_agents"]:
                 del character["all"]
             character.setdefault("all", "ordinary")
+            self.conf["characters_dict"][i] = {k: v for k, v in character.items() if v != character["all"] or k == "all"}
 
     def get(self, key: str) -> any:
         """Get the configuration value for a given key."""
