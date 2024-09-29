@@ -76,9 +76,9 @@ class TimeSeriesMaker:
         for t, entry in enumerate(data[1:], start=1):
             ts = self.carry_forward_values(ts, a, t)
             is_str_key = isinstance(list(entry.keys())[0], str)
-            a = str(a) if is_str_key else a
-            if a in entry.keys():
-                ts = self.update_entry_for_agent(ts, a, t, entry[a])
+            a_field = str(a) if is_str_key else a
+            if a_field in entry.keys():
+                ts = self.update_entry_for_agent(ts, a, t, entry[a_field])
             else:
                 ts[a]["lastK"][t] = ts[a]["lastK"][t-1]
                 ts[a]["kappa"][t] = ts[a]["kappa"][t-1]

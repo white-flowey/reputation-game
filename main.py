@@ -1,7 +1,6 @@
 from timeit import default_timer as timer
 from helper import parse_arguments
 from simulate import Game
-from evaluate import plot, Postprocessor
 from config import conf
 
 def main(args=None):
@@ -38,11 +37,13 @@ def main(args=None):
             Game(characters_setup).run(args.override)
 
     if args.proc:
+        from evaluate import Postprocessor
         start = timer()
         Postprocessor("evaluate/results/simulation/04_ordinary_NA=3_NR=500_NST=1_sim.json")
         print(f"Finished processing: {round(timer() - start, 2)}s")
 
     if args.plot:
+        from evaluate import plot
         plot()
 
 if __name__ == "__main__":

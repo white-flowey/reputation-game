@@ -1,2 +1,2 @@
 export PYTHONPATH=$PYTHONPATH:$(pwd)
-streamlit run config.py
+streamlit run demo/demo.py
