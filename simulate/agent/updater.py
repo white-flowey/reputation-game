@@ -51,7 +51,7 @@ class Updater():
         self.a.I[speaker] = Ift.match(trust=update["trust"], Itruth=update["Ispeaker"]["Itruth"], 
                                       Ilie=update["Ispeaker"]["Ilie"], Istart=self.a.I[speaker])
         
-        self.log.update(self.a, speaker, topic, update)
+        if self.a.conf("LOGGING"): self.log.update(self.a, speaker, topic, update)
 
     def update_friendship(self, speaker: int, statement: float) -> None:
         """Updates the friendship value between the agent and another speaker.

@@ -19,7 +19,7 @@ class Game:
         simulations (list): List of `Simulation` instances.
     """
 
-    def __init__(self, characters_setup: dict):
+    def __init__(self, characters_setup: dict = None, write_to_file = True):
         """
         Initializes the game with character setup and configuration.
 
@@ -27,8 +27,9 @@ class Game:
             characters_setup (dict): Dictionary specifying agent characters.
         """
         self.conf = init_conf()
-        self.characters_setup = characters_setup
-        self.outfile_name = make_outfile_name(characters_setup)
+        self.characters_setup = characters_setup if characters_setup else self.conf("characters_dict")[0]
+        self.write_to_file = write_to_file
+        self.outfile_name = make_outfile_name(self.characters_setup)
         self.setup_simulations()
 
     def setup_simulations(self) -> None:
@@ -52,7 +53,7 @@ class Game:
             else:
                 results = launch_parallel(self.simulations, play_simulation)
             print(f"Time elapsed: {round(timer() - start_time, 3)}s")
-            self.output(results, self.outfile_name)
+            return self.output(results, self.outfile_name)
         else:
             print("Simulation is already in processor folder.")
 
@@ -64,9 +65,12 @@ class Game:
             results (list): List of simulation results.
             filename (str): Filename to save the results.
         """
-        start = timer()
-        save_data_as_json(results, filename)
-        print(f"Saving time: {round(timer() - start, 2)}s")
+        if self.write_to_file:
+            start = timer()
+            save_data_as_json(results, filename)
+            print(f"Saving time: {round(timer() - start, 2)}s")
+        else:
+            return results
 
 
 def play_simulation(sim: Simulation) -> dict:

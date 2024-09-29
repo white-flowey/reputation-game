@@ -4,11 +4,10 @@ from simulate.information_theory import Info, Ift
 
 
 def test_info_arithmetic():
-    I1, I2, I3 = Info(7, 6), Info(3, 5), Info(-1, -1)
+    I1, I2 = Info(7, 6), Info(3, 5)
     assert I1.mu + I2.mu == (I1 + I2).mu and I1.la + I2.la == (I1 + I2).la
     assert I1.mu - I2.mu == (I1 - I2).mu and I1.la - I2.la == (I1 - I2).la
     assert 3 * (I1.mu) == (3 * I1).mu and 3 * (I1.la) == (3 * I1).la
-    assert I3.mu > -1 and I3.la > -1
 
 
 def test_KL():

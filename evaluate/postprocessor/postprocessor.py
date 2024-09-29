@@ -6,13 +6,18 @@ from .prepare_plotting import create_select_for_plotter
 class Postprocessor:
     """Loads data from simulation output JSON, converts to time series data, 
     applies statistics, and prepares for plotting."""
-    def __init__(self, filename: str) -> None:
+    def __init__(self, filename: str = None, data: list = None) -> None:
         """Initialize the Postprocessor with data loaded from a JSON file.
 
         Args:
             filename (str): The path to the JSON file containing the results.
         """
-        self.data = self.load_results(filename)
+        if data:
+            self.data = data
+        elif filename:
+            self.data = self.load_results(filename)
+        else:
+            raise NotImplementedError
         times = len(self.data[0])
         ts_maker = TimeSeriesMaker()
 

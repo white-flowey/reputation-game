@@ -40,7 +40,7 @@ class StateSaver():
                 "topic": int(topic), "partner": int(partner), "id": self.a.id, "Iself": self.a.I[self.a.id].round_mean(),
                 "Ipartner": self.a.I[partner].round_mean(), "Iothers": self.a.Iothers[partner][topic].round_mean(),
                 "Jself": self.a.J[self.a.id][topic].round_mean(), "Jpartner": self.a.J[partner][topic].round_mean(),
-                "lastK": round(float(self.a.K[-1]), 3), "kappa": round(float(self.a.kappa), 3)
+                "lastK": float(self.a.K[-1]), "kappa": float(self.a.kappa)
             }
             if topic == self.a.id:
                 state["friendships"] = float(self.a.friendships[partner].mean)
@@ -58,12 +58,12 @@ class StateSaver():
         """
         return {
             "id": self.a.id, 
-            "honesty": round(self.a.honesty, 2), 
+            "honesty": self.a.honesty, 
             "character": self.a.character, 
-            "friendships": [round(I.mean, 2) for I in self.a.friendships], 
-            "I": [str(self.a.I[b].round(2)) for b in self.a.conf("agents")],
-            "J": [[str(self.a.J[a][b].round(2)) for b in self.a.conf("agents")] for a in self.a.conf("agents")],
-            "C": [[str(self.a.C[a][b].round(2)) for b in self.a.conf("agents")] for a in self.a.conf("agents")],
-            "K": [round(k, 2) for k in self.a.K], 
-            "kappa": round(self.a.kappa, 2)
+            "friendships": [I.mean for I in self.a.friendships], 
+            "I": [str(self.a.I[b]) for b in self.a.conf("agents")],
+            "J": [[str(self.a.J[a][b]) for b in self.a.conf("agents")] for a in self.a.conf("agents")],
+            "C": [[str(self.a.C[a][b]) for b in self.a.conf("agents")] for a in self.a.conf("agents")],
+            "K": [k for k in self.a.K], 
+            "kappa": self.a.kappa
         }

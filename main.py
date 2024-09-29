@@ -1,10 +1,9 @@
 from timeit import default_timer as timer
 from helper import parse_arguments
 from simulate import Game
-from evaluate import plot, Postprocessor
 from config import conf
 
-def main():
+def main(args=None):
     """
     Main function. Runs simulations, postprocessor (benchmarking), or only plot based on terminal args. Can be combined.
     
@@ -31,18 +30,20 @@ def main():
     
     plot(): Postprocessor processes this file into time series data and feeds into Plotter Tool.
     """
-    args = parse_arguments()
+    args = args if args else parse_arguments()
     
     if args.run:
         for characters_setup in conf("characters_dict"):
             Game(characters_setup).run(args.override)
 
     if args.proc:
+        from evaluate import Postprocessor
         start = timer()
         Postprocessor("evaluate/results/simulation/04_ordinary_NA=3_NR=500_NST=1_sim.json")
         print(f"Finished processing: {round(timer() - start, 2)}s")
 
     if args.plot:
+        from evaluate import plot
         plot()
 
 if __name__ == "__main__":

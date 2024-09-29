@@ -1,5 +1,3 @@
-from scipy.stats import beta as Beta
-
 class Info:
     """
     Represents information with parameters for a Beta distribution.
@@ -19,9 +17,14 @@ class Info:
             mu (float): First shape parameter (default is 0).
             la (float): Second shape parameter (default is 0).
         """
-        MIN_KL = -0.9999
-        self.mu, self.la = max(mu, MIN_KL), max(la, MIN_KL)
-        self.mean = (self.mu + 1) / (self.mu + self.la + 2)
+        # MIN_KL = -0.9999
+        # self.mu, self.la = max(mu, MIN_KL), max(la, MIN_KL)
+        self.mu, self.la = mu, la
+    
+    @property
+    def mean(self):
+        """Returns mean of the Beta distribution"""
+        return (self.mu + 1) / (self.mu + self.la + 2)
 
     def __str__(self) -> str:
         """Returns string representation of the Info instance."""
@@ -46,7 +49,8 @@ class Info:
     
     def round(self, digits: int) -> 'Info':
         """Rounds mu and la to specified digits."""
-        return Info(round(self.mu, digits), round(self.la, digits))
+        self.mu = round(self.mu, digits)
+        self.la = round(self.la, digits)
     
     def round_mean(self) -> float:
         """Returns the rounded mean value."""
@@ -54,8 +58,9 @@ class Info:
 
     def draw(self) -> float:
         """Draws a sample from the Beta distribution."""
+        from scipy.stats import beta as Beta
         return Beta.random_state.beta(self.mu + 1, self.la + 1)
     
     def check_positive(self) -> bool:
         """Checks if mu and la are non-negative."""
-        return self.mu >= 0 and self.la >= 0
+        return (self.mu >= 0) & (self.la >= 0)

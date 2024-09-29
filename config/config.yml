@@ -1,9 +1,14 @@
 game:
-  honesties_dict: {0: 0.17, 1: 0.8, 2: 0.95}
+  honesties_dict:
+    0: 0.17
+    1: 0.8
+    2: 0.95
   n_agents: 3 # Number of agents in simulation
-  n_rounds: 500 # Number of conversation rounds
+  n_rounds: 300 # Number of conversation rounds
   n_stat: 1 # Number of simulations for statistic batch (different seeds)
-  characters_dict: [{"all": "ordinary"}] # Characters of each agent
+  characters_dict:                       # Characters of each agent
+  - '0': ordinary
+    '1': deceptive
   folder: "evaluate/results" # Result folder
   mindI_dict: {}
   Ks_dict: {}
@@ -15,7 +20,7 @@ randomseed:
 parameters:
   p_one_to_one: 1 # which fraction of conversations is 1-to-1
   KLENGTH: 10
-  LOGGING: False
+  LOGGING: false
 
 constants:
   MIN_KL: -0.99999
@@ -26,33 +31,18 @@ constants:
 switches:
   MINIMIZE_FUNCTION: "SHORT" # choose beetween 'SHORT', 'ACCURATE'
   GTOL: 0.000000000000001
-  
-  RANDOM_HONESTIES: True # if True, intrinsic honesties of agents will be randomly distributed. If False, thay are equally distributed between 0 and 1. make shure honesties is None in the game specification
-  CONTINUOUS_FRIENDSHIP: False
-  ACTIVE_SELF_FRIENDSHIP: False # if True, agents can become enemies of theirown. Else, they always regard themselves as friends
-  SCALED_FLATTERING: False # if True, flattering is scaled with perceived dishonesty of the receiver. If False: flattered lies are always maximally positive
-  FRIENDSHIP_AFFECTS_B: False # if True, ordinary agents' selection of communication partners will be affected by friendships
-  FRIENDSHIP_AFFECTS_C: False # if True, ordinary agents' selection of communication topics will be affected by friendships
-  RELATION_AFFECTS_B: False # if True, ordinary agents' selection of communication partners will be affected by their relation strength
-  RELATION_AFFECTS_C: False # if True, ordinary agents' selection of communication topics will be affected by their relation strength
-  RANDOM_FRIENDSHIP_AFFINITIES: False # if True, intrinsic friendship affinities will be drawn randomly. If False, they are all 1
 
-character_ids_dict: {
-    "deaf": "00",
-    "naive": "01",
-    "uncritical": "03",
-    "ordinary": "04",
-    "strategic": "05",
-    "egocentric": "06",
-    "deceptive": "07",
-    "flattering": "08",
-    "aggressive": "09",
-    "shameless": "10",
-    "smart": "11",
-    "clever": "12",
-    "manipulative": "13",
-    "dominant": "14",
-    "destructive": "15",
-    "good": "16",
-    "antistrategic": "17",
-}
+  RANDOM_HONESTIES: true # if True, intrinsic honesties of agents will be randomly distributed. If False, thay are equally distributed between 0 and 1. make shure honesties is None in the game specification
+  CONTINUOUS_FRIENDSHIP: true
+  ACTIVE_SELF_FRIENDSHIP: false # if True, agents can become enemies of theirown. Else, they always regard themselves as friends
+  SCALED_FLATTERING: false # if True, flattering is scaled with perceived dishonesty of the receiver. If False: flattered lies are always maximally positive
+  FRIENDSHIP_AFFECTS_B: false # if True, ordinary agents' selection of communication partners will be affected by friendships
+  FRIENDSHIP_AFFECTS_C: false # if True, ordinary agents' selection of communication topics will be affected by friendships
+  RELATION_AFFECTS_B: false # if True, ordinary agents' selection of communication partners will be affected by their relation strength
+  RELATION_AFFECTS_C: false # if True, ordinary agents' selection of communication topics will be affected by their relation strength
+  RANDOM_FRIENDSHIP_AFFINITIES: false # if True, intrinsic friendship affinities will be drawn randomly. If False, they are all 1
+
+character_ids_dict: {"deaf": "00", "naive": "01", "uncritical": "03", "ordinary": "04",
+  "strategic": "05", "egocentric": "06", "deceptive": "07", "flattering": "08", "aggressive": "09",
+  "shameless": "10", "smart": "11", "clever": "12", "manipulative": "13", "dominant": "14",
+  "destructive": "15", "good": "16", "antistrategic": "17"}
