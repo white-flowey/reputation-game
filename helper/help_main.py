@@ -49,6 +49,6 @@ def save_data_as_json(data, filename):
         data (dict): The data to save in JSON format.
         filename (str): The output file name for the saved JSON data.
     """
-    os.makedirs(conf("folder"), exist_ok=True)
+    os.makedirs(os.path.dirname(filename), exist_ok=True)
     with open(filename, 'w') as json_file:
         json.dump(data, json_file, indent=4)
