@@ -11,6 +11,7 @@ def test_characters():
         game.setup_simulations()
         sim = game.simulations[0]
         agents = sim.agents
+        print([a.character for a in agents])
 
         assert get_agent_by_character(sim, "deceptive").character == "deceptive"
         assert get_agent_by_character(sim, "egocentric").egocentric == 0.5
@@ -22,8 +23,6 @@ def test_characters():
         set_target(aggr_agent, agents, friend=False)
 
 def get_agent_by_character(simulation, character):
-    for a in simulation.agents:
-        print(a.character)
     return [a for a in simulation.agents if a.character == character][0]
 
 def set_target(agent, agents, friend=True, character="ordinary"):
