@@ -6,10 +6,12 @@ docs/call_graphs/*
 
 # Root files
 *todo.txt
+*update.txt
 *todo.md
 *run.sh
 *output.prof
 
+*tests/manual/*
 # Python-related files
 __pycache__/
 *.py[cod]

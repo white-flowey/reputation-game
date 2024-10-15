@@ -15,7 +15,7 @@ pip install -r requirements.txt
 Navigate terminal to the root of the project folder.
 
 ```
-python -m main.py -r -o -p -pr
+python main.py -r -o -p -pr
 ```
 
 Args can be passed individually or combined.
