@@ -29,7 +29,7 @@ class Sender():
         else:
             assumed_opinion = self.assume_others_opinion(listeners, topic)
             max_lie = self.get_maximum_lie_size(topic, assumed_opinion)
-            lie = self.choose_lie_method(topic, max_lie)
+            lie = self.choose_lie_method(topic, listeners, max_lie)
             statement = assumed_opinion + lie
             message = {"statement": statement, "blushes": self.blushes()}
         
@@ -81,7 +81,7 @@ class Sender():
         friend = self.a.friendships[topic].mean > 0.5
         return root(lie_size, [2.0], args=(friend,)).x[0] ** 2
 
-    def choose_lie_method(self, topic: int, lie: float) -> Info:
+    def choose_lie_method(self, topic: int, listeners: dict[list], lie: float) -> Info:
         """Chooses the lie method based on the topic and agent character.
 
         Args:
@@ -94,7 +94,7 @@ class Sender():
         aggressive = self.a.aggressive > self.a.random["aggressive"].uniform()
         if self.a.id == topic:
             lie = Info(lie, 0) if aggressive else Info(0, 0)
-        elif self.a.flattering and topic in lie:
+        elif self.a.flattering and topic in listeners["ids"]:
             scaling_factor = (1 - self.a.I[topic].mean) if self.a.conf("SCALED_FLATTERING") else 1
             lie = Info(lie * scaling_factor, 0)
         else:

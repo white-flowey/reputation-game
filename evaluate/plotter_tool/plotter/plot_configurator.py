@@ -1,28 +1,22 @@
+from config import conf
+
 class PlotConfigurator:
     def __init__(self):
         """Initialize PlotConfigurator with predefined plot configurations."""
+        n_agents = conf("n_agents")
+        colors = ["red", "blue", "black", "green", "orange"]
+        linestyles = ["--", "-.", ":", (0, (1, 0.5)), (0, (10, 2))]
+
         self.preconfigured = {
             "Select plot": "",
             "All on All": self.plot_conf(
                 "time", 
-                ["A0 on A0", "A0 on A1", "A0 on A2", "A1 on A0", "A1 on A1", "A1 on A2", 
-                 "A2 on A0", "A2 on A1", "A2 on A2", "Honesty A0", "Honesty A1", "Honesty A2"], 
-                ["-."] * 3 + [":"] * 3 + ["--"] * 3 + ["-"] * 3, 
-                ["red", "blue", "black"] * 4
-            ),
-            "A0 on All": self.plot_conf(
-                "time", 
-                ["A0 on A0", "A0 on A1", "A0 on A2"], 
-                ["-"] * 3, 
-                ["red", "blue", "black"]
-            ),
-            "All on A0": self.plot_conf(
-                "time", 
-                ["A0 on A0", "A1 on A0", "A2 on A0"], 
-                ["-"] * 3, 
-                ["red", "blue", "black"]
+                [f"A{i} on A{j}" for i in conf("agents") for j in conf("agents")] + [f"Honesty A{i}" for i in conf("agents")],
+                [linestyles[i % len(linestyles)] for i in conf("agents") for _ in conf("agents")] + ["-"] * n_agents,
+                [colors[i % len(colors)] for i in conf("agents")] * (n_agents + 1)
             ),
         }
+        print(self.preconfigured)
 
     def plot_conf(self, x: str, y: list, style: list, color: list) -> dict:
         """Create a plot configuration.

@@ -20,6 +20,7 @@ def parse_arguments():
 def make_outfile_name(character):
     """
     Generate the output file name based on character configuration and simulation parameters.
+    Note that "all" is always set via the config_loader (default: "ordinary")
 
     Args:
         character (dict): Dictionary with {agent_id: character, ...}. The key 'all' may be used as a special case.
@@ -29,11 +30,11 @@ def make_outfile_name(character):
     """
     ids = conf("character_ids_dict")
     characters = list(character.values())
-    basis_character = character.get("all", "ordinary")
+    basis_character = character.get("all")
 
-    if len(character) == 1 and "all" in character:
+    if len(character) == 1:
         name = "_".join([ids[basis_character], basis_character])
-    elif "all" in character:
+    elif len(character) == 2:
         name = ids[next(c for c in characters if c != basis_character)] + "+" + basis_character
     else:
         name = "mix_" + "|".join(f"{int(ids[c]):02d}" for c in sorted({*characters, basis_character}))

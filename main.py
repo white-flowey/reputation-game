@@ -1,3 +1,4 @@
+import os
 from timeit import default_timer as timer
 from helper import parse_arguments
 from simulate import Game
@@ -38,9 +39,13 @@ def main(args=None):
 
     if args.proc:
         from evaluate import Postprocessor
-        start = timer()
-        Postprocessor("evaluate/results/simulation/04_ordinary_NA=3_NR=500_NST=1_sim.json")
-        print(f"Finished processing: {round(timer() - start, 2)}s")
+        file_path = "evaluate/results/simulation/04_ordinary_NA=3_NR=500_NST=1_sim.json"
+        if os.path.exists(file_path):
+            start = timer()
+            Postprocessor()
+            print(f"Finished processing: {round(timer() - start, 2)}s")
+        else:
+            print("The file for postprocessor benchmarking doesn't exist. Specify a different one if needed in main.py")
 
     if args.plot:
         from evaluate import plot

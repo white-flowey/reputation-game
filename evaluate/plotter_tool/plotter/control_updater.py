@@ -51,7 +51,7 @@ class ControlUpdater:
         # Set values if provided
         if y_field and line_style and color:
             axis["data"].setCurrentText(y_field)
-            axis["line_style"].setCurrentText(line_style)
+            axis["line_style"].setCurrentText(str(line_style))
             axis["color_button"].setStyleSheet(f"background-color: {color}")
         
         self.controls.y_axes.append(axis)

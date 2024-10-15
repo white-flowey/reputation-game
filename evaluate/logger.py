@@ -2,6 +2,7 @@ import os
 import json
 
 from config import config
+from helper import make_outfile_name
 
 class Logger:
     def __init__(self, id):
@@ -22,7 +23,7 @@ class Logger:
     def conversation(self, honest, blush, speaker, listeners, listener_weights, topic, statement):
         self.log("conversation", id=speaker, listeners="|".join(map(str, listeners)),
                  weights=[round(w, 2) for w in listener_weights], topic=int(topic), 
-                 statement=str(statement.round(2)), honest=honest, blush=blush)
+                 statement=str(statement.round(2)), honest=int(honest), blush=blush)
 
     def self_update(self, agent, topic):
         state = agent.Saver.log_state()
@@ -47,10 +48,11 @@ class Logger:
             })
         self.log("conv_update_", **conv_data)
 
-    def save_data_as_json(self):
+    def save_data_as_json(self, characters_setup):
         directory = os.path.join(os.getcwd(), 'evaluate/results/logs')
         os.makedirs(directory, exist_ok=True)
-        file_path = os.path.join(directory, f'{self.id}.json')
+        outfile = make_outfile_name(characters_setup)
+        file_path = os.path.join(directory, f'{os.path.basename(outfile)}_{self.id}.json')
         
         with open(file_path, 'w') as file:
             for obj in self.data:

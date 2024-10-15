@@ -49,8 +49,7 @@ class Simulation:
         honesties = (self.conf("honesties_dict") or 
                     sorted([Info(0, 0).draw() for _ in agents]) if self.conf("RANDOM_HONESTIES") 
                     else np.linspace(0, 1, self.conf("n_agents")))
-
-        characters = [self.characters_setup.get(agent, self.characters_setup["all"]) for agent in agents]
+        characters = [self.characters_setup.get(str(agent), self.characters_setup["all"]) for agent in agents]
         
         self.agents = [Agent(id, honesties[id], character, self.random, self.log, self.conf) 
                         for id, character in zip(agents, characters)]
@@ -84,5 +83,5 @@ class Simulation:
             if self.conf("LOGGING"): self.log.time(t)
             results.append(c.run_conversation_protocol())
 
-        if self.conf("LOGGING"): self.log.save_data_as_json()
+        if self.conf("LOGGING"): self.log.save_data_as_json(self.characters_setup)
         return results

@@ -38,8 +38,8 @@ class ConfigChecker:
             ConfigError: If the length of 'honesties' does not match 'n_agents',
                          or if any list is of an invalid type or length.
         """
-        if self.conf.get("honesties") and len(self.conf["honesties"]) != self.conf["n_agents"]:
-            raise ConfigError("honesties", "invalid_length", self.conf["n_agents"], len(self.conf["honesties"]))
+        if self.conf.get("honesties_dict") and len(self.conf["honesties_dict"]) != self.conf["n_agents"]:
+            raise ConfigError("honesties_dict", "invalid_length", self.conf["n_agents"], len(self.conf["honesties_dict"]))
 
         list_types = ["mindI", "Ks"]
         for l in list_types:

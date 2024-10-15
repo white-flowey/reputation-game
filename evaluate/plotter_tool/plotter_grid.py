@@ -3,7 +3,6 @@ from PyQt5.QtCore import Qt
 import sys
 
 from .plotter import Plotter
-from helper import create_button
 
 
 class PlotterGrid(QMainWindow):
