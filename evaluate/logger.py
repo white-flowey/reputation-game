@@ -42,10 +42,18 @@ class Logger:
             "kappa": state["kappa"], "K": state["K"]
         }
         if "Itopic" in update:
-            conv_data.update({
+            conv_data = {
+                "id": agent.id, "topic": int(topic), "trust": round(update["trust"], 2), 
+                "Itruth_s": str(update["Ispeaker"]["Itruth"].round(2)),
+                "Ilie_s": str(update["Ispeaker"]["Ilie"].round(2)),
+                "update_speaker": state["I"][speaker], 
                 "Itruth_t": str(update["Itopic"]["Itruth"].round(2)), 
-                "Ilie_t": str(update["Itopic"]["Ilie"].round(2))
-            })
+                "Ilie_t": str(update["Itopic"]["Ilie"].round(2)),
+                "update_topic": state["I"][topic], 
+                "J": state["J"][speaker][topic], "C": state["C"][speaker][topic], 
+                "friendship": state["friendships"][speaker], 
+                "kappa": state["kappa"], "K": state["K"]
+            }
         self.log("conv_update_", **conv_data)
 
     def save_data_as_json(self, characters_setup):

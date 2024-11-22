@@ -1,3 +1,5 @@
+MAX_COUNT = 1e6
+
 class Info:
     """
     Represents information with parameters for a Beta distribution.
@@ -19,6 +21,10 @@ class Info:
         """
         # MIN_KL = -0.9999
         # self.mu, self.la = max(mu, MIN_KL), max(la, MIN_KL)
+        total = mu+la
+        if (total := mu + la) > MAX_COUNT: #limit to a million counts
+            mu = MAX_COUNT * mu / total # rescaled
+            la = MAX_COUNT * la / total # rescaled
         self.mu, self.la = mu, la
     
     @property
@@ -51,6 +57,7 @@ class Info:
         """Rounds mu and la to specified digits."""
         self.mu = round(self.mu, digits)
         self.la = round(self.la, digits)
+        return self
     
     def round_mean(self) -> float:
         """Returns the rounded mean value."""

@@ -29,14 +29,15 @@ class Receiver():
         if topic == self.a.id:
             self.a.Updater.update_friendship(speaker, statement.mean)
         trust = self.compute_trust(topic=topic, speaker=speaker, statement=statement, blush=blush)
-        self.a.Updater.update_ToM(trust=trust, speaker=speaker, topic=topic, statement=statement)
         
         Ispeaker = self.interprete_speaker(speaker=speaker, topic=topic, statement=statement)
         if speaker != topic:
             Itopic = self.interprete_topic(speaker=speaker, topic=topic, statement=statement)
             reception = {"trust": trust, "Ispeaker": Ispeaker, "Itopic": Itopic}
-        reception = {"trust": trust, "Ispeaker": Ispeaker}
+        else:
+            reception = {"trust": trust, "Ispeaker": Ispeaker}
         
+        self.a.Updater.update_ToM(trust=trust, speaker=speaker, topic=topic, statement=statement)
         return reception
 
 
@@ -75,7 +76,9 @@ class Receiver():
         if not self.a.listening or self.a.uncritical: return 1
         
         surprise = Ift.KL(statement, self.a.I[topic])
-        surprise_factor = 0.5 * (surprise / self.a.kappa) ** 2
+        surprise_factor = 0.5 * (surprise / (self.a.kappa + 1e-6)) ** 2
+        # if surprise < 0:
+        #     print(surprise)
         self.a.K = (self.a.K + [surprise])[-10:]
         self.a.kappa = median(self.a.K) / np.sqrt(np.pi)
         return surprise_factor
@@ -91,7 +94,8 @@ class Receiver():
         Returns:
             dict: A dictionary containing the interpreted information about truth and lies.
         """
-        Itruth = Ift.get_info_difference(P=statement, Q=self.a.J[speaker][topic])
+        Inew = Ift.get_info_difference(P=statement, Q=self.a.Iothers[speaker][topic])
+        Itruth = Inew + self.a.I[topic]
         Ilie = self.a.I[topic]
         return {"Itruth": Itruth, "Ilie": Ilie}
     
@@ -108,6 +112,7 @@ class Receiver():
         """
         Itruth = self.a.I[speaker] + Info(1, 0)
         if speaker == topic:
-            Itruth = statement + Info(1, 0)
+            Inew = Ift.get_info_difference(P=statement, Q=self.a.Iothers[speaker][topic])
+            Itruth = statement + Info(1, 0) + Inew
         Ilie = self.a.I[speaker] + Info(0, 1)
         return {"Itruth": Itruth, "Ilie": Ilie}

@@ -16,7 +16,6 @@ class PlotConfigurator:
                 [colors[i % len(colors)] for i in conf("agents")] * (n_agents + 1)
             ),
         }
-        print(self.preconfigured)
 
     def plot_conf(self, x: str, y: list, style: list, color: list) -> dict:
         """Create a plot configuration.

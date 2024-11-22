@@ -1,9 +1,9 @@
 game:
-  honesties_dict:
-  n_agents: 4 # Number of agents in simulation
+  honesties_dict: {0: 0.2, 1: 0.8, 2: 0.97}
+  n_agents: 3 # Number of agents in simulation
   n_rounds: 300 # Number of conversation rounds
   n_stat: 1 # Number of simulations for statistic batch (different seeds)
-  characters_dict: [{0: "deceptive", 1: "manipulative"}]                      # Characters of each agent
+  characters_dict: [{}]                      # Characters of each agent
   folder: "evaluate/results" # Result folder
   mindI_dict: {}
   Ks_dict: {}
@@ -15,7 +15,7 @@ randomseed:
 parameters:
   p_one_to_one: 1 # which fraction of conversations is 1-to-1
   KLENGTH: 10
-  LOGGING: true
+  LOGGING: false
 
 constants:
   MIN_KL: -0.99999
@@ -27,7 +27,7 @@ switches:
   MINIMIZE_FUNCTION: "SHORT" # choose beetween 'SHORT', 'ACCURATE'
   GTOL: 0.000000000000001
 
-  RANDOM_HONESTIES: False # if True, intrinsic honesties of agents will be randomly distributed. If False, thay are equally distributed between 0 and 1. make shure honesties is None in the game specification
+  RANDOM_HONESTIES: true # if True, intrinsic honesties of agents will be randomly distributed. If False, thay are equally distributed between 0 and 1. make shure honesties is None in the game specification
   CONTINUOUS_FRIENDSHIP: true
   ACTIVE_SELF_FRIENDSHIP: false # if True, agents can become enemies of theirown. Else, they always regard themselves as friends
   SCALED_FLATTERING: false # if True, flattering is scaled with perceived dishonesty of the receiver. If False: flattered lies are always maximally positive

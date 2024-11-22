@@ -60,10 +60,10 @@ class StateSaver():
             "id": self.a.id, 
             "honesty": self.a.honesty, 
             "character": self.a.character, 
-            "friendships": [I.mean for I in self.a.friendships], 
-            "I": [str(self.a.I[b]) for b in self.a.conf("agents")],
-            "J": [[str(self.a.J[a][b]) for b in self.a.conf("agents")] for a in self.a.conf("agents")],
-            "C": [[str(self.a.C[a][b]) for b in self.a.conf("agents")] for a in self.a.conf("agents")],
+            "friendships": [str(I.round(2)) for I in self.a.friendships], 
+            "I": [str(self.a.I[b].round(2)) for b in self.a.conf("agents")],
+            "J": [[str(self.a.J[a][b].round(2)) for b in self.a.conf("agents")] for a in self.a.conf("agents")],
+            "C": [[str(self.a.C[a][b].round(2)) for b in self.a.conf("agents")] for a in self.a.conf("agents")],
             "K": [k for k in self.a.K], 
             "kappa": self.a.kappa
         }

@@ -50,7 +50,6 @@ class Simulation:
                     sorted([Info(0, 0).draw() for _ in agents]) if self.conf("RANDOM_HONESTIES") 
                     else np.linspace(0, 1, self.conf("n_agents")))
         characters = [self.characters_setup.get(agent, self.characters_setup["all"]) for agent in agents]
-        print(characters)
         
         self.agents = [Agent(id, honesties[id], character, self.random, self.log, self.conf) 
                         for id, character in zip(agents, characters)]
