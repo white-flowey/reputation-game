@@ -77,8 +77,6 @@ class Receiver():
         
         surprise = Ift.KL(statement, self.a.I[topic])
         surprise_factor = 0.5 * (surprise / (self.a.kappa + 1e-6)) ** 2
-        # if surprise < 0:
-        #     print(surprise)
         self.a.K = (self.a.K + [surprise])[-10:]
         self.a.kappa = median(self.a.K) / np.sqrt(np.pi)
         return surprise_factor

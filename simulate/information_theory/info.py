@@ -19,8 +19,8 @@ class Info:
             mu (float): First shape parameter (default is 0).
             la (float): Second shape parameter (default is 0).
         """
-        # MIN_KL = -0.9999
-        # self.mu, self.la = max(mu, MIN_KL), max(la, MIN_KL)
+        MIN_KL = -0.9999
+        self.mu, self.la = max(mu, MIN_KL), max(la, MIN_KL)
         total = mu+la
         if (total := mu + la) > MAX_COUNT: #limit to a million counts
             mu = MAX_COUNT * mu / total # rescaled

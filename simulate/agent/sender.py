@@ -100,7 +100,7 @@ class Sender():
         else:
             friendship = self.a.friendships[topic].mean
             if self.a.conf("CONTINUOUS_FRIENDSHIP"):
-                lie = Info(2 * (friendship - 0.5) * lie, 0) if aggressive else Info(0, 0)
+                lie = Info(2 * (friendship - 0.5) * lie, 0) if aggressive else Info(0, 0) ## NOOO
             else:
                 if friendship == 0.5: 
                     lie = Info(0, 0)

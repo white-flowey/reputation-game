@@ -89,11 +89,12 @@ class IFT:
         muP, muQ = IP.mu, IQ.mu
         laP, laQ = IP.la, IQ.la
         digamma_muP_laP = digamma(muP + laP + 2)
-        return (
+        temp = (
             (muP - muQ) * (digamma(muP + 1) - digamma_muP_laP) +
             (laP - laQ) * (digamma(laP + 1) - digamma_muP_laP) +
             betaln(muQ + 1, laQ + 1) - betaln(muP + 1, laP + 1)
         )
+        return temp
 
     def get_info_difference(self, P: Info, Q: Info) -> Info:
         """Returns the difference between two Info instances.
