@@ -26,6 +26,11 @@ class Receiver():
         Returns:
             dict: A dictionary containing trust and interpreted information about the speaker and topic.
         """
+
+        self.a.n_received_message[speaker] += 1
+        if blush:
+            self.a.n_blushes[speaker] += 1
+
         if topic == self.a.id:
             self.a.Updater.update_friendship(speaker, statement.mean)
         trust = self.compute_trust(topic=topic, speaker=speaker, statement=statement, blush=blush)
@@ -53,9 +58,13 @@ class Receiver():
         Returns:
             float: The computed trust value.
         """
-        if self.a.naive: return 1
-        if blush: return 0
-        
+        most_trusted_agend = self.a.who_do_i_trust_most()
+        if self.a.character == "villager_2" and most_trusted_agend is not None:
+            if most_trusted_agend == speaker:
+                return 0.9
+            else:
+                return 0
+
         assumed_honesty = self.a.I[speaker].mean
         if self.a.listening and speaker == topic and statement.mean < assumed_honesty: return 1
 

@@ -38,7 +38,7 @@ class Initiator:
         """
         others = [id for id in self.a.conf("agents") if id != self.a.id]
         if setting == "one_to_one":
-            if self.a.character in ["ordinary", "werewolf", "villager"]:
+            if self.a.character in ["ordinary", "werewolf", "villager_1", "villager_2"]:
                 return {
                     "ids": [self.a.random["recipients"].choice(others)],
                     "weights": [1],
@@ -67,7 +67,7 @@ class Initiator:
         Returns:
             int: The ID of the chosen topic.
         """
-        if self.a.character in ["ordinary", "werewolf", "villager"]:
+        if self.a.character in ["ordinary", "werewolf", "villager_1", "villager_2"]:
             return self.a.random["topic"].choice(self.a.conf("agents"))
 
         if self.a.egocentric > self.a.random["egocentric"].uniform():

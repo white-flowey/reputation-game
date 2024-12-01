@@ -61,6 +61,9 @@ class Agent:
         self.kappa = 1
         self.n_conversations = [{"partner": 0, "topic": 0} for _ in range(n_agents)]
 
+        self.n_blushes = [0 for _ in range(n_agents)]
+        self.n_received_message = [0 for _ in range(n_agents)]
+
     def initialise_memory(self) -> None:
         """Initializes the agent's memory with predefined values from the configuration."""
         if self.id in self.conf("mindI_dict"):
@@ -69,3 +72,15 @@ class Agent:
         if self.id in self.conf("Ks_dict"):
             self.K = self.conf("Ks_dixt")[self.id] if self.conf("Ks_dict") else [np.sqrt(np.pi) for _ in range(self.conf("KLENGTH"))]
         self.kappa = median(self.K) / np.sqrt(np.pi)
+        
+    def who_do_i_trust_most(self) -> int | None:
+        try:
+            ratio_0 = self.n_blushes[0] / self.n_received_message[0]
+            ratio_1 = self.n_blushes[1] / self.n_received_message[1]
+        except ZeroDivisionError:
+            return None
+
+        if ratio_0 <= ratio_1:
+            return 0
+        else:
+            return 1

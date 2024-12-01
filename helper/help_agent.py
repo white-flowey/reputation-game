@@ -44,8 +44,9 @@ def character_mapping(character: str) -> dict:
         "good": {"strategic": 1, "honest": True, "x": 1}, 
         "disturbing": {"disturbing": True},
         "antistrategic": {"strategic": -0.5},
-        "werewolf": {},
-        "villager": {}
+        "villager_1": {"honesty": 0.9},
+        "villager_2": {"honesty": 0.9},
+
     }
 
     result = {**default, **character_setup_dict.get(character, {})}
