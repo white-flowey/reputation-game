@@ -92,11 +92,25 @@ class Sender():
             Info: The chosen method of lying based on various factors.
         """
         aggressive = self.a.aggressive > self.a.random["aggressive"].uniform()
-        if self.a.id == topic:
+        if self.a.character == "populist_ww":
+            if self.a.id == topic:
+                lie = Info(lie, 0)
+                ##
+            elif topic in listeners["ids"]:
+                lie = Info(lie, 0)
+                ##
+            else:
+                lie = Info(0, lie)
+        elif self.a.id == topic:
             lie = Info(lie, 0) if aggressive else Info(0, 0)
         elif self.a.flattering and topic in listeners["ids"]:
             scaling_factor = (1 - self.a.I[topic].mean) if self.a.conf("SCALED_FLATTERING") else 1
             lie = Info(lie * scaling_factor, 0)
+        elif self.a.character == "werewolf":
+            if topic in listeners["ids"]:
+                lie = Info(lie, 0)
+            else:
+                lie = Info(0, lie)
         else:
             friendship = self.a.friendships[topic].mean
             if self.a.conf("CONTINUOUS_FRIENDSHIP"):
