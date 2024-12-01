@@ -33,7 +33,7 @@ class Initiator:
         """
         others = [id for id in self.a.conf("agents") if id != self.a.id]
         if setting == "one_to_one":
-            if self.a.character == "ordinary":
+            if self.a.character in ["ordinary", "werewolf", "villager"]:
                 return {"ids": [self.a.random["recipients"].choice(others)], "weights": [1]}
             listeners = {"ids": others, "weights": self.rank_listeners(others)}
             max_weight_id = draw_max_from_list(self.a.random, listeners["weights"], "recipients")
@@ -48,7 +48,7 @@ class Initiator:
         Returns:
             int: The ID of the chosen topic.
         """
-        if self.a.character == "ordinary":
+        if self.a.character in ["ordinary", "werewolf", "villager"]:
             return self.a.random["topic"].choice(self.a.conf("agents"))
 
         if self.a.egocentric > self.a.random["egocentric"].uniform():
