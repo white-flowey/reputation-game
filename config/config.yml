@@ -1,9 +1,9 @@
 game:
-  honesties_dict: {0: 0.1, 1: 0.9, 2: 0.9}
+  honesties_dict: {0: 0.2, 1: 0.97, 2: 0.97}
   n_agents: 3 # Number of agents in simulation
-  n_rounds: 800 # Number of conversation rounds
+  n_rounds: 300 # Number of conversation rounds
   n_stat: 100 # Number of simulations for statistic batch (different seeds)
-  characters_dict: [{0: "populist_ww"}]                      # Characters of each agent
+  characters_dict: [{}]                      # Characters of each agent
   folder: "evaluate/results" # Result folder
   mindI_dict: {}
   Ks_dict: {}
@@ -40,4 +40,4 @@ switches:
 character_ids_dict: {"deaf": "00", "naive": "01", "uncritical": "03", "ordinary": "04",
   "strategic": "05", "egocentric": "06", "deceptive": "07", "flattering": "08", "aggressive": "09",
   "shameless": "10", "smart": "11", "clever": "12", "manipulative": "13", "dominant": "14",
-  "destructive": "15", "good": "16", "antistrategic": "17", "villager_1": "18", "villager_2": "19", "werewolf": "20", "populist_ww": "21", "muted": "22"}
+  "destructive": "15", "good": "16", "antistrategic": "17"}

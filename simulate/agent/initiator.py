@@ -32,13 +32,6 @@ class Initiator:
             dict: A dictionary containing the selected listener IDs and their weights.
         """
         others = [id for id in self.a.conf("agents") if id != self.a.id]
-        if self.a.character == "populist_ww":
-            for id in self.a.conf("agents"):
-                if id != self.a.id:
-                    others = [id]
-                    break
-        elif self.a.character == "muted":
-            return {"ids": [self.a.id], "weights": [1]}
         if setting == "one_to_one":
             if self.a.character == "ordinary":
                 return {"ids": [self.a.random["recipients"].choice(others)], "weights": [1]}
@@ -60,20 +53,6 @@ class Initiator:
 
         if self.a.egocentric > self.a.random["egocentric"].uniform():
             return self.a.id
-        
-        if self.a.character == "werewolf":
-            agents = self.a.conf("agents").copy()
-            agents.remove(self.a.id)
-            return self.a.random["topic"].choice(agents)
-        
-        if self.a.character == "populist_ww":
-            for id in self.a.conf("agents"):
-                if id != self.a.id:
-                    follower = id
-                    break
-            agents = self.a.conf("agents").copy()
-            # agents.remove(follower)
-            return self.a.random["topic"].choice(agents)
 
         agents = self.a.conf("agents")
 
@@ -114,7 +93,7 @@ class Initiator:
 
         Returns:
             int: The ID of the drawn topic.
-        """            
+        """
         rel_weights = np.array([self.a.n_conversations[i]["partner"] for i in agents]) ** self.a.conf("RELATION_AFFECTS_C")
         friend_weights = np.array([self.a.friendships[i].mean for i in agents]) ** self.a.conf("FRIENDSHIP_AFFECTS_C")
         agg_weights = (1 - friend_weights) ** (self.a.aggressive > self.a.random["aggressive"].uniform())
