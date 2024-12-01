@@ -8,12 +8,21 @@ from . import Initiator, Sender, Receiver, Updater, StateSaver
 
 agents = conf("agents")
 
+
 class Agent:
     """
     Represents an agent in the simulation with defined characteristics and memory.
     """
 
-    def __init__(self, id: int, honesty: float, character: str, random_dict: dict, log: any, conf: dict) -> None:
+    def __init__(
+        self,
+        id: int,
+        honesty: float,
+        character: str,
+        random_dict: dict,
+        log: any,
+        conf: dict,
+    ) -> None:
         """Initializes an agent with specified attributes and sets up its character and memory.
 
         Args:
@@ -60,27 +69,37 @@ class Agent:
         self.K = [np.sqrt(np.pi)] * self.conf("KLENGTH")
         self.kappa = 1
         self.n_conversations = [{"partner": 0, "topic": 0} for _ in range(n_agents)]
+        self.n_blushes = [{o: 0} for o in self.conf("agents")]
 
-        self.n_blushes = [0 for _ in range(n_agents)]
-        self.n_received_message = [0 for _ in range(n_agents)]
+        self.n_blushes = {}
+        self.n_received_message = {}
+        for o in self.conf("agents"):
+            self.n_blushes[o] = 0
+            self.n_received_message[o] = 0
 
     def initialise_memory(self) -> None:
         """Initializes the agent's memory with predefined values from the configuration."""
         if self.id in self.conf("mindI_dict"):
             for b in self.conf("mindI_dict")[self.id].keys():
-                self.I[b] = Info(self.conf("mindI_dict")[self.id][b][0], self.conf("mindI_dict")[self.id][b][1])
+                self.I[b] = Info(
+                    self.conf("mindI_dict")[self.id][b][0],
+                    self.conf("mindI_dict")[self.id][b][1],
+                )
         if self.id in self.conf("Ks_dict"):
-            self.K = self.conf("Ks_dixt")[self.id] if self.conf("Ks_dict") else [np.sqrt(np.pi) for _ in range(self.conf("KLENGTH"))]
+            self.K = (
+                self.conf("Ks_dixt")[self.id]
+                if self.conf("Ks_dict")
+                else [np.sqrt(np.pi) for _ in range(self.conf("KLENGTH"))]
+            )
         self.kappa = median(self.K) / np.sqrt(np.pi)
-        
+
     def who_do_i_trust_most(self) -> int | None:
         try:
-            ratio_0 = self.n_blushes[0] / self.n_received_message[0]
-            ratio_1 = self.n_blushes[1] / self.n_received_message[1]
+            others = [id for id in self.conf("agents") if id != self.id]
+            ratios = {o: self.n_blushes[o] / self.n_received_message[0] for o in others}
+            id_trust = max(ratios)
+
         except ZeroDivisionError:
             return None
 
-        if ratio_0 <= ratio_1:
-            return 0
-        else:
-            return 1
+        return id_trust

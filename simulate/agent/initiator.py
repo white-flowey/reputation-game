@@ -134,14 +134,15 @@ class Initiator:
             partners[min_index] = 1
             return partners
         else:
-            max_truthfulness = -1
-            id_truthfulness = self.a.id
-            for id, info in zip(self.a.conf("agents"), self.a.I):
-                curr_truthfulness = info.mu / (info.mu + info.la)
-                if curr_truthfulness > max_truthfulness and id != self.a.id:
-                    max_truthfulness = curr_truthfulness
-                    id_truthfulness = id
-            return np.array([1 if o == id_truthfulness else 0 for o in others])
+            # max_truthfulness = -1
+            # id_truthfulness = self.a.id
+            # for id, info in zip(self.a.conf("agents"), self.a.I):
+            #     curr_truthfulness = info.mu / (info.mu + info.la)
+            #     if curr_truthfulness > max_truthfulness and id != self.a.id:
+            #         max_truthfulness = curr_truthfulness
+            #         id_truthfulness = id
+            most_trusted_agend = self.a.who_do_i_trust_most()
+            return np.array([1 if o == most_trusted_agend else 0 for o in others])
 
     def pick_topic_villagers(self, others: list[int]) -> int:
         topics = np.array([self.a.n_conversations[i]["topic"] for i in others])
