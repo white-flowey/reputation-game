@@ -59,7 +59,7 @@ class Receiver():
             float: The computed trust value.
         """
         most_trusted_agend = self.a.who_do_i_trust_most()
-        if self.a.character == "villager_2" and most_trusted_agend is not None:
+        if self.a.character == "villager_2" and most_trusted_agend is not None and speaker != 2:
             if most_trusted_agend == speaker:
                 return 0.9
             else:
