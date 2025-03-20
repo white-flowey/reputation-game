@@ -44,7 +44,7 @@ class Updater():
             speaker (int): The speaker providing information.
         """
         update = self.buffer.pop(0)
-        if "Itopic" in update:
+        if "Itopic" in update: ### if competence: trust=update["trust"] * update["competence"]
             self.a.I[topic] = Ift.match(trust=update["trust"], Itruth=update["Itopic"]["Itruth"], 
                                         Ilie=update["Itopic"]["Ilie"], Istart=self.a.I[topic])
         

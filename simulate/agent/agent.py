@@ -61,6 +61,9 @@ class Agent:
         self.kappa = 1
         self.n_conversations = [{"partner": 0, "topic": 0} for _ in range(n_agents)]
 
+        self.Icomp = [Info(0, 0)] * n_agents
+        
+
     def initialise_memory(self) -> None:
         """Initializes the agent's memory with predefined values from the configuration."""
         if self.id in self.conf("mindI_dict"):

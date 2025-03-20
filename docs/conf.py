@@ -16,8 +16,8 @@ sys.path.insert(0, os.path.abspath('..'))  # Adjust the path if necessary
 sys.modules['config'] = MagicMock()
 
 project = 'Reputation Game v2'
-copyright = '2024, Florian Wiethof'
-author = 'Florian Wiethof'
+copyright = '2024 - Torsten Enßlin, Viktoria Kainz, Florian Wiethof'
+author = 'Torsten Enßlin, Viktoria Kainz, Florian Wiethof'
 release = '0.1'
 
 # -- General configuration ---------------------------------------------------

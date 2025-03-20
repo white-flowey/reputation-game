@@ -59,9 +59,19 @@ class Receiver():
         assumed_honesty = self.a.I[speaker].mean
         if self.a.listening and speaker == topic and statement.mean < assumed_honesty: return 1
 
-        surprise_factor = self.handle_surprise(statement=statement, topic=topic)
-        denominator = surprise_factor * (1 - self.a.conf("BLUSH_FREQ_LIE") * (1 - assumed_honesty))
+        if self.a.conf["competence"]:  # remove surprise from denominator, only blush
+            denominator = assumed_honesty + (1 - self.a.conf("BLUSH_FREQ_LIE") * (1 - assumed_honesty))
+        else:
+            surprise_factor = self.handle_surprise(statement=statement, topic=topic)
+            denominator = surprise_factor * (1 - self.a.conf("BLUSH_FREQ_LIE") * (1 - assumed_honesty))
         return assumed_honesty / (assumed_honesty + denominator)
+
+    def compute_competence(self, speaker: int, topic: int, statement: 'Info'):
+        assumed_competence = self.a.Icomp[speaker].mean
+        surprise_factor = self.handle_surprise(statement=statement, topic=topic)
+        competence = assumed_competence / (assumed_competence + surprise_factor * (1 - assumed_competence))
+             
+        # Annahme - Ich bin kompetent
 
     def handle_surprise(self, statement: Info, topic: int) -> float:
         """Calculates the surprise factor based on the received statement and topic.

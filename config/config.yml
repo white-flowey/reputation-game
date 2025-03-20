@@ -1,9 +1,9 @@
 game:
-  honesties_dict: {0: 0.2, 1: 0.97, 2: 0.97}
+  honesties_dict: {0: 0.2, 1: 0.8, 2: 0.97}
   n_agents: 3 # Number of agents in simulation
   n_rounds: 300 # Number of conversation rounds
   n_stat: 100 # Number of simulations for statistic batch (different seeds)
-  characters_dict: [{}]                      # Characters of each agent
+  characters_dict: [{0: "manipulative"}]                      # Characters of each agent
   folder: "evaluate/results" # Result folder
   mindI_dict: {}
   Ks_dict: {}

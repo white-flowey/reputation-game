@@ -35,7 +35,11 @@ class IFT:
             return Itruth
         
         Istart = self.match_moments(trust, Itruth, Ilie)
-        
+        # if competence: trust*competent + trust*(1-competent) + (1-trust)
+        # parameter: trust, competent, Itruth_competent, Itruth_ncompetent, Ilie (same structure)
+        # -> Itruth_ncompetent nicht nötig, ist einfach Itruth_competent (oder Itruth)
+        # DOCH: Wenn Competence aktualisiert wird
+        # Bei I_nh wird Ca übergeben (kein Update über Kompetenz)
         u = trust * (digamma(Itruth.mu + Itruth.la + 2) - digamma(Itruth.mu + 1)) + \
             (1 - trust) * (digamma(Ilie.mu + Ilie.la + 2) - digamma(Ilie.mu + 1))
         v = trust * (digamma(Itruth.mu + Itruth.la + 2) - digamma(Itruth.la + 1)) + \
